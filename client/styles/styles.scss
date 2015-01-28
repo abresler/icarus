@@ -4,7 +4,7 @@ $font-stack: 'Open Sans', sans-serif;
 $red: #D1122B;
 $grey: #797979;
 
-body {
+body, html {
   font-family: $font-stack;
 }
 
@@ -124,9 +124,19 @@ nav ul li:hover, nav ul li.active {
 
 
 .flex-white {
+  min-height: 10rem;
   height: auto;
   width: 100%;
   background-color: #fff;
+  @extend .shadow-inset;
+}
+
+.flex-red {
+  min-height: 10rem;
+  height: auto;
+  width: 100%;
+  background-color: $red;
+  @extend .z-depth-2;
 }
 
 /* Colored break line */
@@ -191,7 +201,7 @@ nav ul li:hover, nav ul li.active {
     color: $red;
   }
   p {
-    font-size: 1.1em;
+    font-size: 1.3em;
   }
 }
 
