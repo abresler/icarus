@@ -236,4 +236,7 @@ nav ul li:hover, nav ul li.active {
   &:hover {
     background-color: lighten($red, 10%);
   }
+  &:focus {
+    background-color: $red;
+  }
 }
