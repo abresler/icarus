@@ -15,4 +15,7 @@ Router.map ->
   @route "contact",
     path: "/contact"
 
+  @route "calculator",
+    path: "/calculator"
+
   return
