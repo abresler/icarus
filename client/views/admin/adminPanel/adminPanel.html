@@ -1,7 +1,10 @@
 <template name="adminPanel">
   {{#if isAdmin}}
-    YES
+
+    {{> _adminPanel}}
+    {{> _createAccount}}
+
   {{else}}
-    NO
+    {{> _denyAdmin}}
   {{/if}}
 </template>

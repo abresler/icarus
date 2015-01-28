@@ -125,11 +125,6 @@ nav ul li:hover, nav ul li.active {
   @include background-size();
 }
 
-
-
-
-
-
 .flex-white {
   min-height: 10rem;
   height: auto;
@@ -145,13 +140,6 @@ nav ul li:hover, nav ul li.active {
   background-color: $red;
   @extend .z-depth-2;
 }
-
-/* Colored break line */
-/* .red-break {
-  height: 0.5rem;
-  background-color: \$red;
-} */
-
 
 /* Uncomment if using accounts-ui */
 .login-button {
@@ -241,4 +229,11 @@ nav ul li:hover, nav ul li.active {
 
 .row {
   margin: 0;
+}
+
+.btn {
+  background-color: $red;
+  &:hover {
+    background-color: lighten($red, 10%);
+  }
 }

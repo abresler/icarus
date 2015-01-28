@@ -1,4 +1,5 @@
 Template.layout.rendered = ->
+  Waves.displayEffect()
 
 Template.layout.events {}
 
