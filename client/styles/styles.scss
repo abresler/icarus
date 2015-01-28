@@ -53,11 +53,16 @@ nav ul li:hover, nav ul li.active {
   background-color: #ea454b;
 } */
 
-/* Better way to set background image to page
-.*-background {
-  height: 92vh;
+
+
+
+
+
+
+
+/* .full-background {
+  min-height: 92vh;
   width: 100%;
-  background: url(/image.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -65,7 +70,26 @@ nav ul li:hover, nav ul li.active {
   position: relative;
 }
 
-*/
+.another-ny-background {
+  @extend .full-background;
+  background: url(/background/another_ny.jpg) no-repeat center center;
+} */
+
+.another-ny-background {
+  min-height: 92vh;
+  width: 100%;
+  background: url(/background/another_ny.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+
+
+
+
 
 .flex-white {
   height: auto;
@@ -118,8 +142,45 @@ nav ul li:hover, nav ul li.active {
   position: relative;
   overflow: hidden;
   margin: 0 0 0 0;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.7);
   border-radius: 5px;
-  padding: 3rem;
+  padding: 2rem;
   @extend .z-depth-1;
+  h1 {
+
+  }
+  h2 {
+    color: $red;
+  }
+  h3 {
+    color: $red;
+  }
+  h4 {
+    color: $red;
+  }
+  p {
+    font-size: 1.1em;
+  }
+}
+
+.white-break {
+  height: 0.5rem;
+  background-color: white;
+}
+
+.red-break {
+  height: 0.5rem;
+  background-color: $red;
+}
+
+.card-hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+
+.card-show {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
