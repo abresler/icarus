@@ -5,10 +5,14 @@ Meteor.startup ->
       username: "admin"
       password: "adminpassword"
       profile:
+        first: "Admin"
+        last: "Name"
         roles: ["admin"]
 
     Accounts.createUser
       username: "client"
       password: "clientpassword"
       profile:
+        first: "Client"
+        last: "Name"
         roles: ["client"]

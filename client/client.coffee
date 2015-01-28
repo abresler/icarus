@@ -6,3 +6,9 @@ Template.registerHelper "isAdmin", ->
       true
     else
       false
+
+Template.registerHelper "isInvestor", ->
+  if Meteor.user()?.profile.roles.indexOf 'client' > -1
+    true
+  else
+    false

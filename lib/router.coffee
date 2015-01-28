@@ -21,4 +21,10 @@ Router.map ->
   @route "adminPanel",
     path: "/admin/panel"
 
+  @route 'analytics',
+    path: '/analytics'
+
+  @route 'properties',
+    path: '/properties'
+
   return

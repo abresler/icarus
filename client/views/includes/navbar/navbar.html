@@ -10,6 +10,10 @@
         {{#if isAdmin}}
         <li><a href="{{pathFor 'adminPanel'}}">Admin</a></li>
         {{/if}}
+        {{#if isInvestor}}
+        <li><a href="{{pathFor 'analytics'}}">Analytics</a></li>
+        <li><a href="{{pathFor 'properties'}}">Properties</a></li>
+        {{/if}}
         <li><a href="{{pathFor 'about'}}">About</a></li>
         <li><a href="{{pathFor 'contact'}}">Contact</a></li>
         <li><a href="{{pathFor 'calculator'}}">Calculator</a></li>

@@ -50,3 +50,9 @@ Template._addProperty.rendered = ->
 Template._addProperty.helpers
   allAccounts: ->
     Meteor.users.find()
+
+Template._addProperty.events
+  'change select': (e,t) ->
+    t.find('select').value # gives value of user being added
+    alert "Success"
+    $('select').val('') # this is not properly clearing after selection has been made
