@@ -1,0 +1,27 @@
+<template name="_addProperty">
+  <div class="flex-white">
+    <div class="container admin-container">
+      <h2 class="center-align">
+        Add Property
+      </h2>
+      <form>
+        <div class="row">
+          <div class="col s6 input-field">
+            <label for=""></label>
+            <input type="text">
+            </div>
+          <div class="col s6 input-field">
+            <select name="" id="">
+              <option value="" disabled selected>Add an Owner</option>
+              {{#each allAccounts}}
+                <option value="{{_id}}">{{profile.first}} {{profile.last}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="red-break"></div>
+</template>

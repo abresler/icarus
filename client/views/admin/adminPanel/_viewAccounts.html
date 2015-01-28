@@ -1,0 +1,13 @@
+<template name="_viewAccounts">
+  <div class="flex-white">
+    <div class="container admin-container">
+      <h2 class="center-align">
+        List of all users
+      </h2>
+      {{#each allAccounts}}
+        <p>{{allAccounts.email}}</p>
+      {{/each}}
+    </div>
+  </div>
+  <div class="red-break"></div>
+</template>

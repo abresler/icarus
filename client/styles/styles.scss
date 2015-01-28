@@ -139,6 +139,18 @@ nav ul li:hover, nav ul li.active {
   width: 100%;
   background-color: $red;
   @extend .z-depth-2;
+  h2 {
+    color: white;
+  }
+  h3 {
+    color: white;
+  }
+  h4 {
+    color: white;
+  }
+  p {
+    color: white;
+  }
 }
 
 /* Uncomment if using accounts-ui */
@@ -239,4 +251,8 @@ nav ul li:hover, nav ul li.active {
   &:focus {
     background-color: $red;
   }
+}
+
+.admin-container {
+  padding: 3rem 3rem;
 }

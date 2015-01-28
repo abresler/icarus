@@ -30,8 +30,6 @@ Template._createAccount.events
         else
           alert "Success!"
 
-
-
     $('#firstName').val('')
     $('#lastName').val('')
     $('#username').val('')
@@ -40,3 +38,15 @@ Template._createAccount.events
 
 
     # toast("test", 3000)
+
+Template._viewAccounts.helpers
+  allAccounts: ->
+    Meteor.users.find()
+
+Template._addProperty.rendered = ->
+  $('select').material_select()
+  return
+
+Template._addProperty.helpers
+  allAccounts: ->
+    Meteor.users.find()
