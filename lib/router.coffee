@@ -12,4 +12,7 @@ Router.map ->
     path: "/about"
     controller: "AboutController"
 
+  @route "contact",
+    path: "/contact"
+
   return
