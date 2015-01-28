@@ -15,3 +15,12 @@ Router.map ->
     controller: "AboutController"
 
   return
+
+
+
+# Transitioner.transition
+#   fromRoute: "home"
+#   toRoute: "about"
+#   velocityAnimation:
+#     in: animation
+#     out: animation
