@@ -58,32 +58,64 @@ nav ul li:hover, nav ul li.active {
 
 
 
-
-
-/* .full-background {
-  min-height: 92vh;
-  width: 100%;
+@mixin background-size() {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  min-height: 92vh;
+  width: 100%;
   position: relative;
 }
 
 .another-ny-background {
-  @extend .full-background;
   background: url(/background/another_ny.jpg) no-repeat center center;
-} */
+  @include background-size();
+}
 
-.another-ny-background {
-  min-height: 92vh;
-  width: 100%;
-  background: url(/background/another_ny.jpg) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  position: relative;
+.blue-city-background {
+  background: url(/background/blue_city_blur.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.brick-background {
+  background: url(/background/brick.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.houses-background {
+  background: url(/background/houses.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.map-background {
+  background: url(/background/map.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.more-houses-background {
+  background: url(/background/more_houses.jpeg) no-repeat center center;
+  @include background-size();
+}
+
+.new-york-background {
+  background: url(/background/new_york.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.ny-filtered-background {
+  background: url(/background/ny-filtered.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.tropics-background {
+  background: url(/background/tropics.jpg) no-repeat center center;
+  @include background-size();
+}
+
+.wood-background {
+  background: url(/background/wood.jpg) no-repeat center center;
+  @include background-size();
 }
 
 
