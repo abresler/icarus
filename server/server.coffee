@@ -3,9 +3,5 @@ Meteor.startup ->
     Accounts.createUser
       username: "admin"
       password: "adminpassword"
-
-    Meteor.users.update
-      username: "admin"
-    ,
-      $set:
+      profile:
         roles: ["admin"]

@@ -18,4 +18,7 @@ Router.map ->
   @route "calculator",
     path: "/calculator"
 
+  @route "adminPanel",
+    path: "/admin/panel"
+
   return
