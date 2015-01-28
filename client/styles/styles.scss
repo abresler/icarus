@@ -59,11 +59,6 @@ nav ul li:hover, nav ul li.active {
   background-color: #ea454b;
 } */
 
-
-
-
-
-
 @mixin background-size() {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -153,9 +148,16 @@ nav ul li:hover, nav ul li.active {
   }
 }
 
-/* Uncomment if using accounts-ui */
+.shadow-inset {
+  -webkit-box-shadow: inset 0px 0px 15px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 0px 15px 1px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 15px 1px rgba(0,0,0,0.75);
+}
+
+// Everything related to the Accounts UI //
+
 .login-button {
-  background-color: white !important;
+  background-color: $red !important;
   border: none !important;
 }
 #login-dropdown-list {
@@ -165,13 +167,10 @@ nav ul li:hover, nav ul li.active {
   }
 }
 
-.shadow-inset {
-  -webkit-box-shadow: inset 0px 0px 15px 1px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset 0px 0px 15px 1px rgba(0,0,0,0.75);
-  box-shadow: inset 0px 0px 15px 1px rgba(0,0,0,0.75);
+#login-name-link {
+  font-size: 1.5em;
+  text-decoration: none !important;
 }
-
-// Everything related to the Accounts UI //
 
 #signup-link {
   color: $grey;
