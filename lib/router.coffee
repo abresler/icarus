@@ -27,4 +27,7 @@ Router.map ->
   @route 'properties',
     path: '/properties'
 
+  @route 'singleProperty',
+    path: '/properties/:_id'
+
   return
