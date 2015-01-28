@@ -17,3 +17,5 @@ accounts-password
 accounts-ui
 coffeescript
 ccorcos:transitioner
+d3
+mrt:topojson

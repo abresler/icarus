@@ -1,16 +1,18 @@
 <template name="layout">
-	<div>
-		{{> navbar}}
-		<!-- {{#transitioner}} -->
-			{{> yield}}
-		<!-- {{/transitioner}} -->
-	</div>
-	<div id="footer">
-		<div class="container">
-		</div>
-	</div>
+	{{> navbar}}
+	<!-- {{#transitioner}} -->
+		{{> yield}}
+	<!-- {{/transitioner}} -->
+	{{> footer}}
 </template>
 
 <head>
 	<title>Title</title>
 </head>
+
+
+<template name="footer">
+	<div style="height:3rem;background-color:white;">
+		<p style="margin:0;margin-right:5%;margin-top:1rem;color:#797979;" class="right-align">© Icarus Investment Group LLC, 2014. All rights reserved.</p>
+	</div>
+</template>

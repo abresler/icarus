@@ -6,6 +6,8 @@ $grey: #797979;
 
 body, html {
   font-family: $font-stack;
+/*   height: 100%;
+width: 100%; */
 }
 
 .side-nav {
@@ -106,6 +108,7 @@ nav ul li:hover, nav ul li.active {
 .ny-filtered-background {
   background: url(/background/ny-filtered.jpg) no-repeat center center;
   @include background-size();
+  min-height: 20rem;
 }
 
 .tropics-background {
@@ -215,6 +218,11 @@ nav ul li:hover, nav ul li.active {
   background-color: $red;
 }
 
+.grey-break {
+  height: 0.5rem;
+  background-color: $grey;
+}
+
 .card-hide {
   visibility: hidden;
   opacity: 0;
@@ -225,4 +233,8 @@ nav ul li:hover, nav ul li.active {
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+}
+
+.row {
+  margin: 0;
 }
