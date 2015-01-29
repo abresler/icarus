@@ -19,3 +19,4 @@ coffeescript
 ccorcos:transitioner
 d3
 mrt:topojson
+mrt:googlemaps
