@@ -331,3 +331,9 @@ a.collection-item {
     transform: translateY(0.7em);
   }
 }
+
+.new-projects-table {
+  max-height: 15rem;
+  overflow: scroll;
+  background-color: rgba(255,255,255,0.4);
+}
