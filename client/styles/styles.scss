@@ -255,3 +255,14 @@ nav ul li:hover, nav ul li.active {
 .admin-container {
   padding: 3rem 3rem;
 }
+
+.analytics-card {
+  margin: 1rem;
+}
+
+.property-image {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+  border: 1px solid $grey;
+}
