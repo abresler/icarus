@@ -1,4 +1,5 @@
 Template.about.rendered = ->
+  $('.collapsible').collapsible()
 
 Template.about.events {}
 

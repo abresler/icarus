@@ -4,6 +4,8 @@ $font-stack: 'Open Sans', sans-serif;
 $red: #D1122B;
 $grey: #797979;
 
+@import "d3";
+
 body, html {
   font-family: $font-stack;
 /*   height: 100%;

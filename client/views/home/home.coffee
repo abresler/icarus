@@ -1,4 +1,5 @@
 Template.home.rendered = ->
+  createHomepageMap()
 
 Template.home.events {}
 
