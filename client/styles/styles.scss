@@ -208,6 +208,9 @@ nav ul li:hover, nav ul li.active {
   h4 {
     color: $red;
   }
+  h5 {
+    color: $red;
+  }
   p {
     font-size: 1.3em;
   }
@@ -284,4 +287,11 @@ nav ul li:hover, nav ul li.active {
 
 .single-property-row {
   padding: 3rem 0;
+}
+
+.analytics-return-numbers {
+  border: 1px solid $grey;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
 }
