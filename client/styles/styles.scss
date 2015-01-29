@@ -304,7 +304,8 @@ nav ul li:hover, nav ul li.active {
   overflow: scroll;
 }
 
-.collection-item {
+// I don't understand where it's inheriting the hover-over properties!
+a.collection-item {
   border-top: 1px solid $grey;
   &:first-child {
     border-top: none;
@@ -312,12 +313,21 @@ nav ul li:hover, nav ul li.active {
   &:last-child {
     border-bottom: 1px solid $grey;
   }
-  a {
-    color: $red;
-  }
 }
 
 .collection {
   background-color: rgba(255,255,255,0.4);
+}
 
+.table-subheader {
+  padding: 0;
+}
+
+.table-header {
+  padding: 0;
+  /* padding-left: 5%; */
+  &:first-child {
+    margin: 0;
+    transform: translateY(0.7em);
+  }
 }
