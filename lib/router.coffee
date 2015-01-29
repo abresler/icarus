@@ -28,6 +28,9 @@ Router.map ->
     path: '/properties'
 
   @route 'singleProperty',
-    path: '/properties/:_id'
+    path: '/properties/:_id',
+    data: ->
+      Properties.findOne(@params._id)
+    controller: "SinglePropertyController"
 
   return
