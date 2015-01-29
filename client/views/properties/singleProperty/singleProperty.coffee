@@ -5,14 +5,13 @@ Template.singleProperty.rendered = ->
   street = @data.street
 
   GoogleMaps.init
-    'sensor': true
+    sensor: true
     # 'key':
-    'language': 'en'
+    language: 'en'
   , ->
-    @myLatLng - new google.maps.LatLng(latitide, longitude)
-
+    myLatLng = new google.maps.LatLng(latitude, longitude)
     mapOptions =
-      zoom: 13
+      zoom: 18
       mapTypeId: google.maps.MapTypeId.SATELLITE
       center: myLatLng
 
