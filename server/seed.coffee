@@ -26,7 +26,23 @@ Meteor.startup ->
         roles: ['client']
         email: "samcorcos@gmail.com"
         telephone: "4155154630"
-        
+
+
+  if TermSheets.find().count() is 0
+
+    TermSheets.insert
+      purchasePrice: 38000
+      downPayment: 100
+      closingRepair: 20000
+      apr: 5.5
+      taxes: 1000
+      hoa: 200
+      insurance: 100
+      rentPrice: 1400
+      equitySold: 50
+      capitalNeeded: 50
+
+
 
   if Properties.find().count() is 0
 
@@ -56,6 +72,9 @@ Meteor.startup ->
       sqft: "1215"
       state: "IL"
       street: "14300 Kolin Ave"
+      termSheets: [
+
+      ]
       yearBuilt: "1971"
       zestimate: "144031"
       zip: "60445"
