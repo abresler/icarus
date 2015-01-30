@@ -21,3 +21,6 @@ d3
 mrt:topojson
 mrt:googlemaps
 meteorhacks:kadira
+http
+email
+peerlibrary:xml2js
