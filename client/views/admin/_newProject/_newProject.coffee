@@ -49,10 +49,8 @@ Template._addNewProject.events
             long: longitude
             lotSizeSqft: lotSizeSqft
             owners: [
-              "bob"
-              "mike"
             ]
-            purchaseDate: "2015-01-01T00:00:00-05:00"
+            purchaseDate: ""
             rooms: rooms
             sqft: sqft
             state: state
