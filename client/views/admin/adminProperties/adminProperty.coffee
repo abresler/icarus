@@ -82,7 +82,14 @@ Template._adminPropertyCard.events
 
       Session.set("editingEquityROI", false)
 
-
+  'change #change-status': (e,t) ->
+    # eventually we will want confirmation for this change
+    # x = confirm "Are you sure you want to change the status of this property?"
+    Properties.update
+      _id: @_id
+    ,
+      $set:
+        "status": t.find('#change-status').value
 
 Template._adminPropertyCard.helpers
   editingDebtRaise: ->
