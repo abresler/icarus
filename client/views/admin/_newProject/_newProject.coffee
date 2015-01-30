@@ -48,6 +48,11 @@ Template._addNewProject.events
             lat: latitude
             long: longitude
             lotSizeSqft: lotSizeSqft
+            needed:
+              debt: t.find('#debt-needed').value
+              equity: t.find('#equity-needed').value
+              debtROI: t.find('#debt-roi').value
+              equityROI: t.find('#equity-roi').value
             owners: [
             ]
             purchaseDate: ""
