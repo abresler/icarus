@@ -1,13 +1,14 @@
 <template name="analytics">
+  {{# if isInvestor}}
   <div class="wood-background">
     <div class="row" style="padding-top:2rem;">
-      <div class="col s12 m4">
+      <div class="col s12 l4 m6">
         {{> _assetAllocation}}
       </div>
-      <div class="col s12 m4">
+      <div class="col s12 l4 m6">
         {{> _analyticsNumbers}}
       </div>
-      <div class="col s12 m4">
+      <div class="col s12 l4 m6">
         {{> _notifications}}
       </div>
     </div>
@@ -30,4 +31,7 @@
     </div>
   </div>
   <div class="red-break"></div>
+  {{else}}
+    <h2 class="center-align">Please log in</h2>
+  {{/if}}
 </template>

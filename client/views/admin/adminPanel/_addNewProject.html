@@ -1,7 +1,7 @@
 <template name="_addNewProject">
   <div class="flex-white admin-container">
     <div class="container">
-      <h2 class="center-align">Add Potential Project</h2>
+      <h2 class="center-align">Potential Projects</h2>
       <form>
         <div class="row">
           <div class="input-field col s12 m4">
@@ -37,7 +37,77 @@
         </div>
         <button class="btn waves-effect waves-light">Submit</button>
       </form>
+      <hr style="margin:2rem 0;">
+      {{> _managePotentialProjects}}
     </div>
   </div>
   <div class="red-break"></div>
+</template>
+
+
+
+
+
+<template name="_managePotentialProjects">
+  <h2 class="center-align" style="padding-bottom:1rem;">Manage Potential Projects</h2>
+  <table class="hoverable centered">
+    <thead>
+      <tr>
+        <th class="table-header">Property</th>
+        <th class="table-header" colspan=2>To Be Raised</th>
+        <th class="table-header" colspan=2>Expected ROI</th>
+      </tr>
+      <tr>
+        <th class="table-subheader"></th>
+        <th class="table-subheader">Debt</th>
+        <th class="table-subheader">Equity</th>
+        <th class="table-subheader">Debt</th>
+        <th class="table-subheader">Equity</th>
+      </tr>
+    </thead>
+    <tbody class="new-projects-body">
+      <tr>
+        <td>123 Mexico St</td>
+        <td>$25,000</td>
+        <td>$50,000</td>
+        <td>7%</td>
+        <td>13%</td>
+      </tr>
+      <tr>
+        <td>533 Cuba St</td>
+        <td>$450,000</td>
+        <td>$600,000</td>
+        <td>8%</td>
+        <td>17%</td>
+      </tr>
+      <tr>
+        <td>123 Mexico St</td>
+        <td>$25,000</td>
+        <td>$50,000</td>
+        <td>7%</td>
+        <td>13%</td>
+      </tr>
+      <tr>
+        <td>533 Cuba St</td>
+        <td>$450,000</td>
+        <td>$600,000</td>
+        <td>8%</td>
+        <td>17%</td>
+      </tr>
+      <tr>
+        <td>123 Mexico St</td>
+        <td>$25,000</td>
+        <td>$50,000</td>
+        <td>7%</td>
+        <td>13%</td>
+      </tr>
+      <tr>
+        <td>533 Cuba St</td>
+        <td>$450,000</td>
+        <td>$600,000</td>
+        <td>8%</td>
+        <td>17%</td>
+      </tr>
+    </tbody>
+  </table>
 </template>

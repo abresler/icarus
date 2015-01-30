@@ -17,6 +17,17 @@ Meteor.startup ->
         last: "Name"
         roles: ["client"]
 
+    Accounts.createUser
+      username: 'testclient'
+      password: 'testclientpassword'
+      profile:
+        first: "Test"
+        last: "Client"
+        roles: ['client']
+        email: "samcorcos@gmail.com"
+        telephone: "4155154630"
+        
+
   if Properties.find().count() is 0
 
     # clientId = Meteor.users.find()
