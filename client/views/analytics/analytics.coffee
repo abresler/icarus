@@ -8,4 +8,11 @@ Template.analytics.rendered = ->
 
 Template.analytics.events {}
 
-Template.analytics.helpers {}
+
+
+
+
+Template._newProjects.helpers
+  allPending: ->
+    Properties.find
+      status: "pending"

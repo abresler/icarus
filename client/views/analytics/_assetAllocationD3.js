@@ -128,7 +128,7 @@ Template._assetAllocation.rendered = function() {
     }
   };
 
-  Template.assetAllocation.helpers({
+  Template._assetAllocation.helpers({
     percentage: function() {
       return Session.get("activePercentage");
     },

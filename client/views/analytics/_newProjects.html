@@ -20,48 +20,15 @@
             </tr>
           </thead>
           <tbody class="new-projects-body">
-            <tr>
-              <td>123 Mexico St</td>
-              <td>$25,000</td>
-              <td>$50,000</td>
-              <td>7%</td>
-              <td>13%</td>
-            </tr>
-            <tr>
-              <td>533 Cuba St</td>
-              <td>$450,000</td>
-              <td>$600,000</td>
-              <td>8%</td>
-              <td>17%</td>
-            </tr>
-            <tr>
-              <td>123 Mexico St</td>
-              <td>$25,000</td>
-              <td>$50,000</td>
-              <td>7%</td>
-              <td>13%</td>
-            </tr>
-            <tr>
-              <td>533 Cuba St</td>
-              <td>$450,000</td>
-              <td>$600,000</td>
-              <td>8%</td>
-              <td>17%</td>
-            </tr>
-            <tr>
-              <td>123 Mexico St</td>
-              <td>$25,000</td>
-              <td>$50,000</td>
-              <td>7%</td>
-              <td>13%</td>
-            </tr>
-            <tr>
-              <td>533 Cuba St</td>
-              <td>$450,000</td>
-              <td>$600,000</td>
-              <td>8%</td>
-              <td>17%</td>
-            </tr>
+            {{#each allPending}}
+              <tr>
+                <td><a href="">{{street}}</a></td>
+                <td>${{needed.debt}}</td>
+                <td>${{needed.equity}}</td>
+                <td>{{needed.debtROI}}%</td>
+                <td>{{needed.equityROI}}%</td>
+              </tr>
+            {{/each}}
           </tbody>
         </table>
       </div>
