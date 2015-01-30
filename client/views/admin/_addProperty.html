@@ -11,7 +11,7 @@
             <input type="text">
             </div>
           <div class="col s6 input-field">
-            <select name="" id="">
+            <select name="" id="" class="browser-default">
               <option value="" disabled selected>Add an Owner</option>
               {{#each allAccounts}}
                 <option value="{{_id}}">{{profile.first}} {{profile.last}}</option>
@@ -24,6 +24,24 @@
       <h2 class="center-align">
         Manage Properties
       </h2>
+      <table class="centered hoverable">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Total Cost</th>
+            <th>Another things</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each allCompleted}}
+          <tr>
+            <td><a href="{{pathFor 'singleProperty'}}" style="color:#D1122B;">{{street}}</a></td>
+            <td>info</td>
+            <td>info</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="red-break"></div>

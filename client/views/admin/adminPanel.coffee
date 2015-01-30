@@ -51,6 +51,10 @@ Template._addProperty.helpers
   allAccounts: ->
     Meteor.users.find()
 
+  allCompleted: ->
+    Properties.find
+      status: "complete"
+
 Template._addProperty.events
   'change select': (e,t) ->
     t.find('select').value # gives value of user being added
