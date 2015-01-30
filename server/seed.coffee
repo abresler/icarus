@@ -71,6 +71,7 @@ Meteor.startup ->
       rooms: "Recreation room, Family room, Laundry room, Master bath"
       sqft: "1215"
       state: "IL"
+      status: "complete"
       street: "14300 Kolin Ave"
       termSheets: [
 
