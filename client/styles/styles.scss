@@ -336,3 +336,11 @@ a.collection-item {
   overflow: scroll;
   background-color: rgba(255,255,255,0.4);
 }
+
+.admin-property-table {
+  margin-top: 2rem;
+  font-size: 1.6em;
+  td {
+    color: $red;
+  }
+}

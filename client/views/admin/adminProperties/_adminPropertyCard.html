@@ -1,0 +1,61 @@
+<template name="_adminPropertyCard">
+  <div class="tropics-background valign-wrapper">
+    <div class="container">
+      <div class="row single-property-row">
+        <div class="col s12">
+          <div class="card valign">
+            <div class="card-content">
+              <h3 class="center-align" style="margin-bottom:2rem;">{{street}}</h3>
+              <div id="map-canvas" class="google-map"></div>
+              <table class="hoverable centered admin-property-table">
+                <thead>
+                  <tr>
+                    <th class="table-subheader">Debt to Raise</th>
+                    <th class="table-subheader">Equity to Raise</th>
+                    <th class="table-subheader">Debt ROI</th>
+                    <th class="table-subheader">Equity ROI</th>
+                  </tr>
+                </thead>
+                <tbody class="new-projects-body">
+                  <tr>
+                    {{#if editingDebtRaise}}
+                      <td>
+                        <input type="text" class="validate" id="debt-needed-input">
+                      </td>
+                    {{else}}
+                      <td id="debt-needed"><a href="">${{needed.debt}}</a></td>
+                    {{/if}}
+
+                    {{#if editingEquityRaise}}
+                      <td>
+                        <input type="text" class="validate" id="equity-needed-input">
+                      </td>
+                    {{else}}
+                      <td id="equity-needed"><a href="">${{needed.equity}}</a></td>
+                    {{/if}}
+
+                    {{#if editingDebtROI}}
+                      <td>
+                        <input type="text" class="validate" id="debt-roi-input">
+                      </td>
+                    {{else}}
+                      <td id="debt-roi"><a href="">{{needed.debtROI}}%</a></td>
+                    {{/if}}
+
+                    {{#if editingEquityROI}}
+                      <td>
+                        <input type="text" class="validate" id="equity-roi-input">
+                      </td>
+                    {{else}}
+                      <td id="equity-roi"><a href="">{{needed.equityROI}}%</a></td>
+                    {{/if}}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

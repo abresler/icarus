@@ -68,7 +68,7 @@
     <tbody class="new-projects-body">
       {{#each allPending}}
       <tr>
-        <td>{{street}}</td>
+        <td><a href="{{pathFor 'adminProperty'}}" style="color:#D1122B;">{{street}}</a></td>
         <td>${{needed.debt}}</td>
         <td>${{needed.equity}}</td>
         <td>{{needed.debtROI}}%</td>
