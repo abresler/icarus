@@ -3,14 +3,33 @@
     <div class="container">
       <div class="row valign">
         <div class="col s12">
-          <div class="card">
+          <div class="card" style="padding:0;padding-bottom:1rem;">
             <div class="card-content">
-              <p>Contact link</p>
+              <a href="{{pathFor 'contact'}}">{{> _largeLogo}}</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="grey-break"></div>
+  <div class="red-break"></div>
+</template>
+
+
+<template name='_largeLogo'>
+  <svg class="contact-page-logo" width="187px" height="55px" viewBox="0 0 187 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.1 (9977) - http://www.bohemiancoding.com/sketch -->
+    <title>icarus_logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+      <path d="M118.59082,14.2700195 C101.70459,16.5375977 103.430664,27.6020508 103.430664,28.9858398 C103.430664,30.3696289 104.852539,33.1914062 112.161133,33.1914062 C119.469726,33.1914062 142.539551,43.6015625 150.054687,34.2685547 C142.53955,34.2685547 125.411621,33.1914062 111.342773,28.9858398 C130.658203,28.9858398 156.595215,35.4003906 159.470703,28.9858398 C153.257812,28.9858398 124.121094,27.8330078 107.714844,25.2734375 C120.483398,24.6552734 166.84668,29.6816406 168.364258,22.8662109 C161.504394,24.5864258 142.738525,23.6745605 116.15625,22.8662109 C138.319824,17.6015625 173.786133,25.0541992 178.651367,12.2363281 C163.998047,17.9057617 140.354004,18.8164063 117.834961,20.2001953 C143.97312,13.7990232 156.420659,14.1680178 165.111328,12.2363281 C174.119404,10.2340878 179.850208,9.1038466 184.27832,2.51660156 C170.662109,9.10384655 135.477051,12.0024414 118.59082,14.2700195 Z" id="Path-1" stroke="#D7022E" fill="#D7022E" sketch:type="MSShapeGroup"></path>
+      <text id="ICARUS" sketch:type="MSTextLayer" font-family="Iowan Old Style" font-size="26" font-weight="normal" fill="#D7022E">
+        <tspan x="0" y="38">ICARUS</tspan>
+      </text>
+      <text id="INVESTMENT-GROUP" sketch:type="MSTextLayer" font-family="Iowan Old Style" font-size="17" font-weight="normal" fill="#797979">
+        <tspan x="3" y="54">INVESTMENT GROUP</tspan>
+      </text>
+    </g>
+  </svg>
 </template>
