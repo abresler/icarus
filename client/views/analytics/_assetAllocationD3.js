@@ -66,7 +66,7 @@ Template._assetAllocation.rendered = function() {
         sum += data[i]['total'];
       }
 
-      var svg = d3. select("#analytics-asset-allocation")
+      var svg = d3.select("#analytics-asset-allocation")
         .append("svg")
         .attr({
           height: height,
@@ -150,4 +150,5 @@ Template._assetAllocation.rendered = function() {
     Session.set("activeTotal", activeTotal);
     Session.set("activePercentage", +(activeTotal*100/sum).toFixed(2))
   }
+  createAssetAllocation();
 }
