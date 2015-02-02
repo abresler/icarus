@@ -156,6 +156,6 @@ Template._assetAllocation.helpers({
   },
   total: function() {
     var tempNum = Session.get("activeTotal")
-    return tempNum;
+    return tempNum.formatMoney(0);
   }
 });
