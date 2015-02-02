@@ -24,3 +24,28 @@ if Meteor.isServer
 
 if Meteor.isClient
   Meteor.subscribe 'portfolios'
+
+###
+This collection will generally look like this:
+
+_id:
+debt:
+  date:
+  amount:
+  event:
+equity:
+  date:
+  amount:
+  event:
+realizedAsset:
+  date:
+  amount:
+  event:
+unrealizedAsset:
+  date:
+  amount:
+  event:
+owner:
+property:
+
+###

@@ -1,4 +1,5 @@
 Meteor.startup ->
+  # Seeding the database with new users
   if Meteor.users.find().count() is 0
 
     Accounts.createUser
@@ -27,7 +28,7 @@ Meteor.startup ->
         email: "samcorcos@gmail.com"
         telephone: "4155154630"
 
-
+  # Seeding the database with a termsheet
   if TermSheets.find().count() is 0
 
     TermSheets.insert
@@ -43,11 +44,8 @@ Meteor.startup ->
       capitalNeeded: 50
 
 
-
+  # Seeding the database with a property
   if Properties.find().count() is 0
-
-    # clientId = Meteor.users.find()
-    # adminId = Meteor.users.find()
 
     Properties.insert
       bath: "3.0"
@@ -80,3 +78,989 @@ Meteor.startup ->
       zestimate: "144031"
       zip: "60445"
       zpid: "4213212"
+
+
+  # Seeding the database with the returns for three investors
+  if Portfolios.find().count() is 0
+
+    # First property. Two years of payments, no sale
+    Portfolios.insert
+      d: [
+        {
+          date: "1 January 2015"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 December 2013"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 September 2013"
+          amount: 132
+          event: "First debt payment for Property X"
+        }
+      ]
+      e: [
+        {
+          date: "1 January 2015"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: -120
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: -1200
+          event: "Roof Collapsed"
+        }
+        {
+          date: "1 December 2013"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 312
+          event: "First equity payment for Property X"
+        }
+      ]
+      ra: [
+        {
+          date: "1 January 2015"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 December 2013"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 September 2013"
+          amount: -30000
+          event: "Purchase of Property X"
+        }
+      ]
+      ua: [
+        {
+          date: "1 January 2015"
+          amount: 400
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 120
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: -1000
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 100
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 500
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 3000
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 1000
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: -1320
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 103
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 1244
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 1200
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 1500
+          event: ""
+        }
+        {
+          date: "1 December 2013"
+          amount: -1000
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 1250
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 1200
+          event: ""
+        }
+        {
+          date: "1 September 2013"
+          amount: -30000
+          event: "Purchase of Property X"
+        }
+      ]
+      owner: "sam"
+      property: "propertyx"
+
+
+
+    # Second property. Two years of payments, sale
+    Portfolios.insert
+      d: [
+        {
+          date: "1 January 2015"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 December 2013"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 140
+          event: ""
+        }
+        {
+          date: "1 September 2013"
+          amount: 132
+          event: "First debt payment for Property Y"
+        }
+      ]
+      e: [
+        {
+          date: "1 January 2015"
+          amount: 250
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 250
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 250
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 250
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 250
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 250
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 230
+          event: "Roof Collapsed"
+        }
+        {
+          date: "1 December 2013"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 230
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 230
+          event: "First equity payment for Property Y"
+        }
+      ]
+      ra: [
+        {
+          date: "1 January 2015"
+          amount: 80000
+          event: "Sold Property Y"
+        }
+        {
+          date: "1 December 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 December 2013"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 September 2013"
+          amount: -30000
+          event: "Purchase of Property Y"
+        }
+      ]
+      ua: [
+        {
+          date: "1 January 2015"
+          amount: 400
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 120
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: -1000
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 100
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 500
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 3000
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 1000
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: -1320
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 103
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 1244
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 1200
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 1500
+          event: ""
+        }
+        {
+          date: "1 December 2013"
+          amount: -1000
+          event: ""
+        }
+        {
+          date: "1 November 2013"
+          amount: 1250
+          event: ""
+        }
+        {
+          date: "1 October 2013"
+          amount: 1200
+          event: ""
+        }
+        {
+          date: "1 September 2013"
+          amount: -30000
+          event: "Purchase of Property Y"
+        }
+      ]
+      owner: "sam"
+      property: "propertyy"
+
+
+    # Third property. One year of payments, no sale, refi, lots of issues
+    Portfolios.insert
+      d: [
+        {
+          date: "1 January 2015"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: 200
+          event: ""
+        }
+      ]
+      e: [
+        {
+          date: "1 January 2015"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: -1200
+          event: "Furnace explosion"
+        }
+        {
+          date: "1 October 2014"
+          amount: -2500
+          event: "Plumbing failure"
+        }
+        {
+          date: "1 September 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 344
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: -4000
+          event: "Slip and fall lawsuit"
+        }
+        {
+          date: "1 April 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 312
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: -120
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: -1200
+          event: "Roof Collapsed"
+        }
+      ]
+      ra: [
+        {
+          date: "1 January 2015"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 25000
+          event: "Refinance"
+        }
+        {
+          date: "1 July 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 0
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: -50000
+          event: "Purchase of Property Z"
+        }
+      ]
+      ua: [
+        {
+          date: "1 January 2015"
+          amount: 400
+          event: ""
+        }
+        {
+          date: "1 December 2014"
+          amount: 120
+          event: ""
+        }
+        {
+          date: "1 November 2014"
+          amount: -1000
+          event: ""
+        }
+        {
+          date: "1 October 2014"
+          amount: 100
+          event: ""
+        }
+        {
+          date: "1 September 2014"
+          amount: 500
+          event: ""
+        }
+        {
+          date: "1 August 2014"
+          amount: 200
+          event: ""
+        }
+        {
+          date: "1 July 2014"
+          amount: 3000
+          event: ""
+        }
+        {
+          date: "1 June 2014"
+          amount: 1000
+          event: ""
+        }
+        {
+          date: "1 May 2014"
+          amount: -1320
+          event: ""
+        }
+        {
+          date: "1 April 2014"
+          amount: 103
+          event: ""
+        }
+        {
+          date: "1 March 2014"
+          amount: 1244
+          event: ""
+        }
+        {
+          date: "1 February 2014"
+          amount: 1200
+          event: ""
+        }
+        {
+          date: "1 January 2014"
+          amount: -50000
+          event: "Purchase of Property Z"
+        }
+      ]
+      owner: "sam"
+      property: "propertyz"
+
+# Properties.insert
+#   d: [
+#     {
+#       d: 'five'
+#       info: 'ten'
+#     }
+#     { in: 'bob' }
+#   ]
+#   x: []
