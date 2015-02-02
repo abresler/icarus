@@ -1,6 +1,16 @@
 <template name="_assetAllocation">
   <div class="card analytics-card valign-wrapper">
     <div class="card-content">
+      <div class="row allocation-numbers">
+        <div class="col s6">
+          <p style="text-decoration:underline;text-align:center;">Percentage</p>
+          <p style="text-align:center;">{{percentage}}%</p>
+        </div>
+        <div class="col s6">
+          <p style="text-decoration:underline;text-align:center;">Total</p>
+          <p style="text-align:center;">${{total}}</p>
+        </div>
+      </div>
       <div class="analytics-chart" id="analytics-asset-allocation"></div>
     </div>
   </div>

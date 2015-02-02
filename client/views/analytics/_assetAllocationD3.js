@@ -3,7 +3,6 @@ Template._assetAllocation.rendered = function() {
   Session.setDefault("activeTotal", 0);
   Session.setDefault("activePercentage", 0);
 
-
   createAssetAllocation = function() {
 
     var width = 300,
@@ -83,6 +82,7 @@ Template._assetAllocation.rendered = function() {
       g.append("path")
         .attr("d", arc)
         .attr("class", "asset-path")
+        .attr("class", "pie-slice")
         .attr("total",function(d){return d.data.total})
         .style("fill", function(d) {
           return color(d.data.type);
@@ -128,17 +128,6 @@ Template._assetAllocation.rendered = function() {
     }
   };
 
-  Template._assetAllocation.helpers({
-    percentage: function() {
-      return Session.get("activePercentage");
-    },
-    total: function() {
-      var tempNum = Session.get("activeTotal")
-      return tempNum.formatMoney(0);
-    }
-  });
-
-
   function populateSummary(){
 
     var activeTotal = 0;
@@ -151,4 +140,22 @@ Template._assetAllocation.rendered = function() {
     Session.set("activePercentage", +(activeTotal*100/sum).toFixed(2))
   }
   createAssetAllocation();
+
+  Meteor.setTimeout(function(){
+    var e = document.createEvent('UIEvents');
+    e.initUIEvent('click', true, true);
+    d3.select(".pie-slice").node().dispatchEvent(e);
+  }, 1000)
+
+
 }
+
+Template._assetAllocation.helpers({
+  percentage: function() {
+    return Session.get("activePercentage");
+  },
+  total: function() {
+    var tempNum = Session.get("activeTotal")
+    return tempNum;
+  }
+});
