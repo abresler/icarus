@@ -3,7 +3,7 @@ Template._timeline.rendered = function() {
   createTimeline = function() {
     var data = Portfolios.find().fetch()[2]; // change to find by id later
     var height = 350;
-    var width = 1500;
+    var width = 1000;
     var margin = 100;
     var gridH = height - margin;
     var gridW = width - margin;
@@ -23,12 +23,11 @@ Template._timeline.rendered = function() {
 
     var debtDomain = [];
     var equityDomain = [];
-    var domain = [];
 
-    debt.forEach(function(d){domain.push({amount: d.amount, date: dateConverter(d.date)})});
     debt.forEach(function(d){debtDomain.push({amount: d.amount, date: dateConverter(d.date)})});
-    equity.forEach(function(d){domain.push({amount: d.amount, date: dateConverter(d.date)})});
     equity.forEach(function(d){equityDomain.push({amount: d.amount, date: dateConverter(d.date)})});
+
+    var domain = debtDomain.concat(equityDomain);
 
     debtDomain.sort(function(a, b) {
       return a.date - b.date;
@@ -165,26 +164,6 @@ Template._timeline.rendered = function() {
       .attr("dx", "8em")
       .attr("dy", "1.5em")
 
-
-    var optionBox = svg.append("g")
-      .attr("class", "options")
-
-    var optionBorder = optionBox.append("rect")
-      .attr("class", "options")
-      .attr("width", width / 8)
-      .attr("height", height / 10)
-      .attr("transform", "translate(" + (width * 0.8) + " ," + (margin/8) +")")
-      .attr("fill", "none")
-      .attr("stroke", "black")
-
-    optionBox.append("text")
-      .attr("transform", "translate(" + (width * 0.81) + " ,0)")
-      .attr("fill", "red")
-      .attr("dy", "2.25em")
-      .style("text-anchor", 'left')
-      .text("Debt ROI")
-      .on("click", debtClick);
-
     // TITLE
     svg.append("text")
       .attr("transform", "translate(" + (width / 2) + " ," + (margin - 25) + ")")
@@ -192,6 +171,7 @@ Template._timeline.rendered = function() {
       .style("text-anchor", "middle")
       .text("Return on Debt & Equity");
 
+    // Y AXIS LABEL
     svg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 + margin - 50)
@@ -254,8 +234,6 @@ Template._timeline.rendered = function() {
         .ease("linear")
         .attr("stroke-dashoffset", dPathLength)
     }
-
-
 
   }
   createTimeline();
