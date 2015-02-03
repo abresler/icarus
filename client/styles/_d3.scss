@@ -50,6 +50,26 @@
   text-align:center;
 }
 
+.axis path {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.7;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
 .bubble {
   fill: $red;
   fill-opacity: .5;
@@ -59,6 +79,14 @@
 
 .bubble :hover {
   stroke: #000;
+}
+
+#_timeline {
+  text-align: center;
+}
+
+#_timeline svg {
+  border: solid 1px black;
 }
 
 /* End styles for map */
