@@ -28,7 +28,7 @@ if Meteor.isClient
 ###
 Inputs for the term sheet include:
 
-totalPrice
+purchasePrice
 downPaymentPerc
 closingRepair
 apr
@@ -36,8 +36,13 @@ taxes
 hoa
 insurance
 rentPrice
-equitySold
-capitalNeeded
+
+equityPerc:
+capitalNeeded:
+
+property:
+owner:
+
 
 
 ###

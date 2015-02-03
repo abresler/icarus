@@ -25,3 +25,13 @@ Template.singleProperty.rendered = ->
 Template.singleProperty.events {}
 
 Template.singleProperty.helpers {}
+
+
+
+Template._adminTermSheet.rendered = ->
+  $('ul.tabs').tabs()
+
+Template._adminTermSheet.helpers
+  allAccounts: ->
+    Meteor.users.find()
+  
