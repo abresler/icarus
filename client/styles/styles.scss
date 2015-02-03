@@ -351,3 +351,10 @@ a.collection-item {
   display: block;
   margin: 0 auto;
 }
+.calculator-cell {
+  border: 1px solid $grey;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 10rem;
+  margin: 1rem;
+}
