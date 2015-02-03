@@ -391,3 +391,18 @@ a.collection-item {
 .contact-card {
   background-color: rgba(255,255,255,0.85) !important;
 }
+
+.about-card {
+  margin: 1rem 0;
+  padding: 0.5rem !important;
+  h4 {
+    padding-bottom: 1rem;
+  }
+  .about-paragraph {
+    font-size: 1.1em !important;
+  }
+}
+
+.collapsible-header {
+  overflow: scroll;
+}
