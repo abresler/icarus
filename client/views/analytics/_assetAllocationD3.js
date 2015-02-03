@@ -1,7 +1,7 @@
 Template._assetAllocation.rendered = function() {
 
-  Session.setDefault("activeTotal", 0);
-  Session.setDefault("activePercentage", 0);
+  Session.set("activeTotal", 0);
+  Session.set("activePercentage", 0);
 
   createAssetAllocation = function() {
 
