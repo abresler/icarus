@@ -23,6 +23,7 @@ Router.map ->
 
   @route 'analytics',
     path: '/analytics'
+    controller: 'AnalyticsController'
 
   @route 'properties',
     path: '/properties'
