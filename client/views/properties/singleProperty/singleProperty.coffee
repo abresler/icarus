@@ -34,4 +34,8 @@ Template._adminTermSheet.rendered = ->
 Template._adminTermSheet.helpers
   allAccounts: ->
     Meteor.users.find()
-  
+
+  allTermSheets: ->
+    # TermSheets.find
+    #   property: @
+    #   # owner:
