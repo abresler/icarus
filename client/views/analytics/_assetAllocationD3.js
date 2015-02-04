@@ -112,7 +112,6 @@ Template._assetAllocation.rendered = function() {
           d3.select(this)
           .style('opacity', 1)
         })
-
   };
 
   var assetAllocationPercentage = 0;
@@ -147,7 +146,6 @@ Template._assetAllocation.rendered = function() {
     d3.select(".pie-slice").node().dispatchEvent(e);
   }, 1000)
 
-
 }
 
 Template._assetAllocation.helpers({
@@ -156,6 +154,7 @@ Template._assetAllocation.helpers({
   },
   total: function() {
     var tempNum = Session.get("activeTotal")
-    return tempNum.formatMoney(0);
+      return tempNum.formatMoney(0); // format money is throwing an error when tempnum is not defined
   }
+
 });

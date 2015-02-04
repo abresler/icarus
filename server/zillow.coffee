@@ -16,3 +16,8 @@ Meteor.methods
       temp = res
     )
     temp
+
+# need to replace zpid in the URL to accept a zpid as an argument;
+  getHistoric: (zpid) ->
+    res = Meteor.http.call("GET", "http://www.zillow.com/ajax/homedetail/HomeValueChartData.htm?mt=1&zpid=#{ zpid }&format=json")
+    res

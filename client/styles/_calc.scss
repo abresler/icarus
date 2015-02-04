@@ -1,0 +1,64 @@
+.calculator-container {
+	height: 4em;
+	transition: height 1s;
+}
+
+.expand {
+	height: 15em;
+}
+
+#calculator-title {
+	text-align: center;
+}
+
+.calculator-cell {
+  position: relative;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden;
+  height: 3rem;
+  width: 15rem;
+  margin: 1rem;
+  top: 0px;
+  left: 0px;
+  transition: all 2s ease-in-out;
+  opacity: 0.75;
+}
+
+.mid.selected {
+  height: 8rem;
+  top: 125px;
+}
+
+.left.selected {
+	height: 8rem;
+	top: 125px;
+	left: 275px
+}
+
+.right.selected {
+	height: 8rem;
+	top: 125px;
+	left: -275px
+}
+
+.right.input {
+  height: 8rem;
+  left: -150px;
+}
+
+.lmid.input {
+  height: 8rem;
+  left: 100px;
+}
+
+.rmid.input {
+  height: 8rem;
+  left: -100px;
+}
+
+.left.input {
+  height: 8rem;
+  left: 150px;
+}

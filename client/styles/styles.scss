@@ -6,6 +6,7 @@ $grey: #797979;
 
 @import "d3";
 
+
 body, html {
   font-family: $font-stack;
 /*   height: 100%;
@@ -184,6 +185,7 @@ nav ul li:hover, nav ul li.active {
     color: white;
   }
 }
+
 ////////////////////////////////////////////
 
 
@@ -351,10 +353,5 @@ a.collection-item {
   display: block;
   margin: 0 auto;
 }
-.calculator-cell {
-  border: 1px solid $grey;
-  border-radius: 5px;
-  overflow: hidden;
-  height: 10rem;
-  margin: 1rem;
-}
+
+@import "calc";

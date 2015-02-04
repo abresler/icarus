@@ -2,24 +2,25 @@
   <div class="brick-background valign-wrapper">
     <div class="card valign">
       <div class="card-content">
-        <div class="row">
-          <div class="col s12 m6">
-            <div class="center-align calculator-cell">
+        <div class="row" id="calculator-title">
+          <h4>Capitalization Rate Calculator</h4>
+        </div>
+        <div class="row calculator-container">
+          <div class="col s4 m4">
+            <div class="center-align calculator-cell left">
               <h5>Total Investment</h5>
-              <input type="number" placeholder="Total Investment">
             </div>
           </div>
-          <div class="col s12 m6">
-            <div class="center-align calculator-cell">
+          <div class="col s4 m4">
+            <div class="center-align calculator-cell mid">
               <h5>Avg. Monthly Net Income</h5>
               <input type="number" placeholder="Monthly Income">
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col s12 m6 offset-m3">
-            <div class="center-align calculator-cell">
+          <div class="col s4 m4">
+            <div class="center-align calculator-cell right">
               <h5>CAP Rate</h5>
+              <input type="number" placeholder="CAP Rate">
             </div>
           </div>
         </div>
@@ -27,4 +28,57 @@
     </div>
   </div>
   <div class="red-break"></div>
+  <script>
+
+    $('.calculator-cell').click(function() {
+      var alreadySelected = false,
+          notMiddle = true,
+          left = false,
+          right = false;
+
+      if($(this).hasClass('left')) left = true;
+      if($(this).hasClass('right')) right = true; 
+
+      $('.calculator-cell').each(function(i, cell){
+        if($(cell).hasClass('selected')) {
+          alreadySelected = true
+          $(cell).removeClass('selected');
+        } 
+        if($(cell).hasClass('input')) {
+          $(cell).removeClass('input');
+        }
+
+        if($(cell).hasClass('lmid')) {
+          $(cell).removeClass('lmid');
+        }
+
+        if($(cell).hasClass('rmid')) {
+          $(cell).removeClass('rmid');
+        }
+      })
+
+      if(!alreadySelected){
+        $(this).addClass('selected');
+        $(this).append($("input"));
+        $('.calculator-container').addClass('expand');
+        $('.calculator-cell').each(function(i, cell){
+          if(!$(cell).hasClass('selected')){
+            if(!$(cell).hasClass('mid')) {
+              $(cell).addClass('input').append('<input type="number" placeholder="Total Investment">');
+            } else if(right) {
+              console.log('right')
+              $(cell).addClass('lmid input');
+            } else if(left){
+              console.log('left')
+              $(cell).addClass('rmid input');
+            }
+          }
+        })
+      } else {
+        $('.calculator-container').removeClass('expand');
+      }
+ 
+    })
+
+  </script>
 </template>

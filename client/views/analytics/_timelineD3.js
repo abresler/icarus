@@ -62,7 +62,7 @@ Template._timeline.rendered = function() {
       .attr("class", "background")
       .attr("width", width)
       .attr("height", height)
-      .attr("fill", "white")
+      .attr("fill", "none")
       .on("mouseover", mouseover)
       .on("mouseout", mouseout)
       .on("mousemove", mousemove);
