@@ -6,21 +6,26 @@
           <h4>Capitalization Rate Calculator</h4>
         </div>
         <div class="row calculator-container">
-          <div class="col s4 m4">
-            <div class="center-align calculator-cell left">
-              <h5>Total Investment</h5>
+          <div class="col s12 m4 l4">
+            <div class="center-align calculator-cell">
+              <h6>Total Investment</h6>
+              <input id="invest" type="number" value="{{totInvest}}">
+              <button id="invest-button" >Calculate</button>
+              <h4></h4>
             </div>
           </div>
-          <div class="col s4 m4">
-            <div class="center-align calculator-cell mid">
-              <h5>Avg. Monthly Net Income</h5>
-              <input type="number" placeholder="Monthly Income">
+          <div class="col s12 m4 l4">
+            <div class="center-align calculator-cell">
+              <h6>Avg. Monthly Net Income</h6>
+              <input id="income" type="number" value="{{monthNet}}">
+              <button id="income-button" >Calculate</button>
             </div>
           </div>
-          <div class="col s4 m4">
-            <div class="center-align calculator-cell right">
-              <h5>CAP Rate</h5>
-              <input type="number" placeholder="CAP Rate">
+          <div class="col s12 m4 l4">
+            <div class="center-align calculator-cell">
+              <h6>CAP Rate</h6>
+              <input id="cap" type="number" value="{{capRate}}">
+              <button id="capbutton" >Calculate</button>
             </div>
           </div>
         </div>
@@ -28,57 +33,4 @@
     </div>
   </div>
   <div class="red-break"></div>
-  <script>
-
-    $('.calculator-cell').click(function() {
-      var alreadySelected = false,
-          notMiddle = true,
-          left = false,
-          right = false;
-
-      if($(this).hasClass('left')) left = true;
-      if($(this).hasClass('right')) right = true; 
-
-      $('.calculator-cell').each(function(i, cell){
-        if($(cell).hasClass('selected')) {
-          alreadySelected = true
-          $(cell).removeClass('selected');
-        } 
-        if($(cell).hasClass('input')) {
-          $(cell).removeClass('input');
-        }
-
-        if($(cell).hasClass('lmid')) {
-          $(cell).removeClass('lmid');
-        }
-
-        if($(cell).hasClass('rmid')) {
-          $(cell).removeClass('rmid');
-        }
-      })
-
-      if(!alreadySelected){
-        $(this).addClass('selected');
-        $(this).append($("input"));
-        $('.calculator-container').addClass('expand');
-        $('.calculator-cell').each(function(i, cell){
-          if(!$(cell).hasClass('selected')){
-            if(!$(cell).hasClass('mid')) {
-              $(cell).addClass('input').append('<input type="number" placeholder="Total Investment">');
-            } else if(right) {
-              console.log('right')
-              $(cell).addClass('lmid input');
-            } else if(left){
-              console.log('left')
-              $(cell).addClass('rmid input');
-            }
-          }
-        })
-      } else {
-        $('.calculator-container').removeClass('expand');
-      }
- 
-    })
-
-  </script>
 </template>
