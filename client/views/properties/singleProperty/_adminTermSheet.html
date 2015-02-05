@@ -6,14 +6,125 @@
           <h2 class="center-align">Term Sheet</h2>
         </div>
         <div class="col s12">
-          <ul class="tabs">
+          <ul class="tabs" style="margin-bottom:2rem;">
             {{#each owners}}
               <li class="tab"><a href="#{{_id}}">{{owner.username}}</a></li>
             {{/each}}
           </ul>
           {{#each owners}}
           <div id="{{_id}}">
-            <p>APR {{equityPerc}}</p>
+            <div class="row">
+              <div class="col s12 m6">
+                <h3 class="center-align">Inputs</h3>
+                <table class="hoverable">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Purchase Price</td>
+                      <td><a href="" class="termsheet-editable">${{formatMoney purchasePrice}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Closing and Repair</td>
+                      <td><a href="" class="termsheet-editable">${{formatMoney closingRepair}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Total Investment</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Rental Price</td>
+                      <td><a href="" class="termsheet-editable">${{formatMoney rentPrice}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Down Payment Percentage</td>
+                      <td><a href="" class="termsheet-editable">{{formatMoney2 downPaymentPerc}}%</a></td>
+                    </tr>
+                    <tr>
+                      <td>Down Payment Amount</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Insurance Cost</td>
+                      <td><a href="" class="termsheet-editable">${{formatMoney insurance}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Home Owners Association</td>
+                      <td><a href="" class="termsheet-editable">${{formatMoney hoa}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>Additional Financing</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Annual Percentage Rate</td>
+                      <td><a href="" class="termsheet-editable">{{formatMoney2 apr}}%</a></td>
+                    </tr>
+                    <tr>
+                      <td>Equity Ownership</td>
+                      <td><a href="" class="termsheet-editable">{{formatMoney2 equityPerc}}%</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col s12 m6">
+                <h3 class="center-align">Outputs</h3>
+                <table class="hoverable">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Monthly Mortgage Expense</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Monthly Tax Average</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Monthly Operating Expenses</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Reserve (5%)</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Monthly Cost of Ownership</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Cashflow Rented</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Cashflow Unoccupied</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>After Tax (with Renters)</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>After Tax (Unoccupied)</td>
+                      <td>$</td>
+                    </tr>
+                    <tr>
+                      <td>Free Cashflow</td>
+                      <td>$</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
           {{/each}}
           <!-- <table>
