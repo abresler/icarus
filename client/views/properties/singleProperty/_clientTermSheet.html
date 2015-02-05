@@ -1,5 +1,170 @@
 <template name="_clientTermSheet">
   {{#if isInvestor}}
-    <h2>testtest</h2>
+    <div class="container">
+      {{#each owner}}
+      <div class="row" style="margin-top:3rem;">
+        <div class="col s12 m6">
+          <h3 class="center-align">Inputs</h3>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Purchase Price</td>
+                <td>${{formatMoney purchasePrice}}</td>
+              </tr>
+              <tr>
+                <td>Closing and Repair</td>
+                <td>${{formatMoney closingRepair}}</td>
+              </tr>
+              <tr>
+                <td>Total Investment</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Rental Price</td>
+                <td>${{formatMoney rentPrice}}</td>
+              </tr>
+              <tr>
+                <td>Down Payment Percentage</td>
+                <td>{{formatMoney2 downPaymentPerc}}%</td>
+              </tr>
+              <tr>
+                <td>Down Payment Amount</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Insurance Cost</td>
+                <td>${{formatMoney insurance}}</td>
+              </tr>
+              <tr>
+                <td>Home Owners Association</td>
+                <td>${{formatMoney hoa}}</td>
+              </tr>
+              <tr>
+                <td>Additional Financing</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Annual Percentage Rate</td>
+                <td>{{formatMoney2 apr}}%</td>
+              </tr>
+              <tr>
+                <td>Equity Ownership</td>
+                <td>{{formatMoney2 equityPerc}}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col s12 m6">
+          <h3 class="center-align">Outputs</h3>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monthly Mortgage Expense</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Monthly Tax Average</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Monthly Operating Expenses</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Reserve (5%)</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Monthly Cost of Ownership</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Cashflow Rented</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Cashflow Unoccupied</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>After Tax (with Renters)</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>After Tax (Unoccupied)</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Free Cashflow</td>
+                <td>$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <h3 class="center-align">Returns</h3>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Annual Revenue</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Annual Cost</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Annual Profit</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Annual Profit (After Tax)</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Annual ROI (Before Tax)</td>
+                <td>%</td>
+              </tr>
+              <tr>
+                <td>Annual ROI (After Tax)</td>
+                <td>%</td>
+              </tr>
+              <tr>
+                <td>Annual Operating Expense</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>Net Operating Income</td>
+                <td>$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col s12 m6">
+          <h3 class="center-align">Additional</h3>
+        </div>
+      </div>
+      {{/each}}
+    </div>
   {{/if}}
 </template>

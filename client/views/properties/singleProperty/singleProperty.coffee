@@ -31,16 +31,22 @@ Template.singleProperty.helpers
     # @data._id
 
 
+Template._clientTermSheet.helpers
+  owner: ->
+    # console.log TermSheets.find('property._id': Template.currentData()._id, ).fetch()
+    TermSheets.find
+      'property._id': Template.currentData()._id
+      'owner._id': Meteor.user()._id
 
 Template._adminTermSheet.rendered = ->
   $('ul.tabs').tabs()
 
 Template._adminTermSheet.helpers
-  allAccounts: ->
-    Meteor.users.find()
+  # allAccounts: ->
+  #   Meteor.users.find()
 
   owners: ->
-    console.log TermSheets.find('property._id': Template.currentData()._id).fetch()
+    # console.log TermSheets.find('property._id': Template.currentData()._id).fetch()
     TermSheets.find
       'property._id': Template.currentData()._id
     # first I need to find the relevant termsheet
