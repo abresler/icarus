@@ -12,3 +12,7 @@ Template.registerHelper "formatMoney", (x) -> # takes in a number, converts it i
 
 Template.registerHelper "formatMoney2", (x) -> # takes in number, returns with two decimal places
   x.formatMoney(2)
+
+# Template.registerHelper "totalInvestment", (x,y) -> # takes in purchase price and closing repair, and adds them together
+#   (x + y).formatMoney(0)
+#
