@@ -24,3 +24,25 @@ if Meteor.isServer
 
 if Meteor.isClient
   Meteor.subscribe 'termSheets'
+
+###
+Inputs for the term sheet include:
+
+purchasePrice
+downPaymentPerc
+closingRepair
+apr
+taxes
+hoa
+insurance
+rentPrice
+
+equityPerc:
+capitalNeeded:
+
+property:
+owner:
+
+
+
+###

@@ -25,3 +25,4 @@ http
 email
 peerlibrary:xml2js
 momentjs:moment
+mike:mocha

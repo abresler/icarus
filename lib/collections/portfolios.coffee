@@ -41,7 +41,7 @@ realizedAsset:
   date:
   amount:
   event:
-unrealizedAsset:
+unrealizedAsset: # this needs to be monthly, and needs to come from Zillow's historic data
   date:
   amount:
   event:

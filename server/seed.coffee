@@ -1,4 +1,5 @@
 Meteor.startup ->
+
   # Seeding the database with new users
   if Meteor.users.find().count() is 0
 
@@ -19,6 +20,14 @@ Meteor.startup ->
         roles: ["client"]
 
     Accounts.createUser
+      username: "Icarus"
+      password: "icaruspassword"
+      profile:
+        first: "David"
+        last: "Pezzola"
+        roles: ["client"]
+
+    Accounts.createUser
       username: 'testclient'
       password: 'testclientpassword'
       profile:
@@ -27,22 +36,6 @@ Meteor.startup ->
         roles: ['client']
         email: "samcorcos@gmail.com"
         telephone: "4155154630"
-
-  # Seeding the database with a termsheet
-  if TermSheets.find().count() is 0
-
-    TermSheets.insert
-      purchasePrice: 38000
-      downPayment: 100
-      closingRepair: 20000
-      apr: 5.5
-      taxes: 1000
-      hoa: 200
-      insurance: 100
-      rentPrice: 1400
-      equitySold: 50
-      capitalNeeded: 50
-
 
   # Seeding the database with a property
   if Properties.find().count() is 0
@@ -71,13 +64,51 @@ Meteor.startup ->
       state: "IL"
       status: "complete"
       street: "14300 Kolin Ave"
-      termSheets: [
-
-      ]
+      # termSheets: [
+      # # dont need this... termsheet already has property reference.
+      # ]
       yearBuilt: "1971"
       zestimate: "144031"
       zip: "60445"
       zpid: "4213212"
+
+
+  # Seeding the database with a termsheet
+  if TermSheets.find().count() is 0
+
+    testclient = Meteor.users.findOne("username": "client")
+    icarus = Meteor.users.findOne('username': "Icarus")
+    property = Properties.findOne()
+
+    TermSheets.insert
+      purchasePrice: 38000
+      downPaymentPerc: 100
+      closingRepair: 20000
+      apr: 5.5
+      taxes: 1000
+      hoa: 200
+      insurance: 100
+      rentPrice: 1400
+      equityPerc: 60
+      capitalPercNeeded: 60
+      property: property
+      owner: testclient # assigning the owner to
+
+    TermSheets.insert
+      purchasePrice: 38000
+      downPaymentPerc: 100
+      closingRepair: 20000
+      apr: 5.5
+      taxes: 1000
+      hoa: 200
+      insurance: 100
+      rentPrice: 1400
+      equityPerc: 40
+      capitalPercNeeded: 60
+      property: property
+      owner: icarus # assigning the owner to
+
+
 
 
   # Seeding the database with the returns for three investors
