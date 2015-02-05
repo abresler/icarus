@@ -41,7 +41,7 @@ equityPerc:
 capitalNeeded:
 
 property:
-owner:
+owners:
 
 
 

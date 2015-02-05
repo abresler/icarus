@@ -1,4 +1,5 @@
 Meteor.startup ->
+
   # Seeding the database with new users
   if Meteor.users.find().count() is 0
 
@@ -19,6 +20,14 @@ Meteor.startup ->
         roles: ["client"]
 
     Accounts.createUser
+      username: "Icarus"
+      password: "icaruspassword"
+      profile:
+        first: "David"
+        last: "Pezzola"
+        roles: ["client"]
+
+    Accounts.createUser
       username: 'testclient'
       password: 'testclientpassword'
       profile:
@@ -31,18 +40,27 @@ Meteor.startup ->
   # Seeding the database with a termsheet
   if TermSheets.find().count() is 0
 
+    testclient = Meteor.users.findOne("username": "client")
+    icarus = Meteor.users.findOne('username': "Icarus")
+
     TermSheets.insert
       purchasePrice: 38000
-      downPayment: 100
+      downPaymentPerc: 100
       closingRepair: 20000
       apr: 5.5
       taxes: 1000
       hoa: 200
       insurance: 100
       rentPrice: 1400
-      equitySold: 50
-      capitalNeeded: 50
+      equityPerc: 50
+      capitalPercNeeded: 50
+      # property:
+      owners: [testclient, icarus] # assigning the owner to
 
+
+
+
+    # Meteor.user()?.profile.roles.indexOf('client') > -1
 
   # Seeding the database with a property
   if Properties.find().count() is 0
