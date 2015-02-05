@@ -50,7 +50,7 @@ if !(typeof MochaWeb == 'undefined')
         return
 
       describe 'isInvestor for client', ->
-        it 'should not work for client', ->
+        it 'should not work for client', (done)->
           Meteor.loginWithPassword "client", "clientpassword", (err) ->
             temp = if Meteor.user().profile.roles.indexOf("client") > -1 then true else false
             chai.expect(temp).to.equal(true)
@@ -60,7 +60,7 @@ if !(typeof MochaWeb == 'undefined')
         return
 
       describe 'isInvestor for client', ->
-        it 'should not work for client', ->
+        it 'should not work for client', (done)->
           Meteor.loginWithPassword "admin", "adminpassword", (err) ->
             temp = if Meteor.user().profile.roles.indexOf("admin") > -1 then false else true
             chai.expect(temp).to.equal(false)
