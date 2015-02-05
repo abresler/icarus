@@ -40,17 +40,13 @@ Template._adminTermSheet.helpers
     Meteor.users.find()
 
   owners: ->
-    console.log Template.currentData()
+    console.log TermSheets.find('property._id': Template.currentData()._id).fetch()
+    TermSheets.find
+      'property._id': Template.currentData()._id
     # first I need to find the relevant termsheet
     # then I need to get the owners array
     # for each owner, give them a new tab and display their data
-    # Meteor.subscribe("properties", ->
-    #   # console.log @data
-    #   # allOwners = TermSheets.find
-    #   #   "property._id": @data._id
-    #   # console.log allOwners
-    # )
-    []
+
 
 
 

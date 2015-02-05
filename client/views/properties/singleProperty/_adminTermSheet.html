@@ -8,12 +8,14 @@
         <div class="col s12">
           <ul class="tabs">
             {{#each owners}}
-
+              <li class="tab"><a href="#{{_id}}">{{owner.username}}</a></li>
             {{/each}}
-            <li class="tab"><a href="">test</a></li>
-            <li class="tab"><a href="">test</a></li>
-            <li class="tab"><a href="">test</a></li>
           </ul>
+          {{#each owners}}
+          <div id="{{_id}}">
+            <p>APR {{equityPerc}}</p>
+          </div>
+          {{/each}}
           <!-- <table>
             <thead>
               <tr>
