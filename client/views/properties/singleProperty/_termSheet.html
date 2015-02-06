@@ -1,8 +1,13 @@
 <template name="_termSheet">
   <div class="red-break"></div>
   <div class="flex-white">
-    {{> _adminTermSheet}}
-    {{> _clientTermSheet}}
+    {{#if isAdmin}}
+      {{> _adminTermSheet}}
+    {{/if}}
+
+    {{#if isInvestor}}
+      {{> _clientTermSheet}}
+    {{/if}}
   </div>
   <div class="red-break"></div>
 </template>

@@ -25,6 +25,22 @@ Template.singleProperty.rendered = ->
 
 
 
+Template._termSheet.rendered = ->
+  # If there is no termsheet, we will give one to icarus with no values, but 100% ownership
+  if TermSheets.find( "property._id": @data._id).count() is 0
+    TermSheets.insert
+      apr: 0
+      capitalPercNeeded: 0
+      downPaymentPerc: 0
+      equityPerc: 100
+      hoa: 0
+      insurance: 0
+      owner: Meteor.users.findOne(username: "Icarus")._id
+      property: @data
+      purchasePrice: 0
+      rentPrice: 0
+      taxes: 0
+
 
 
 Template._clientTermSheet.helpers
