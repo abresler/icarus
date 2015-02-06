@@ -23,7 +23,7 @@
               </tr>
               <tr>
                 <td>Total Investment</td>
-                <td>${{totalInvestment}}</td>
+                <td>${{totalInvestment purchasePrice closingRepair}}</td>
               </tr>
               <tr>
                 <td>Rental Price</td>
@@ -35,7 +35,7 @@
               </tr>
               <tr>
                 <td>Down Payment Amount</td>
-                <td>$</td>
+                <td>${{downPaymentAmount purchasePrice closingRepair downPaymentPerc equityPerc}}</td>
               </tr>
               <tr>
                 <td>Insurance Cost</td>
@@ -47,7 +47,7 @@
               </tr>
               <tr>
                 <td>Additional Financing</td>
-                <td>$</td>
+                <td>$N/A</td>
               </tr>
               <tr>
                 <td>Annual Percentage Rate</td>
@@ -72,43 +72,43 @@
             <tbody>
               <tr>
                 <td>Monthly Mortgage Expense</td>
-                <td>$</td>
+                <td>$N/A</td>
               </tr>
               <tr>
                 <td>Monthly Tax Average</td>
-                <td>$</td>
+                <td>${{monthlyTaxAverage taxes}}</td>
               </tr>
               <tr>
                 <td>Monthly Operating Expenses</td>
-                <td>$</td>
+                <td>${{monthlyOperatingExpenses taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Reserve (5%)</td>
-                <td>$</td>
+                <td>${{reserve rentPrice}}</td>
               </tr>
               <tr>
                 <td>Monthly Cost of Ownership</td>
-                <td>$</td>
+                <td>$N/A</td>
               </tr>
               <tr>
                 <td>Cashflow Rented</td>
-                <td>$</td>
+                <td>${{cashflowRented taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Cashflow Unoccupied</td>
-                <td>$</td>
+                <td>${{cashflowUnoccupied taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>After Tax (with Renters)</td>
-                <td>$</td>
+                <td>${{afterTaxWithRenters purchasePrice taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>After Tax (Unoccupied)</td>
-                <td>$</td>
+                <td>${{afterTaxUnoccupied purchasePrice taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Free Cashflow</td>
-                <td>$</td>
+                <td>${{freeCashflow taxes hoa insurance rentPrice}}</td>
               </tr>
             </tbody>
           </table>
