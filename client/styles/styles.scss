@@ -411,3 +411,13 @@ a.collection-item {
 .termsheet-editable {
   color: $red;
 }
+
+ul.tabs li.tab a {
+  color: #000;
+}
+ul.tabs li.tab a:hover {
+  color: lighten($red, 10%);
+}
+ul.tabs .indicator {
+  background-color: $red;
+}

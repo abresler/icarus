@@ -26,11 +26,15 @@
                   <tbody>
                     <tr>
                       <td>Purchase Price</td>
-                      <td><a href="" class="termsheet-editable">${{divideByEquity purchasePrice equityPerc}}</a></td>
+                      {{#if editingPurchasePrice}}
+                      <td><input type="number" id="purchasePrice" placeholder="Purchase Price"></td>
+                      {{else}}
+                      <td><a href="" id="purchasePrice" class="termsheet-editable">${{divideByEquity purchasePrice equityPerc}}</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Closing and Repair</td>
-                      <td><a href="" class="termsheet-editable">${{divideByEquity closingRepair equityPerc}}</a></td>
+                      <td><a href="" id="closingRepair" class="termsheet-editable">${{divideByEquity closingRepair equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Total Investment</td>
@@ -38,11 +42,11 @@
                     </tr>
                     <tr>
                       <td>Rental Price</td>
-                      <td><a href="" class="termsheet-editable">${{divideByEquity rentPrice equityPerc}}</a></td>
+                      <td><a href="" id="rentPrice" class="termsheet-editable">${{divideByEquity rentPrice equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Down Payment Percentage</td>
-                      <td><a href="" class="termsheet-editable">{{divideByEquity2 rentPrice equityPerc}}%</a></td>
+                      <td><a href="" id="downPaymentPerc" class="termsheet-editable">{{divideByEquity2 rentPrice equityPerc}}%</a></td>
                     </tr>
                     <tr>
                       <td>Down Payment Amount</td>
@@ -50,11 +54,11 @@
                     </tr>
                     <tr>
                       <td>Insurance Cost</td>
-                      <td><a href="" class="termsheet-editable">${{divideByEquity insurance equityPerc}}</a></td>
+                      <td><a href="" id="insurance" class="termsheet-editable">${{divideByEquity insurance equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Home Owners Association</td>
-                      <td><a href="" class="termsheet-editable">${{divideByEquity hoa equityPerc}}</a></td>
+                      <td><a href="" id="hoa" class="termsheet-editable">${{divideByEquity hoa equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Additional Financing</td>
@@ -62,11 +66,11 @@
                     </tr>
                     <tr>
                       <td>Annual Percentage Rate</td>
-                      <td><a href="" class="termsheet-editable">{{formatMoney2 apr}}%</a></td>
+                      <td><a href="" id="apr" class="termsheet-editable">{{formatMoney2 apr}}%</a></td>
                     </tr>
                     <tr>
                       <td>Equity Ownership</td>
-                      <td><a href="" class="termsheet-editable">{{formatMoney2 equityPerc}}%</a></td>
+                      <td><a href="" id="equityPerc" class="termsheet-editable">{{formatMoney2 equityPerc}}%</a></td>
                     </tr>
                   </tbody>
                 </table>
