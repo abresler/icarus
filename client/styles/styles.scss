@@ -55,12 +55,6 @@ nav ul li:hover, nav ul li.active {
 }
 
 
-/* Radio buttons color */
-/* [type="radio"]:checked + label:after {
-  border: 2px solid #ea454b;
-  background-color: #ea454b;
-} */
-
 @mixin background-size() {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -420,4 +414,8 @@ ul.tabs li.tab a:hover {
 }
 ul.tabs .indicator {
   background-color: $red;
+}
+
+.admin-button {
+  color: white !important;
 }
