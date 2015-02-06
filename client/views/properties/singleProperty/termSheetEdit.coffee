@@ -25,13 +25,6 @@ Template._adminTermSheet.events
     Session.set 'editingEquityPerc', true
 
 
-  'keypress #purchasePrice': (e,t) ->
-    if e.keyCode is 13
-      #update the termsheet with the propert value
-
-      $('#purchasePrice').val('')
-      Session.set 'editingPurchasePrice', false
-      alert 'Successfully updated purchase price!'
 
 
 Template._adminTermSheet.helpers
@@ -58,3 +51,47 @@ Template._adminTermSheet.helpers
 
   editingEquityPerc: ->
     Session.get 'editingEquityPerc'
+
+
+
+
+Template._adminTermSheet.events
+  'keypress #purchasePrice': (e,t) ->
+    if e.keyCode is 13
+      #update the termsheet with the propert value, remember "this" is the current termsheet
+      Session.set 'editingPurchasePrice', false
+
+  'keypress #closingRepair': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingClosingRepair', false
+
+  'keypress #rentPrice': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingRentPrice', false
+
+  'keypress #downPaymentPerc': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingDownPaymentPerc', false
+
+  'keypress #insurance': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingInsurance', false
+
+  'keypress #hoa': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingHoa', false
+
+  'keypress #apr': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingApr', false
+
+  'keypress #equityPerc': (e,t) ->
+    if e.keyCode is 13
+      #update
+      Session.set 'editingEquityPerc', false
