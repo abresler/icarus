@@ -26,23 +26,23 @@
                   <tbody>
                     <tr>
                       <td>Purchase Price</td>
-                      <td><a href="" class="termsheet-editable">${{formatMoney purchasePrice}}</a></td>
+                      <td><a href="" class="termsheet-editable">${{divideByEquity purchasePrice equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Closing and Repair</td>
-                      <td><a href="" class="termsheet-editable">${{formatMoney closingRepair}}</a></td>
+                      <td><a href="" class="termsheet-editable">${{divideByEquity closingRepair equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Total Investment</td>
-                      <td>${{totalInvestment purchasePrice closingRepair}}</td>
+                      <td>${{totalInvestment purchasePrice closingRepair equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Rental Price</td>
-                      <td><a href="" class="termsheet-editable">${{formatMoney rentPrice}}</a></td>
+                      <td><a href="" class="termsheet-editable">${{divideByEquity rentPrice equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Down Payment Percentage</td>
-                      <td><a href="" class="termsheet-editable">{{formatMoney2 downPaymentPerc}}%</a></td>
+                      <td><a href="" class="termsheet-editable">{{divideByEquity2 rentPrice equityPerc}}%</a></td>
                     </tr>
                     <tr>
                       <td>Down Payment Amount</td>
@@ -50,11 +50,11 @@
                     </tr>
                     <tr>
                       <td>Insurance Cost</td>
-                      <td><a href="" class="termsheet-editable">${{formatMoney insurance}}</a></td>
+                      <td><a href="" class="termsheet-editable">${{divideByEquity insurance equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Home Owners Association</td>
-                      <td><a href="" class="termsheet-editable">${{formatMoney hoa}}</a></td>
+                      <td><a href="" class="termsheet-editable">${{divideByEquity hoa equityPerc}}</a></td>
                     </tr>
                     <tr>
                       <td>Additional Financing</td>
@@ -83,43 +83,43 @@
                   <tbody>
                     <tr>
                       <td>Monthly Mortgage Expense</td>
-                      <td>$</td>
+                      <td>$N/A</td>
                     </tr>
                     <tr>
                       <td>Monthly Tax Average</td>
-                      <td>$</td>
+                      <td>${{monthlyTaxAverage taxes equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Monthly Operating Expenses</td>
-                      <td>$</td>
+                      <td>${{monthlyOperatingExpenses taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Reserve (5%)</td>
-                      <td>$</td>
+                      <td>${{reserve rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Monthly Cost of Ownership</td>
-                      <td>$</td>
+                      <td>$N/A</td>
                     </tr>
                     <tr>
                       <td>Cashflow Rented</td>
-                      <td>$</td>
+                      <td>${{cashflowRented taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Cashflow Unoccupied</td>
-                      <td>$</td>
+                      <td>${{cashflowUnoccupied taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>After Tax (with Renters)</td>
-                      <td>$</td>
+                      <td>${{afterTaxWithRenters purchasePrice taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>After Tax (Unoccupied)</td>
-                      <td>$</td>
+                      <td>${{afterTaxUnoccupied purchasePrice taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Free Cashflow</td>
-                      <td>$</td>
+                      <td>${{freeCashflow taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -138,35 +138,35 @@
                   <tbody>
                     <tr>
                       <td>Annual Revenue</td>
-                      <td>$</td>
+                      <td>${{annualRevenue rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Annual Cost</td>
-                      <td>$</td>
+                      <td>${{annualCost taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Annual Profit</td>
-                      <td>$</td>
+                      <td>${{annualProfit taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Annual Profit (After Tax)</td>
-                      <td>$</td>
+                      <td>${{annualProfitAfterTax purchasePrice taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Annual ROI (Before Tax)</td>
-                      <td>%</td>
+                      <td>{{annualROIBeforeTax taxes hoa insurance rentPrice purchasePrice closingRepair}}%</td>
                     </tr>
                     <tr>
                       <td>Annual ROI (After Tax)</td>
-                      <td>%</td>
+                      <td>{{annualROI purchasePrice taxes hoa insurance rentPrice closingRepair}}%</td>
                     </tr>
                     <tr>
                       <td>Annual Operating Expense</td>
-                      <td>$</td>
+                      <td>${{annualOperatingExpense taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                     <tr>
                       <td>Net Operating Income</td>
-                      <td>$</td>
+                      <td>${{netOperatingIncome taxes hoa insurance rentPrice equityPerc}}</td>
                     </tr>
                   </tbody>
                 </table>
