@@ -6,6 +6,7 @@ Meteor.methods
       console.error "Error parsing string to json..." if err
       temp = res
     )
+    console.log temp
     temp
 
   getPropertyDetails: (zpid) ->
@@ -15,4 +16,5 @@ Meteor.methods
       console.error "Error parsing images string..." if err
       temp = res
     )
+    console.log temp
     temp
