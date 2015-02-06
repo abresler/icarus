@@ -58,40 +58,72 @@ Template._adminTermSheet.helpers
 Template._adminTermSheet.events
   'keypress #purchasePrice': (e,t) ->
     if e.keyCode is 13
-      #update the termsheet with the propert value, remember "this" is the current termsheet
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          purchasePrice: +t.find('#purchasePrice').value
       Session.set 'editingPurchasePrice', false
 
   'keypress #closingRepair': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          closingRepair: +t.find('#closingRepair').value
       Session.set 'editingClosingRepair', false
 
   'keypress #rentPrice': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          rentPrice: +t.find('#rentPrice').value
       Session.set 'editingRentPrice', false
 
   'keypress #downPaymentPerc': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          downPaymentPerc: +t.find('#downPaymentPerc').value
       Session.set 'editingDownPaymentPerc', false
 
   'keypress #insurance': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          insurance: +t.find('#insurance').value
       Session.set 'editingInsurance', false
 
   'keypress #hoa': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          hoa: +t.find('#hoa').value
       Session.set 'editingHoa', false
 
   'keypress #apr': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          apr: +t.find('#apr').value
       Session.set 'editingApr', false
 
   'keypress #equityPerc': (e,t) ->
     if e.keyCode is 13
-      #update
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          equityPerc: +t.find('#equityPerc').value
       Session.set 'editingEquityPerc', false
