@@ -34,7 +34,11 @@
                     </tr>
                     <tr>
                       <td>Closing and Repair</td>
+                      {{#if editingClosingRepair}}
+                      <td><input type="number" placeholder="Closing Repair" id="closingRepair"></td>
+                      {{else}}
                       <td><a href="" id="closingRepair" class="termsheet-editable">${{divideByEquity closingRepair equityPerc}}</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Total Investment</td>
@@ -42,11 +46,19 @@
                     </tr>
                     <tr>
                       <td>Rental Price</td>
+                      {{#if editingRentPrice}}
+                      <td><input type="number" placeholder="Rent Price" id="rentPrice"></td>
+                      {{else}}
                       <td><a href="" id="rentPrice" class="termsheet-editable">${{divideByEquity rentPrice equityPerc}}</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Down Payment Percentage</td>
+                      {{#if editingDownPaymentPerc}}
+                      <td><input type="number" placeholder="Down Payment %" id="downPaymentPerc"></td>
+                      {{else}}
                       <td><a href="" id="downPaymentPerc" class="termsheet-editable">{{divideByEquity2 rentPrice equityPerc}}%</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Down Payment Amount</td>
@@ -54,11 +66,19 @@
                     </tr>
                     <tr>
                       <td>Insurance Cost</td>
+                      {{#if editingInsurance}}
+                      <td><input type="number" placeholder="Insurance Cost" id="insurance"></td>
+                      {{else}}
                       <td><a href="" id="insurance" class="termsheet-editable">${{divideByEquity insurance equityPerc}}</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Home Owners Association</td>
+                      {{#if editingHoa}}
+                      <td><input type="number" placeholder="HOA" id="hoa"></td>
+                      {{else}}
                       <td><a href="" id="hoa" class="termsheet-editable">${{divideByEquity hoa equityPerc}}</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Additional Financing</td>
@@ -66,11 +86,19 @@
                     </tr>
                     <tr>
                       <td>Annual Percentage Rate</td>
+                      {{#if editingApr}}
+                      <td><input type="number" placeholder="APR" id="apr"></td>
+                      {{else}}
                       <td><a href="" id="apr" class="termsheet-editable">{{formatMoney2 apr}}%</a></td>
+                      {{/if}}
                     </tr>
                     <tr>
                       <td>Equity Ownership</td>
+                      {{#if editingEquityPerc}}
+                      <td><input type="number" placeholder="Equity Ownership %" id="equityPerc"></td>
+                      {{else}}
                       <td><a href="" id="equityPerc" class="termsheet-editable">{{formatMoney2 equityPerc}}%</a></td>
+                      {{/if}}
                     </tr>
                   </tbody>
                 </table>
