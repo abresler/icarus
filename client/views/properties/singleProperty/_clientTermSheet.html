@@ -127,35 +127,35 @@
             <tbody>
               <tr>
                 <td>Annual Revenue</td>
-                <td>$</td>
+                <td>${{annualRevenue rentPrice}}</td>
               </tr>
               <tr>
                 <td>Annual Cost</td>
-                <td>$</td>
+                <td>${{annualCost taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Annual Profit</td>
-                <td>$</td>
+                <td>${{annualProfit taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Annual Profit (After Tax)</td>
-                <td>$</td>
+                <td>${{annualProfitAfterTax purchasePrice taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Annual ROI (Before Tax)</td>
-                <td>%</td>
+                <td>{{annualROIBeforeTax taxes hoa insurance rentPrice purchasePrice closingRepair}}%</td>
               </tr>
               <tr>
                 <td>Annual ROI (After Tax)</td>
-                <td>%</td>
+                <td>{{annualROI purchasePrice taxes hoa insurance rentPrice closingRepair}}%</td>
               </tr>
               <tr>
                 <td>Annual Operating Expense</td>
-                <td>$</td>
+                <td>${{annualOperatingExpense taxes hoa insurance rentPrice}}</td>
               </tr>
               <tr>
                 <td>Net Operating Income</td>
-                <td>$</td>
+                <td>${{netOperatingIncome taxes hoa insurance rentPrice}}</td>
               </tr>
             </tbody>
           </table>
@@ -166,5 +166,6 @@
       </div>
       {{/each}}
     </div>
+    <div style="height:5rem;"></div>
   {{/if}}
 </template>

@@ -73,5 +73,71 @@ if !(typeof MochaWeb == 'undefined')
           return
         return
 
+      describe 'After Tax with Renters', ->
+        it 'should return the after tax amount if renters are present', ->
+
+          return
+        return
+
+      describe 'After Tax Unoccupied', ->
+        it 'should return the after tax amount if no renters are present', ->
+
+          return
+        return
+
+      describe 'Free Cashflow', ->
+        it 'should return the free cashflow', ->
+
+          return
+        return
+
+      describe 'Annual Revenue', ->
+        it 'should return the annual revenue', ->
+
+          return
+        return
+
+      describe 'Annual Cost', ->
+        it 'should return the annual cost', ->
+
+          return
+        return
+
+      describe 'Annual Profit', ->
+        it 'should return the annual profit', ->
+
+          return
+        return
+
+      describe 'Annual Profit After Tax', ->
+        it 'should return the annual profit after tax', ->
+
+          return
+        return
+
+      describe 'Annual ROI Before Tax', ->
+        it 'should return the annual ROI before tax', ->
+
+          return
+        return
+
+      describe 'Annual ROI After Tax', ->
+        it 'should return the annual ROI after tax', ->
+
+          return
+        return
+
+      describe 'Annual Operating Expense', ->
+        it 'should return the annual operating expense', ->
+
+          return
+        return
+
+      describe 'Net Operating Income', ->
+        it 'should return the net operating income', ->
+
+          return
+        return
+
       return # return for Termsheet logic
     return # return for MochaWeb

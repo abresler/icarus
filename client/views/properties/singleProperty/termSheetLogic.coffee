@@ -21,6 +21,7 @@
 
 @monthlyCostOfOwnership = () ->
   # TODO this does not include cost of additional financing or monthly mortgage expense
+  # TODO many forumlas should be this value instead of monthly operating expenses
 
 @cashflowRented = (taxes, hoa, insurance, rentPrice) ->
   # TODO this should be (rentPrice - monthlyCostOfOwnership), but because we don't have a formula for the second variable, we will use operating expenses (which is the same thing in most cases)
@@ -51,3 +52,27 @@
 @freeCashflow = (taxes, hoa, insurance, rentPrice) ->
   # TODO check with David... shouldn't this subtract the taxes?
   cashflowRented(taxes, hoa, insurance, rentPrice) + monthlyTaxAverage(taxes)
+
+@annualRevenue = (rentPrice) ->
+  rentPrice * 12
+
+@annualCost = (taxes, hoa, insurance, rentPrice) ->
+  monthlyOperatingExpenses(taxes, hoa, insurance, rentPrice) * 12
+
+@annualProfit = (taxes, hoa, insurance, rentPrice) ->
+  annualRevenue(rentPrice) - annualCost(taxes, hoa, insurance, rentPrice)
+
+@annualProfitAfterTax = (purchasePrice, taxes, hoa, insurance, rentPrice) ->
+  afterTaxWithRenters(purchasePrice, taxes, hoa, insurance, rentPrice) * 12
+
+@annualROIBeforeTax = (taxes, hoa, insurance, rentPrice, purchasePrice, closingRepair) ->
+  annualProfit(taxes, hoa, insurance, rentPrice) / totalInvestment(purchasePrice, closingRepair) * 100
+
+@annualROI = (purchasePrice, taxes, hoa, insurance, rentPrice, closingRepair) ->
+  annualProfitAfterTax(purchasePrice, taxes, hoa, insurance, rentPrice) / totalInvestment(purchasePrice, closingRepair) * 100
+
+@annualOperatingExpense = (taxes, hoa, insurance, rentPrice) ->
+  monthlyOperatingExpenses(taxes, hoa, insurance, rentPrice) * 12
+
+@netOperatingIncome = (taxes, hoa, insurance, rentPrice) ->
+  annualRevenue(rentPrice) - annualOperatingExpense(taxes, hoa, insurance, rentPrice)
