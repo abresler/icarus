@@ -31,7 +31,7 @@
               </tr>
               <tr>
                 <td>Down Payment Percentage</td>
-                <td>{{formatMoney2 downPaymentPerc}}%</td>
+                <td>{{divideByEquity2 downPaymentPerc equityPerc}}%</td>
               </tr>
               <tr>
                 <td>Down Payment Amount</td>
@@ -143,11 +143,11 @@
               </tr>
               <tr>
                 <td>Annual ROI (Before Tax)</td>
-                <td>{{annualROIBeforeTax taxes hoa insurance rentPrice purchasePrice closingRepair equityPerc}}%</td>
+                <td>{{annualROIBeforeTax taxes hoa insurance rentPrice purchasePrice closingRepair}}%</td>
               </tr>
               <tr>
                 <td>Annual ROI (After Tax)</td>
-                <td>{{annualROI purchasePrice taxes hoa insurance rentPrice closingRepair equityPerc}}%</td>
+                <td>{{annualROI purchasePrice taxes hoa insurance rentPrice closingRepair}}%</td>
               </tr>
               <tr>
                 <td>Annual Operating Expense</td>

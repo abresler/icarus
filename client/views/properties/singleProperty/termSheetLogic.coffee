@@ -68,18 +68,14 @@
 @annualProfitAfterTax = (purchasePrice, taxes, hoa, insurance, rentPrice, equityPerc=100) ->
   afterTaxWithRenters(purchasePrice, taxes, hoa, insurance, rentPrice) * 12 * (equityPerc / 100)
 
-@annualROIBeforeTax = (taxes, hoa, insurance, rentPrice, purchasePrice, closingRepair, equityPerc=100) ->
-  annualProfit(taxes, hoa, insurance, rentPrice) / totalInvestment(purchasePrice, closingRepair) * 100 * (equityPerc / 100)
+@annualROIBeforeTax = (taxes, hoa, insurance, rentPrice, purchasePrice, closingRepair) ->
+  annualProfit(taxes, hoa, insurance, rentPrice) / totalInvestment(purchasePrice, closingRepair) * 100
 
-@annualROI = (purchasePrice, taxes, hoa, insurance, rentPrice, closingRepair, equityPerc=100) ->
-  annualProfitAfterTax(purchasePrice, taxes, hoa, insurance, rentPrice) / totalInvestment(purchasePrice, closingRepair) * 100 * (equityPerc / 100)
+@annualROI = (purchasePrice, taxes, hoa, insurance, rentPrice, closingRepair) ->
+  annualProfitAfterTax(purchasePrice, taxes, hoa, insurance, rentPrice) / totalInvestment(purchasePrice, closingRepair) * 100
 
 @annualOperatingExpense = (taxes, hoa, insurance, rentPrice, equityPerc=100) ->
   monthlyOperatingExpenses(taxes, hoa, insurance, rentPrice) * 12 * (equityPerc / 100)
 
 @netOperatingIncome = (taxes, hoa, insurance, rentPrice, equityPerc=100) ->
   (annualRevenue(rentPrice) - annualOperatingExpense(taxes, hoa, insurance, rentPrice)) * (equityPerc / 100)
-
-###
-ALL NEEDS TO TAKE EQUITY INTO CONSIDERATION!!!!!!!
-###

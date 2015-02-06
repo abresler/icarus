@@ -19,6 +19,9 @@ Template.registerHelper "formatMoney2", (x) -> # takes in number, returns with t
 Template.registerHelper "divideByEquity", (x,y) ->
   divideByEquity(x,y).formatMoney(0)
 
+Template.registerHelper "divideByEquity2", (x,y) ->
+  divideByEquity(x,y).formatMoney(2)
+
 Template.registerHelper "totalInvestment", (x,y,z) -> # takes in purchase price and closing repair, and adds them together
   totalInvestment(x,y,z).formatMoney(0)
 
@@ -61,11 +64,11 @@ Template.registerHelper "annualProfit", (a,b,c,d,e) ->
 Template.registerHelper "annualProfitAfterTax", (a,b,c,d,e,f) ->
   annualProfitAfterTax(a,b,c,d,e,f).formatMoney(0)
 
-Template.registerHelper "annualROIBeforeTax", (a,b,c,d,e,f,g) ->
-  annualROIBeforeTax(a,b,c,d,e,f,g).formatMoney(2)
+Template.registerHelper "annualROIBeforeTax", (a,b,c,d,e,f) ->
+  annualROIBeforeTax(a,b,c,d,e,f).formatMoney(2)
 
-Template.registerHelper "annualROI", (a,b,c,d,e,f,g) ->
-  annualROI(a,b,c,d,e,f,g).formatMoney(2)
+Template.registerHelper "annualROI", (a,b,c,d,e,f) ->
+  annualROI(a,b,c,d,e,f).formatMoney(2)
 
 Template.registerHelper "annualOperatingExpense", (a,b,c,d,e) ->
   annualOperatingExpense(a,b,c,d,e).formatMoney(0)
