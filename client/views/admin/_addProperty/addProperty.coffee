@@ -64,6 +64,7 @@ Template._addProperty.events
             # rooms: rooms
             # yearBuilt: yearBuilt
             # imagesArray: imagesArray
+            status: "complete"
 
           # Meteor.call 'getPropertyImages', +t.find('#zpid').value, (err,res2) ->
           #   console.error "Error with Zillow Details API call." if err
