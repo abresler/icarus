@@ -80,6 +80,14 @@
                     {{/if}}
                   </tr>
                   <tr>
+                    <td>Taxes</td>
+                    {{#if editingTaxes}}
+                    <td><input type="number" placeholder="Taxes" id="taxes"></td>
+                    {{else}}
+                    <td><a href="" id="taxes" class="termsheet-editable">${{divideByEquity taxes equityPerc}}</a></td>
+                    {{/if}}
+                  </tr>
+                  <tr>
                     <td>Additional Financing</td>
                     <td>$N/A</td>
                   </tr>

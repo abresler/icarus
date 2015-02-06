@@ -24,6 +24,9 @@ Template._adminTermSheet.events
   'click #equityPerc': (e,t) ->
     Session.set 'editingEquityPerc', true
 
+  'click #taxes': (e,t) ->
+    Session.set 'editingTaxes', true
+
 
 
 
@@ -52,6 +55,8 @@ Template._adminTermSheet.helpers
   editingEquityPerc: ->
     Session.get 'editingEquityPerc'
 
+  editingTaxes: ->
+    Session.get 'editingTaxes'
 
 
 
@@ -127,3 +132,12 @@ Template._adminTermSheet.events
         $set:
           equityPerc: +t.find('#equityPerc').value
       Session.set 'editingEquityPerc', false
+
+  'keypress #taxes': (e,t) ->
+    if e.keyCode is 13
+      TermSheets.update
+        _id: @_id
+      ,
+        $set:
+          taxes: +t.find('#taxes').value
+      Session.set 'editingTaxes', false
