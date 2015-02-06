@@ -1,10 +1,11 @@
 <template name="_viewAccounts">
-  <div class="flex-white">
+  <div class="flex-white scrollspy" id="client-list">
     <div class="container admin-container">
       <h2 class="center-align">
-        List of all users
+        Client List
       </h2>
       {{#each allAccounts}}
+        <p>This will eventually be a table with all relevant client details</p>
         <p>{{profile.email}}</p>
       {{/each}}
     </div>

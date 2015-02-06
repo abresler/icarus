@@ -1,5 +1,171 @@
 <template name="_clientTermSheet">
   {{#if isInvestor}}
-    <h2>testtest</h2>
+    <div class="container">
+      {{#each owner}}
+      <div class="row" style="margin-top:3rem;">
+        <div class="col s12 m6">
+          <h3 class="center-align">Inputs</h3>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Purchase Price</td>
+                <td>${{divideByEquity purchasePrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Closing and Repair</td>
+                <td>${{divideByEquity closingRepair equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Total Investment</td>
+                <td>${{totalInvestment purchasePrice closingRepair equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Rental Price</td>
+                <td>${{divideByEquity rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Down Payment Percentage</td>
+                <td>{{divideByEquity2 downPaymentPerc equityPerc}}%</td>
+              </tr>
+              <tr>
+                <td>Down Payment Amount</td>
+                <td>${{downPaymentAmount purchasePrice closingRepair downPaymentPerc equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Insurance Cost</td>
+                <td>${{divideByEquity insurance equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Home Owners Association</td>
+                <td>${{divideByEquity hoa equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Additional Financing</td>
+                <td>$N/A</td>
+              </tr>
+              <tr>
+                <td>Annual Percentage Rate</td>
+                <td>{{formatMoney2 apr}}%</td>
+              </tr>
+              <tr>
+                <td>Equity Ownership</td>
+                <td>{{formatMoney2 equityPerc}}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col s12 m6">
+          <h3 class="center-align">Outputs</h3>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monthly Mortgage Expense</td>
+                <td>$N/A</td>
+              </tr>
+              <tr>
+                <td>Monthly Tax Average</td>
+                <td>${{monthlyTaxAverage taxes equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Monthly Operating Expenses</td>
+                <td>${{monthlyOperatingExpenses taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Reserve (5%)</td>
+                <td>${{reserve rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Monthly Cost of Ownership</td>
+                <td>$N/A</td>
+              </tr>
+              <tr>
+                <td>Cashflow Rented</td>
+                <td>${{cashflowRented taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Cashflow Unoccupied</td>
+                <td>${{cashflowUnoccupied taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>After Tax (with Renters)</td>
+                <td>${{afterTaxWithRenters purchasePrice taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>After Tax (Unoccupied)</td>
+                <td>${{afterTaxUnoccupied purchasePrice taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Free Cashflow</td>
+                <td>${{freeCashflow taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <h3 class="center-align">Returns</h3>
+          <table class="hoverable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Annual Revenue</td>
+                <td>${{annualRevenue rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Annual Cost</td>
+                <td>${{annualCost taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Annual Profit</td>
+                <td>${{annualProfit taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Annual Profit (After Tax)</td>
+                <td>${{annualProfitAfterTax purchasePrice taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Annual ROI (Before Tax)</td>
+                <td>{{annualROIBeforeTax taxes hoa insurance rentPrice purchasePrice closingRepair}}%</td>
+              </tr>
+              <tr>
+                <td>Annual ROI (After Tax)</td>
+                <td>{{annualROI purchasePrice taxes hoa insurance rentPrice closingRepair}}%</td>
+              </tr>
+              <tr>
+                <td>Annual Operating Expense</td>
+                <td>${{annualOperatingExpense taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+              <tr>
+                <td>Net Operating Income</td>
+                <td>${{netOperatingIncome taxes hoa insurance rentPrice equityPerc}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col s12 m6">
+          <h3 class="center-align">Additional</h3>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div style="height:5rem;"></div>
   {{/if}}
 </template>

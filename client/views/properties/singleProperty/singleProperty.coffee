@@ -23,12 +23,17 @@ Template.singleProperty.rendered = ->
       map: map
       title: street
 
-Template.singleProperty.events {}
 
-Template.singleProperty.helpers
-  currentProperty: ->
-    # console.log @data
-    # @data._id
+
+
+
+Template._clientTermSheet.helpers
+  owner: ->
+    TermSheets.find
+      'property._id': Template.currentData()._id
+      'owner._id': Meteor.user()._id
+
+
 
 
 
@@ -36,27 +41,6 @@ Template._adminTermSheet.rendered = ->
   $('ul.tabs').tabs()
 
 Template._adminTermSheet.helpers
-  allAccounts: ->
-    Meteor.users.find()
-
   owners: ->
-    console.log Template.currentData()
-    # first I need to find the relevant termsheet
-    # then I need to get the owners array
-    # for each owner, give them a new tab and display their data
-    # Meteor.subscribe("properties", ->
-    #   # console.log @data
-    #   # allOwners = TermSheets.find
-    #   #   "property._id": @data._id
-    #   # console.log allOwners
-    # )
-    []
-
-
-
-
-
-  allTermSheets: ->
-    # TermSheets.find
-    #   property: @
-    #   # owner:
+    TermSheets.find
+      'property._id': Template.currentData()._id

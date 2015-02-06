@@ -1,4 +1,6 @@
 Template.adminPanel.rendered = ->
+  $('.scrollspy').scrollSpy()
+  $('.tabs-wrapper .row').pushpin top: $('.tabs-wrapper').offset().top
 
 Template.adminPanel.events {}
 
