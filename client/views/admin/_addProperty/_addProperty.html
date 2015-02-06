@@ -9,7 +9,8 @@
           <div class="col s6 input-field">
             <label for=""></label>
             <input type="text">
-            </div>
+            <button class="btn waves-effect waves-light">Submit</button>
+          </div>
           <div class="col s6 input-field">
             <select name="" id="" class="browser-default">
               <option value="" disabled selected>Add an Owner</option>
@@ -17,9 +18,15 @@
                 <option value="{{_id}}">{{profile.first}} {{profile.last}}</option>
               {{/each}}
             </select>
+            <div>
+              <ul>
+                {{#each ownersList}}
+                <li><a href=""><i class="fa fa-times"></i></a> {{this.username}}</li>
+                {{/each}}
+              </ul>
+            </div>
           </div>
         </div>
-        <button class="btn waves-effect waves-light">Submit</button>
       </form>
       <h2 class="center-align scrollspy" id="manage-properties">
         Manage Properties

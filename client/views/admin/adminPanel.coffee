@@ -44,21 +44,3 @@ Template._createAccount.events
 Template._viewAccounts.helpers
   allAccounts: ->
     Meteor.users.find()
-
-Template._addProperty.rendered = ->
-  $('select').material_select()
-  return
-
-Template._addProperty.helpers
-  allAccounts: ->
-    Meteor.users.find()
-
-  allCompleted: ->
-    Properties.find
-      status: "complete"
-
-Template._addProperty.events
-  'change select': (e,t) ->
-    t.find('select').value # gives value of user being added
-    alert "Success"
-    $('select').val('') # this is not properly clearing after selection has been made

@@ -8,3 +8,4 @@ if Meteor.isServer
       fields:
         profile: 1
         _id: 1
+        username: 1
