@@ -141,3 +141,4 @@ Template._adminTermSheet.events
         $set:
           taxes: +t.find('#taxes').value
       Session.set 'editingTaxes', false
+    
