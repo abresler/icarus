@@ -89,11 +89,15 @@ Template._assetTimeline.rendered = ->
 				min = new Date(d3.min(set, (d) -> d.x))
 				max = new Date(d3.max(set, (d) -> d.x))
 
+				d0 = set[i - 1]
+				d1 = set[i]
+				if (x - d0.x) > (d1.x - x) then ix = d1 else ix = d0
+
 				if min < x < max
 					d3.select(this)
 						.style('display', null)
-						.attr 'x', (position[0] - box.s)
-						.attr 'y', (yScale(set[i].y) - box.s)
+						.attr 'x', (xScale(ix.x) - box.s)
+						.attr 'y', (yScale(ix.y) - box.s)
 				else
 					d3.select(this).style('display', 'none')
 
@@ -102,6 +106,10 @@ Template._assetTimeline.rendered = ->
 				i = bisect(set, x)
 				min = new Date(d3.min(set, (d) -> d.x))
 				max = new Date(d3.max(set, (d) -> d.x))
+
+				d0 = set[i - 1]
+				d1 = set[i]
+				if (x - d0.x) > (d1.x - x) then ix = d1 else ix = d0
 
 				d3.select(this).attr 'y', (position[1] + ((index * 20) + box.s + legend.y))
 
@@ -114,7 +122,7 @@ Template._assetTimeline.rendered = ->
 				
 				if min < x < max
 					d3.select(this)
-						.text('$ ' + money(set[i].y))
+						.text('$ ' + money(ix.y))
 				else 
 					d3.select(this)
 						.text('No History')
@@ -186,7 +194,7 @@ Template._assetTimeline.rendered = ->
 		propertiesGroup = svg.append 'g'
 			.attr 'class', 'properties'
 
-		propertiesGroup = propertiesGroup.selectAll('.properties')
+		propertiesGroup = propertiesGroup.selectAll('#_assetTimeline .properties')
 			.data(lineData)
 			.enter()
 			.append('g')

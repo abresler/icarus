@@ -1,7 +1,10 @@
 Template.calculator.rendered = ->
+
+	money = d3.format(',.2f')
 	Session.setDefault "capRate", 0
-	Session.setDefault "monthNet", 0
-	Session.setDefault "totInvest", 0
+	Session.setDefault "monthNet", money 0.00
+	Session.setDefault "totInvest", money 0.00
+
 
 Template.calculator.events
 	'click #capbutton': (e, t) ->
@@ -23,7 +26,7 @@ Template.calculator.events
 		Session.set 'monthNet', parseInt(cap) * parseInt(invest)
 
 Template.calculator.helpers
-	capRate: -> #this is the variable you use to access in the template
+	capRate: ->
 		Session.get "capRate"
 
 	monthNet: ->
