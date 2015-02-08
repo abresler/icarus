@@ -21,13 +21,10 @@ Meteor.methods
 
 # need to replace zpid in the URL to accept a zpid as an argument;
   getProperties: (zpids) ->
-    console.log zpids
-
     futures = _.map zpids, (id, index) ->
       future = new Future();  
       Meteor.http.call "GET", "http://www.zillow.com/ajax/homedetail/HomeValueChartData.htm?mt=1&zpid=#{ id }&format=json", (err, data) ->
-        future.return(data)
-        console.log(data)      
+        future.return(data)  
       future
 
     results = _.map futures, (future, index) ->

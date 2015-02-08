@@ -1,48 +1,47 @@
-Template._assetTimeline.rendered = ->
+Template._timeline.rendered = ->
 
-	height = d3.select('#_assetTimeline').property('clientHeight') - 20
-	width = d3.select('#_assetTimeline').property('clientWidth')
 
-	box = {s: 5}
+	createTimeline = -> 
 
-	xAxisTransform = 20
-	yAxisTransform = 60
+		owner = 'sam'
 
-	# temp = Properties.find
-	# 	owners: 'bob' #Meteor.user()._id
-	# .fetch()
+		height = d3.select('#_timeline').property('clientHeight') - 20
+		width = d3.select('#_timeline').property('clientWidth')
 
-	# ids = _.pluck(temp, 'zpid')
+		box = {s: 5}
 
-	ids = [2105388632]
-	
-	Meteor.call 'getProperties', ids, (err, res) ->
-		data = [].concat(res)
-		homes = []
+		xAxisTransform = 20
+		yAxisTransform = 60
 
-		for d in data
-			temp = _.pick(d, 'data') 
-			homes.push temp.data[0]
+		data = Portfolios.find({owner: owner}).fetch()
 
-		all = _.flatten _.pluck(homes, 'points')
+		debtLines = _.pluck(data, 'd')
+		equityLines = _.pluck(data, 'e')
 
-		lineData = _.pluck homes, 'points'
+		allDebt = _.flatten debtLines
+		allEquity = _.flatten equityLines
 
-		svg = d3.select '#_assetTimeline'
+		allData = allDebt.concat(allEquity).sort (a, b) -> (new Date(b.date) - new Date(a.date))
+
+
+		yDomain = d3.extent(allData, (d) -> d.amount)
+		xDomain = d3.extent(allData, (d) -> new Date(d.date))
+
+		svg = d3.select '#_timeline'
 				.append('svg')
-				.attr 'class', 'assets'
+				.attr 'class', 'equity-debt'
 				.attr 
 					height: height,
 					width: width
 
-		legend = {x: 25, y: 30, boxWidth: 120, boxHeight: homes.length * 25, color: 5}
+		legend = {x: 25, y: 30, boxWidth: 120, boxHeight: data.length * 27.5, color: 5}
 
 		xScale = d3.time.scale()
-		.domain d3.extent all, (d) -> new Date(d.x)
+		.domain xDomain
 		.range [yAxisTransform, width - yAxisTransform]
 		
 		yScale = d3.scale.linear()
-		.domain [d3.max(all, (d) -> d.y) + 20e3, d3.min(all, (d) -> d.y) - 20e3]
+		.domain [yDomain[1], yDomain[0]]
 		.range [xAxisTransform, height - xAxisTransform]
 
 		colorScale = d3.scale.category10()
@@ -52,56 +51,61 @@ Template._assetTimeline.rendered = ->
 
 		xAxis = d3.svg.axis()
 				.scale xScale
-				.ticks(6)
+				.ticks 6
 				.orient 'bottom'
 
 		yAxis = d3.svg.axis()
 				.scale yScale
-				.ticks(8)
+				.ticks 8
 				.tickFormat (d) -> (d3.formatPrefix(d).scale(d) + d3.formatPrefix(d).symbol)
 				.orient 'left'
 				
 		mousemove = ->
-			bisect = d3.bisector((d) -> new Date d.x).left
+			bisect = d3.bisector((d) -> new Date d.date).left
 			position = d3.mouse(this)
 			x = xScale.invert(position[0])
 			date = d3.time.format('%b %d, %Y')
 			money = d3.format(',.2f')
-			range = d3.extent all, (d) -> new Date(d.x)
+			range = d3.extent allData, (d) -> new Date(d.date)
 			mid = new Date(range[1] - ((range[1] - range[0])/2))
 
-			d3.select '#_assetTimeline #vertical-line'
+			d3.select '#_timeline #vertical-line'
 				.attr 'x1', position[0]
 				.attr 'x2', position[0]
 
 			if x > mid
-				d3.selectAll '#_assetTimeline .legend'
+				d3.selectAll '#_timeline .legend'
 					.attr 'x', (position[0] - legend.boxWidth)
 					.attr 'y', (position[1])
 			else 
-				d3.selectAll '#_assetTimeline .legend'
+				d3.selectAll '#_timeline .legend'
 					.attr 'x', (position[0])
 					.attr 'y', (position[1])
 
-			d3.selectAll('#_assetTimeline #tracer').each (d) -> 
+			d3.selectAll('#_timeline #tracer').each (d) -> 
 				set = d3.select(this).datum()
 				i = bisect(set, x)
-				min = new Date(d3.min(set, (d) -> d.x))
-				max = new Date(d3.max(set, (d) -> d.x))
+				if i >= set.length then i = set.length-1 
+				min = d3.min(set, (d) -> new Date d.date )
+				max = d3.max(set, (d) -> new Date d.date )
+
 
 				if min < x < max
+					console.log i
+					console.log(yScale(set[i]))
 					d3.select(this)
 						.style('display', null)
 						.attr 'x', (position[0] - box.s)
-						.attr 'y', (yScale(set[i].y) - box.s)
+						.attr 'y', (yScale(set[i].amount) - box.s)
 				else
 					d3.select(this).style('display', 'none')
 
-			d3.selectAll('#_assetTimeline #key-values').each (d, index) ->
+			d3.selectAll('#_timeline #key-values').each (d, index) ->
 				set = d3.select(this).datum()
 				i = bisect(set, x)
-				min = new Date(d3.min(set, (d) -> d.x))
-				max = new Date(d3.max(set, (d) -> d.x))
+				if i >= set.length then i = set.length-1
+				min = d3.min(set, (d) -> new Date d.date)
+				max = d3.max(set, (d) -> new Date d.date)
 
 				d3.select(this).attr 'y', (position[1] + ((index * 20) + box.s + legend.y))
 
@@ -114,13 +118,12 @@ Template._assetTimeline.rendered = ->
 				
 				if min < x < max
 					d3.select(this)
-						.text('$ ' + money(set[i].y))
+						.text('$ ' + money(set[i].amount))
 				else 
 					d3.select(this)
 						.text('No History')
 
-
-			d3.selectAll('#_assetTimeline .legend#date').each (d, index) ->
+			d3.selectAll('#_timeline .legend#date').each (d, index) ->
 				d3.select(this)
 					.attr 'y', (position[1] + 12.5)
 					.text date(x)
@@ -180,35 +183,33 @@ Template._assetTimeline.rendered = ->
 
 		line = d3.svg.line()
 			.interpolate('linear')
-			.x (d) -> xScale d.x
-			.y (d) -> yScale d.y
+			.x (d) -> xScale new Date(d.date)
+			.y (d) -> yScale d.amount
 
-		propertiesGroup = svg.append 'g'
-			.attr 'class', 'properties'
+		debtGroup = svg.append 'g'
+			.attr 'class', 'debt'
 
-		propertiesGroup = propertiesGroup.selectAll('.properties')
-			.data(lineData)
+		debtGroup = debtGroup.selectAll('.debt')
+			.data(debtLines)
 			.enter()
 			.append('g')
-			.attr('class', 'property')
+			.attr('class', 'debt')
 		
-		propertiesGroup.append('path')
+		debtGroup.append('path')
 			.attr 'class', 'line'
 			.attr 'd', (d) -> line(d)
 			.attr 'stroke', (d, i) -> colorScale(i%5)
 			.attr 'stroke-width', '1'
 			.attr 'fill', 'none'
 
-		propertiesGroup.append 'rect'
+		debtGroup.append 'rect'
 			.attr 'class', 'legend'
 			.attr 'id', 'tracer'
-			.attr 'x', (d) -> (xScale(d[0].x)-box.s)
-			.attr 'y', (d) -> (yScale(d[0].y)-box.s)
 			.attr 'width', box.s * 2
 			.attr 'height', box.s * 2
 			.attr 'fill', (d, i) -> colorScale(i%5)
 
-		legendGroup = propertiesGroup.append 'g'
+		legendGroup = debtGroup.append 'g'
 			.attr 'class', 'legend-group'
 			.style 'display', 'none'
 
@@ -219,7 +220,6 @@ Template._assetTimeline.rendered = ->
 			.attr 'width', legend.boxWidth
 			.attr 'stroke', '#D1122B'
 			.attr 'stroke-width', 1
-			.attr 'transform', 'translate(0,' + 20 + ')'
 			.attr 'fill', 'none'
 
 		legendGroup.append 'rect'
@@ -250,3 +250,5 @@ Template._assetTimeline.rendered = ->
 			.attr 'fill', 'white'
 			.attr 'text-anchor', 'middle'
 			.style 'font-size', '12px'
+
+	createTimeline()
