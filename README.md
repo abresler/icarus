@@ -1,3 +1,4 @@
-#Boilerplate Materialize
+Icarus
+================
 
-Boilerplate Meteor 1.0 site with Materialize instead of Bootstrap
+Property management app with client-facing dashboard.
