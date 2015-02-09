@@ -66,6 +66,8 @@ Template._addProperty.events
             # imagesArray: imagesArray
             status: "complete"
 
+          Session.set 'ownersList', {}
+
           # Meteor.call 'getPropertyImages', +t.find('#zpid').value, (err,res2) ->
           #   console.error "Error with Zillow Details API call." if err
           #   if res2["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] is "0" # this is the message code for "success"
@@ -77,7 +79,6 @@ Template._addProperty.events
 
 
 
-        # Session.set 'ownersList', {} # We should reset this after we've added to the database
 
       else alert "Must add at least one owner."
     else alert "Please enter a valid ZPID."
