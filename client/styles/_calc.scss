@@ -14,13 +14,14 @@
   border-radius: 5px;
   background-color: white;
   overflow: hidden;
-  height: 8rem;
+  height: 10rem;
   width: 15rem;
   margin: 1em auto;
   transition: all 2s ease-in-out;
   opacity: 0.75;
 
   input {
-  	text-align: center
+  	text-align: center;
+    width: 40%;
   }
 }
