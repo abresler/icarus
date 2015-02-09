@@ -1,5 +1,5 @@
 Template.layout.rendered = ->
-  Waves.displayEffect()
+  Waves?.displayEffect()
   return
 
 
