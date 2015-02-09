@@ -8,6 +8,7 @@ Package.describe({
 Package.on_use(function (api) {
 	api.use("coffeescript", ["client", "server"]);
 	api.add_files("tests/mocha/client/admin-client-test.coffee",["client"]);
+	api.add_files("tests/mocha/client/calculator-test.coffee",["client"]);
 	api.add_files("tests/mocha/client/termsheet-test.coffee",["client"]);
 	api.add_files("tests/mocha/server/sampleServerTest.js",["server"]);
 });

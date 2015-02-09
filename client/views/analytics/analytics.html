@@ -13,20 +13,24 @@
       </div>
     </div>
     <div class="row">
-      <div class="col s12">
-        {{> _timeline}}
-      </div>
-    </div>
-    <div class="row">
       <div class="col s12 m6">
-        {{> _newProjects}}
+        <div class="card analytics-card">
+          <div class="card-content">
+            {{> _timeline}}
+          </div>
+        </div>
       </div>
       <div class="col s12 m6">
         <div class="card analytics-card">
           <div class="card-content">
-            <p>Unclear what goes here</p>
+            {{> _assetTimeline}}
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        {{> _newProjects}}
       </div>
     </div>
   </div>

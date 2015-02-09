@@ -5,6 +5,7 @@ $red: #D1122B;
 $grey: #797979;
 
 @import "d3";
+@import "calc";
 
 body, html {
   font-family: $font-stack;
@@ -129,6 +130,7 @@ nav ul li:hover, nav ul li.active {
     color: white;
   }
 }
+
 ////////////////////////////////////////////
 
 
@@ -296,29 +298,6 @@ a.collection-item {
   width: 50%;
   display: block;
   margin: 0 auto;
-}
-.calculator-cell {
-  border: 1px solid $grey;
-  border-radius: 5px;
-  overflow: hidden;
-  height: 10rem;
-  margin: 1rem;
-}
-
-.promo-numbers {
-  font-size: 4em;
-  text-align: center;
-  line-height: 1.1;
-}
-
-.promo-col {
-  margin: 0 2rem;
-}
-
-.promo-2-paragraph {
-  font-size: 1.2em !important;
-  line-height: 1.2;
-
 }
 
 .promo-card-2 {
