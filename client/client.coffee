@@ -1,7 +1,6 @@
 Accounts.ui.config
   passwordSignupFields: "USERNAME_AND_OPTIONAL_EMAIL"
 
-
 Template.registerHelper "isAdmin", ->
     if Meteor.user()?.profile.roles.indexOf("admin") > -1 then true else false
 
@@ -75,3 +74,15 @@ Template.registerHelper "annualOperatingExpense", (a,b,c,d,e) ->
 
 Template.registerHelper "netOperatingIncome", (a,b,c,d,e) ->
   netOperatingIncome(a,b,c,d,e).formatMoney(0)
+
+Template.registerHelper "filterPhone", (x) ->
+  # console.log x
+  if x?
+    temp = x.split("")
+    areaCode = temp.slice(0, 3).join("")
+    firstNum = temp.slice(3, 6).join("")
+    secondNum = temp.slice(6, 10).join("")
+    phoneNumber = "(#{areaCode}) #{firstNum}-#{secondNum}"
+
+
+
