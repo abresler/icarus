@@ -14,7 +14,6 @@ Template.registerHelper "formatMoney", (x) -> # takes in a number, converts it i
 Template.registerHelper "formatMoney2", (x) -> # takes in number, returns with two decimal places
   x.formatMoney(2)
 
-
 Template.registerHelper "divideByEquity", (x,y) ->
   divideByEquity(x,y).formatMoney(0)
 
@@ -83,6 +82,13 @@ Template.registerHelper "filterPhone", (x) ->
     firstNum = temp.slice(3, 6).join("")
     secondNum = temp.slice(6, 10).join("")
     phoneNumber = "(#{areaCode}) #{firstNum}-#{secondNum}"
+
+Template.registerHelper "money", (x) ->
+  money = d3.format(',.2f')
+  return money x
+
+Template.registerHelper "_", ->
+  _
 
 
 
