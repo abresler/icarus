@@ -1,5 +1,4 @@
 Template._adminTermSheet.events
-  # The context is the TermSheet, not the individual item, so we're going to have
   'click #purchasePrice': (e,t) ->
     Session.set 'editingPurchasePrice', true
 
@@ -141,4 +140,3 @@ Template._adminTermSheet.events
         $set:
           taxes: +t.find('#taxes').value
       Session.set 'editingTaxes', false
-    
