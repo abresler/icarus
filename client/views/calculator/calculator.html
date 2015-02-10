@@ -11,7 +11,7 @@
               <h6>Total Investment</h6>
               <div class="row">
                 <strong>$</strong>
-                <input class="calc-input" id="invest" type="number" value="{{totInvest}}">
+                <input class="calc-input" id="invest" type="number" value="{{totInvest}}" min="0.00">
               </div>
               <button class="btn waves-effect waves-light" id="invest-button" >Calculate</button>
               <h4></h4>
@@ -22,7 +22,7 @@
               <h6>Average Monthly Net Income</h6>
               <div class="row">
                 <strong>$</strong>
-                <input class="calc-input" id="income" type="number" value="{{monthNet}}">
+                <input class="calc-input" id="income" type="number" value="{{monthNet}}" min="0.00">
               </div>
               <button class="btn waves-effect waves-light" id="income-button" >Calculate</button>
             </div>
@@ -31,7 +31,7 @@
             <div class="center-align calculator-cell">
               <h6>CAP Rate</h6>
               <div class="row">
-                <input class="calc-input" id="cap" type="number" value="{{capRate}}">
+                <input class="calc-input" id="cap" type="number" value="{{capRate}}" min="0">
                 <strong>%</strong>
               </div>
               <button class="btn waves-effect waves-light"  id="capbutton" >Calculate</button>

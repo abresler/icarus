@@ -11,7 +11,3 @@ Template._managePayments.events
 Template._managePayments.helpers
 	bank: ->
 		Session.get 'bank'
-	accounts: -> 
-		Session.get 'accounts'
-	transactions: ->
-		Session.get 'transactions'
