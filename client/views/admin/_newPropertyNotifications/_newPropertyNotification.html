@@ -1,0 +1,38 @@
+<template name="_newPropertyNotification">
+  <div class="flex-white admin-container scrollspy" id="new-notification">
+    <div class="red-break"></div>
+    <div class="container">
+      <h2 class="center-align">New Property Notification</h2>
+      <form>
+        <div class="row">
+<!--           <div class="input-field col s12 m6">
+  <label for="zpid">Zillow ID (Optional)</label>
+  <input type="text" id="zpid" class="validate">
+</div> -->
+          <div class="input-field col s12 m6">
+            <select id="property-notification-selection" class="browser-default">
+              <option value="property-default" disabled selected>Select a property</option>
+              {{#each allProperties}}
+                <option value="{{_id}}">{{street}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="col s12 m6">
+            <ul>
+              {{#each properties}}
+                <li id="remove-property"><i class="fa fa-times"></i><span id="{{_id}}"> {{street}}</span></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 input-field">
+            <textarea name="property-notification" id="property-notification" cols="30" rows="10" class="materialize-textarea"></textarea>
+            <label>Notification Text</label>
+          </div>
+        </div>
+        <button type="button" id="submit-property-notification" class="btn waves-effect waves-light">Submit</button>
+      </form>
+    </div>
+  </div>
+</template>
