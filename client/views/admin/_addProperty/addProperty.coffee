@@ -21,6 +21,16 @@ Template._addProperty.helpers
       result.push(tempObj)
     result
 
+  propertyOwners: (arr) ->
+    temp = []
+    arr.forEach (ownerId) ->
+      temp.push(Meteor.users.findOne(ownerId).username)
+    temp.join(", ")
+
+  purchasePrice: (propId) ->
+    "$" + TermSheets.findOne( "property._id": propId ).purchasePrice.formatMoney(0)
+
+
 Template._addProperty.events
   'change select': (e,t) ->
     tempObject = Session.get 'ownersList'
@@ -38,7 +48,7 @@ Template._addProperty.events
       if Object.keys(Session.get('ownersList')).length > 0 # Error handles for a property with no owners
 
         Meteor.call 'getProperty', +t.find('#zpid').value, (err,res) ->
-          alert "Error with Zillow API call." if err 
+          alert "Error with Zillow API call." if err
 
           x = res["Zestimate:zestimate"]["response"]["0"]
           tempOwners = Session.get 'ownersList'

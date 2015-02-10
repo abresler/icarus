@@ -39,16 +39,18 @@
         <thead>
           <tr>
             <th>Property</th>
-            <th>Total Cost</th>
-            <th>Another things</th>
+            <th>State</th>
+            <th>Purchase Price</th>
+            <th>Owners</th>
           </tr>
         </thead>
         <tbody>
           {{#each allCompleted}}
           <tr>
             <td><a href="{{pathFor 'singleProperty'}}" style="color:#D1122B;">{{street}}</a></td>
-            <td>info</td>
-            <td>info</td>
+            <td>{{state}}</td>
+            <td>{{purchasePrice _id}}</td>
+            <td>{{propertyOwners owners}}</td>
           </tr>
           {{/each}}
         </tbody>
