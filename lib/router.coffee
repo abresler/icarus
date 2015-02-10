@@ -20,7 +20,7 @@ Router.map ->
 
   @route "adminPanel",
     path: "/admin/panel"
-    waitOn: -> 
+    waitOn: ->
       [
         Meteor.subscribe "allUsers"
       ]

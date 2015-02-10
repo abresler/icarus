@@ -170,14 +170,15 @@ nav ul li:hover, nav ul li.active {
   background-color: white;
 }
 
-.red-break {
+.red-break-half {
   height: 0.2rem;
   width: 75%;
   margin: auto;
   background-color: $red;
 }
 
-.red-break.full{
+.red-break {
+  background-color: $red;
   height: 0.5rem;
   width: 100%;
 }
@@ -377,15 +378,15 @@ ul.tabs .indicator {
   -moz-transition: background-color 0.25s ease;
   -o-transition: background-color 0.25s ease;
   -ms-transition: background-color 0.25s ease;
-  transition: background-color 0.25s ease; 
+  transition: background-color 0.25s ease;
 }
 
 .custom-hover .account-info:hover {
-    background-color: $red; 
+    background-color: $red;
 }
 
 .custom-hover .transactions:hover {
-    background-color: #f2f2f2; 
+    background-color: #f2f2f2;
 }
 
 .account-border {
@@ -430,11 +431,11 @@ ul.tabs .indicator {
 }
 
 ul.table-of-contents.fixed {
-  position: fixed; 
+  position: fixed;
 }
 
 ul.table-of-contents li {
-  padding: 2px 0; 
+  padding: 2px 0;
 }
 
 ul.table-of-contents a {
@@ -445,19 +446,19 @@ ul.table-of-contents a {
   height: 1.5rem;
   line-height: 1.5rem;
   letter-spacing: 0.4;
-  display: inline-block; 
+  display: inline-block;
 }
 
 ul.table-of-contents a:hover {
   color: #a8a8a8;
   padding-left: 19px;
-  border-left: 1px solid #ea4a4f; 
+  border-left: 1px solid #ea4a4f;
 }
 
 ul.table-of-contents a.active {
   font-weight: 500;
   padding-left: 18px;
-  border-left: 2px solid #ea4a4f; 
+  border-left: 2px solid #ea4a4f;
 }
 
 ul.table-of-contents h6{
