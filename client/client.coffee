@@ -92,6 +92,3 @@ Template.registerHelper "transactionConvert", (x) ->
 
 Template.registerHelper "_", ->
   _
-
-
-

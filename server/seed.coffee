@@ -39,6 +39,8 @@ Meteor.startup ->
 
   # Seeding the database with a property
   if Properties.find().count() is 0
+    owner = Meteor.users.findOne( username: "Icarus")._id
+    owner2 = Meteor.users.findOne( username: "client")._id
 
     Properties.insert
       bath: "3.0"
@@ -55,8 +57,8 @@ Meteor.startup ->
       long: "-87.726905"
       lotSizeSqft: "6783"
       owners: [
-        "bob"
-        "mike"
+        owner
+        owner2
       ]
       purchaseDate: "2015-01-01T00:00:00-05:00"
       rooms: "Recreation room, Family room, Laundry room, Master bath"
@@ -64,9 +66,6 @@ Meteor.startup ->
       state: "IL"
       status: "complete"
       street: "14300 Kolin Ave"
-      # termSheets: [
-      # # dont need this... termsheet already has property reference.
-      # ]
       yearBuilt: "1971"
       zestimate: "144031"
       zip: "60445"

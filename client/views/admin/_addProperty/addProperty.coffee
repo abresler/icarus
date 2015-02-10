@@ -24,7 +24,7 @@ Template._addProperty.helpers
   propertyOwners: (arr) ->
     temp = []
     arr.forEach (ownerId) ->
-      temp.push(Meteor.users.findOne(ownerId).username)
+      temp.push(Meteor.users.findOne(ownerId).username) # TODO There is an error here when it can't find the username... only a problem for development. No future users will not have a username
     temp.join(", ")
 
   purchasePrice: (propId) ->
@@ -48,35 +48,40 @@ Template._addProperty.events
       if Object.keys(Session.get('ownersList')).length > 0 # Error handles for a property with no owners
 
         Meteor.call 'getProperty', +t.find('#zpid').value, (err,res) ->
-          alert "Error with Zillow API call." if err
+          if err
+            alert "Error with Zillow API call."
 
-          x = res["Zestimate:zestimate"]["response"]["0"]
-          tempOwners = Session.get 'ownersList'
-          owners = _.keys(tempOwners)
+          else
 
-          Properties.insert
-            # purchaseDate: formattedDate
-            owners: owners
-            street: x["address"]["0"]["street"]["0"]
-            city: x["address"]["0"]["city"]["0"]
-            lat: x["address"]["0"]["latitude"]["0"]
-            long: x["address"]["0"]["longitude"]["0"]
-            state: x["address"]["0"]["state"]["0"]
-            zip: x["address"]["0"]["zipcode"]["0"]
-            zestimate: x["zestimate"]["0"]["amount"]["0"]["_"]
-            zpid: x["zpid"]["0"]
-            # bed: bed
-            # bath: bath
-            # sqft: sqft
-            # lotSizeSqft: lotSizeSqFt
-            # rooms: rooms
-            # yearBuilt: yearBuilt
-            # imagesArray: imagesArray
-            status: "complete"
+            x = res["Zestimate:zestimate"]["response"]["0"]
+            tempOwners = Session.get 'ownersList'
+            owners = _.keys(tempOwners)
 
-          Session.set 'ownersList', {}
+            Properties.insert
+              # purchaseDate: formattedDate
+              owners: owners
+              street: x["address"]["0"]["street"]["0"]
+              city: x["address"]["0"]["city"]["0"]
+              lat: x["address"]["0"]["latitude"]["0"]
+              long: x["address"]["0"]["longitude"]["0"]
+              state: x["address"]["0"]["state"]["0"]
+              zip: x["address"]["0"]["zipcode"]["0"]
+              zestimate: x["zestimate"]["0"]["amount"]["0"]["_"]
+              zpid: x["zpid"]["0"]
+              # bed: bed
+              # bath: bath
+              # sqft: sqft
+              # lotSizeSqft: lotSizeSqFt
+              # rooms: rooms
+              # yearBuilt: yearBuilt
+              # imagesArray: imagesArray
+              status: "complete"
 
-          # Meteor.call 'getPropertyImages', +t.find('#zpid').value, (err,res2) ->
+            Session.set 'ownersList', {}
+
+            alert "Successfully added property!"
+
+            # Meteor.call 'getPropertyImages', +t.find('#zpid').value, (err,res2) ->
           #   console.error "Error with Zillow Details API call." if err
           #   if res2["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] is "0" # this is the message code for "success"
           #
