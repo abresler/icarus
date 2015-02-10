@@ -1,16 +1,11 @@
 <template name="_notifications">
   <div class="card analytics-card">
     <div class="card-content">
-      <h5 class="center-align">Notifications</h5>
+      <h5 class="center-align">Notifications<span class="new badge" style="float: none; margin: 1rem; padding: 0.5rem 1rem;">{{notificationNumber}}</span></h5>
       <ul class="collection notifications-card">
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
-        <a href="" class="collection-item">Notification number one<span class="new badge">1</span></a>
+        {{#each notifications}}
+          <li class="notifications"><a href="" class="collection-item"><span class="note-left">{{shortDate sent}}</span>{{message}}</a></li>
+        {{/each}}
       </ul>
     </div>
   </div>

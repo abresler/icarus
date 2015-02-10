@@ -92,3 +92,9 @@ Template.registerHelper "transactionConvert", (x) ->
 
 Template.registerHelper "_", ->
   _
+
+Template.registerHelper "shortDate", (date) ->
+  temp = new Date(date)
+  short = d3.time.format("%b %_d")
+  shortDate = short(temp)
+  return shortDate
