@@ -1,48 +1,53 @@
 <template name="_property">
   {{#with property}}
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <div class="card property-card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12">
-                <a href="{{pathFor 'singleProperty'}}"><h4 class="center-align">{{street}}</h4></a>
-                <div style="height:1rem;"></div>
-              </div>
-              <div class="col s12 m4">
-                <!-- going to have to figure out how to access item in array through handlebars... -->
-                <img src="/background/tropics.jpg" alt="" class="property-image">
-              </div>
-              <div class="col s12 m8">
-                <table class="responsive-table">
-                  <thead>
-                    <tr>
-                      <th>Property Detail</th>
-                      <th>Table Item</th>
-                      <th>Mas Items</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>Info</td>
-                      <td>Info</td>
-                      <td>Info</td>
-                    </tr>
-                    <tr>
-                      <td>More Info</td>
-                      <td>More Info</td>
-                      <td>More Info</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+  <div class="card property-card">
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12">
+          <a href="{{pathFor 'singleProperty'}}"><h5 class="center-align">{{street}}</h5></a>
+          <div style="height:1rem;"></div>
+        </div>
+        <div class="col s12">
+          <!-- going to have to figure out how to access item in array through handlebars... -->
+          <img src="/background/tropics.jpg" alt="" class="property-image">
+        </div>
+        <div class="col s12">
+          <table class="responsive">
+            <thead>
+              <tr>
+                <th>Purchase Price</th>
+                <th>Equity ROI</th>
+                <th>Debt ROI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$12,000</td> <!-- TODO this needs to be connected to real data -->
+                <td>14.0%</td>
+                <td>7.0%</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
   {{/with}}
 </template>
+
+
+<!--
+What do we want to display?
+
+1) Street Address
+2) State?
+3) Picture
+4) Value of property (or purchase price)
+5) Investor names... But this is for the client. Perhaps not.
+
+
+
+
+
+
+-->
