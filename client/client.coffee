@@ -87,6 +87,11 @@ Template.registerHelper "money", (x) ->
   money = d3.format(',.2f')
   return money x
 
+Template.registerHelper "transactionConvert", (x) ->
+  x = x * -1
+  money = d3.format(',.2f')
+  return money x
+
 Template.registerHelper "_", ->
   _
 

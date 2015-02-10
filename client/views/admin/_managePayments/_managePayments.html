@@ -1,0 +1,62 @@
+<template name="_managePayments">
+  <div class="flex-white admin-container scrollspy" id="manage-payments">
+    <div class="red-break"></div>
+    <h2 class="center-align">Manage Payments</h2>
+    <div class="row bank-table">
+      <div class="col s12">
+        <table class="custom-hover centered">
+          <thead>
+            <tr>
+              <th>Bank Account Name</th>
+              <th>Bank Account Number</th>
+              <th>Available Balance</th>
+              <th>Current Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each bank.accounts}}
+              <tr id="{{_id}}" class="account-info">
+                <td>{{meta.name}}</td>
+                <td>{{meta.number}}</td>
+                <td>$ {{money balance.available}}</td>
+                <td>$ {{money balance.current}}</td>
+              </tr>
+              <tr class="transaction-header transaction-hide {{_id}}">
+                <td>Transaction</td>
+                <td>Category</td>
+                <td>Amount</td>
+                <td>Date</td>
+              </tr>
+              {{#each bank.transactions}}
+                {{#if _.isEqual _account ../_id}}
+                  <tr class="transactions transaction-hide {{_account}}">
+                    <td>
+                      {{name}}
+                    </td>
+                    <td>
+                      {{category}}
+                    </td>
+                    <td>
+                      {{#if $lte amount 0}}
+                        <span class="positive">$ {{transactionConvert amount}}</span>
+                      {{/if}}
+                      {{#if $gt amount 0}}
+                        <span class="negative">$ {{transactionConvert amount}}</span>
+                      {{/if}}
+                    </td>
+                    <td>
+                      {{date}}
+                    </td>
+                  </tr>
+                {{/if}}
+              {{/each}}
+              <tr class="transaction-hide {{_id}}">
+                <td colspan="4" class="transactions account-border"></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</template>

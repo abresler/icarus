@@ -1,8 +1,8 @@
 <template name="adminPanel">
   {{#if isAdmin}}
-
     <div class="row">
     {{> _adminPanel}}
+    {{> _pushpin}}
     {{> _createAccount}}
     {{> _viewAccounts}}
     {{> _addProperty}}
@@ -10,13 +10,6 @@
     {{> _addNewProject}}
     {{> _newPropertyNotification}}
     {{> _newInvestorNotification}}
-    <div class="col hide-on-small-only m3 l2">
-        <ul class="section table-of-contents pinned">
-          <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#structure">Structure</a></li>
-          <li><a href="#initialization">Intialization</a></li>
-        </ul>
-      </div>
     </div>
   {{else}}
     {{> _denyAdmin}}

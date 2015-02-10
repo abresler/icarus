@@ -66,6 +66,7 @@ peerlibrary:blocking@0.5.1
 peerlibrary:xml2js@0.4.4_4
 practicalmeteor:chai@1.9.2_3
 practicalmeteor:loglevel@1.1.0_3
+raix:handlebar-helpers@0.2.4
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4
