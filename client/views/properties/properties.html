@@ -1,8 +1,12 @@
 <template name="properties">
   <div class="map-background">
-    {{#each allProperties}}
-      {{> _property property=this}}
-    {{/each}}
+    <div class="row">
+      {{#each allProperties}}
+      <div class="col s12 m4 l3">
+        {{> _property property=this}}
+      </div>
+      {{/each}}
+    </div>
   </div>
   <div class="red-break"></div>
 </template>

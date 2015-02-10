@@ -1,6 +1,5 @@
 Template.adminPanel.rendered = ->
   $('.scrollspy').scrollSpy()
-  # $('.tabs-wrapper .row').pushpin top: $('.tabs-wrapper').offset().top
 
 Template.adminPanel.events {}
 
@@ -37,7 +36,7 @@ Template._createAccount.events
     $('#username').val('')
     $('#email').val('')
     $('#telephone').val('')
-
+    
 
     # toast("test", 3000)
 

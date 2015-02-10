@@ -1,5 +1,6 @@
 <template name="_viewAccounts">
   <div class="flex-white scrollspy" id="client-list">
+    <div class="red-break-half"></div>
     <div class="container admin-container">
       <h2 class="center-align">
         Client List
@@ -11,11 +12,11 @@
               <th>Contact Name</th>
               <th>Username</th>
               <th>Email</th>
-              <th>Phone</th>      
+              <th>Phone</th>
             </tr>
-          </thead>    
-          <tbody>          
-            {{#each allAccounts}} 
+          </thead>
+          <tbody>
+            {{#each allAccounts}}
               <tr>
                 <td>{{profile.first}} {{profile.last}}</td>
                 <td>{{username}}</td>
@@ -27,5 +28,4 @@
         </table>
     </div>
   </div>
-  <div class="red-break"></div>
 </template>

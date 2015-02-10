@@ -7,13 +7,11 @@ Template.registerHelper "isAdmin", ->
 Template.registerHelper "isInvestor", ->
   if Meteor.user()?.profile.roles.indexOf('client') > -1 then true else false
 
-
 Template.registerHelper "formatMoney", (x) -> # takes in a number, converts it into money format
   x.formatMoney(0)
 
 Template.registerHelper "formatMoney2", (x) -> # takes in number, returns with two decimal places
   x.formatMoney(2)
-
 
 Template.registerHelper "divideByEquity", (x,y) ->
   divideByEquity(x,y).formatMoney(0)
@@ -76,13 +74,24 @@ Template.registerHelper "netOperatingIncome", (a,b,c,d,e) ->
   netOperatingIncome(a,b,c,d,e).formatMoney(0)
 
 Template.registerHelper "filterPhone", (x) ->
-  # console.log x
   if x?
     temp = x.split("")
     areaCode = temp.slice(0, 3).join("")
     firstNum = temp.slice(3, 6).join("")
     secondNum = temp.slice(6, 10).join("")
     phoneNumber = "(#{areaCode}) #{firstNum}-#{secondNum}"
+
+Template.registerHelper "money", (x) ->
+  money = d3.format(',.2f')
+  return money x
+
+Template.registerHelper "transactionConvert", (x) ->
+  x = x * -1
+  money = d3.format(',.2f')
+  return money x
+
+Template.registerHelper "_", ->
+  _
 
 
 

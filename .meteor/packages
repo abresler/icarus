@@ -26,3 +26,4 @@ email
 peerlibrary:xml2js
 momentjs:moment
 mike:mocha
+raix:handlebar-helpers

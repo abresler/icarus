@@ -23,7 +23,7 @@
                         <input type="text" class="validate" id="debt-needed-input">
                       </td>
                     {{else}}
-                      <td id="debt-needed"><a href="">${{needed.debt}}</a></td>
+                      <td id="debt-needed"><a href="">\${{needed.debt}}</a></td>
                     {{/if}}
 
                     {{#if editingEquityRaise}}
@@ -31,7 +31,7 @@
                         <input type="text" class="validate" id="equity-needed-input">
                       </td>
                     {{else}}
-                      <td id="equity-needed"><a href="">${{needed.equity}}</a></td>
+                      <td id="equity-needed"><a href="">\${{needed.equity}}</a></td>
                     {{/if}}
 
                     {{#if editingDebtROI}}
@@ -60,9 +60,9 @@
                     <option value="complete">Complete</option>
                   </select>
                 </div>
-                <!-- <div class="col s12 m6">
+                <div class="col s12 m6">
                   <button class="btn waves-effect waves-light">Submit</button>
-                </div> -->
+                </div>
               </div>
             </div>
           </div>
