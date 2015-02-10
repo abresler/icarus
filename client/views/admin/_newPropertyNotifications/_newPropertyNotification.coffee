@@ -22,24 +22,31 @@ Template._newPropertyNotification.events
 		currentSelect.splice(index, 1)
 		Session.set 'propertiesSelected', currentSelect
 
-	# 'click #submit-property-notification': (e,t) ->
-	# 	message = $('#property-notification').val()
-	# 	currentSelect = Session.get 'propertiesSelected'
+	'click #submit-property-notification': (e,t) ->
+		message = $('#property-notification').val()
+		currentSelect = Session.get 'propertiesSelected'
+		allUsers = Meteor.users.find().fetch()
+		owners = []
 
+		ownerIds = _.flatten (_.pluck currentSelect, 'owners')
 
+		ownerIds.forEach (id, i) ->
+			owner = _.findWhere allUsers, {_id: id}
+			owners.push owner
 
-		# if currentSelect.length == 0
-		# 	alert 'No recipient for this message!'
-		# else if message.length < 10
-		# 	alert 'Message too short'
-		# else
-		# 	Notifications.insert
-		# 		investors: currentSelect
-		# 		message: message
-		# 		sent: Date.now()
-		# 		type: 'property'
-		# 	alert 'Message sent successfully!'
-		# 	$('#property-notification').val('')
+		if currentSelect.length == 0
+			alert 'No recipient for this message!'
+		else if message.length < 10
+			alert 'Message too short'
+		else
+			Notifications.insert
+				investors: ownerIds
+				properties: currentSelect
+				message: message
+				sent: Date.now()
+				type: 'property'
+			alert 'Message sent successfully!'
+			$('#property-notification').val('')
 
 Template._newPropertyNotification.helpers
 	allProperties: ->

@@ -29,13 +29,16 @@ Template._newInvestorNotification.events
 		message = $('#investor-notification').val()
 		currentSelect = Session.get 'selected'
 
+		investorIds = _.flatten (_.pluck currentSelect, '_id')
+
 		if currentSelect.length == 0
 			alert 'No recipient for this message!'
 		else if message.length < 10
 			alert 'Message too short'
 		else
 			Notifications.insert
-				investors: currentSelect
+				investors: investorIds
+				properties: null
 				message: message
 				sent: Date.now()
 				type: 'investor'
