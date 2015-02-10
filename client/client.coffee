@@ -7,7 +7,6 @@ Template.registerHelper "isAdmin", ->
 Template.registerHelper "isInvestor", ->
   if Meteor.user()?.profile.roles.indexOf('client') > -1 then true else false
 
-
 Template.registerHelper "formatMoney", (x) -> # takes in a number, converts it into money format
   x.formatMoney(0)
 
@@ -75,7 +74,6 @@ Template.registerHelper "netOperatingIncome", (a,b,c,d,e) ->
   netOperatingIncome(a,b,c,d,e).formatMoney(0)
 
 Template.registerHelper "filterPhone", (x) ->
-  # console.log x
   if x?
     temp = x.split("")
     areaCode = temp.slice(0, 3).join("")
