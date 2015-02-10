@@ -28,18 +28,25 @@ Template.singleProperty.rendered = ->
 Template._termSheet.rendered = ->
   # If there is no termsheet, we will give one to icarus with no values, but 100% ownership
   if TermSheets.find( "property._id": @data._id).count() is 0
-    TermSheets.insert
-      apr: 0
-      capitalPercNeeded: 0
-      downPaymentPerc: 0
-      equityPerc: 100
-      hoa: 0
-      insurance: 0
-      owner: Meteor.users.findOne(username: "Icarus")._id
-      property: @data
-      purchasePrice: 0
-      rentPrice: 0
-      taxes: 0
+
+    ownerIdArray = @data.owners
+    property = @data
+
+    ownerIdArray.forEach (ownerId) ->
+      owner = Meteor.users.findOne(ownerId)
+
+      TermSheets.insert
+        apr: 0
+        capitalPercNeeded: 0
+        downPaymentPerc: 0
+        equityPerc: 100
+        hoa: 0
+        insurance: 0
+        owner: owner
+        property: property
+        purchasePrice: 0
+        rentPrice: 0
+        taxes: 0
 
 
 
@@ -50,11 +57,10 @@ Template._clientTermSheet.helpers
       'owner._id': Meteor.user()._id
 
 
-
-
-
 Template._adminTermSheet.rendered = ->
-  $('ul.tabs').tabs()
+  Meteor.setTimeout -> # TODO this is the lazy way to take care of new termsheet creation, which causes hte tabs to be created after the template has been rendered, and thus, initialized. ideally, this would use an autorun
+    $('ul.tabs').tabs()
+  , 250
 
 Template._adminTermSheet.helpers
   owners: ->
