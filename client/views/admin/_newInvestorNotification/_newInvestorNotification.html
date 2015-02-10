@@ -1,0 +1,34 @@
+<template name="_newInvestorNotification">
+  <div class="flex-white admin-container">
+    <div class="container">
+      <h2 class="center-align">New Investor Notification</h2>
+      <form>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select id="investor-notification-selection" class="browser-default">
+              <option id="investor-default" value="" disabled selected>Add an Investor</option>
+            {{#each allInvestors}}
+              <option value="{{username}}">{{username}}</option>
+            {{/each}}
+            </select>
+          </div>
+          <div class="col s12 m6">
+            <ul>
+              {{#each investors}}
+                <li id="remove-investor"><i class="fa fa-times"></i><span> {{username}}</span></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 input-field">
+            <textarea name="investor-notification" id="investor-notification" cols="30" rows="10" class="materialize-textarea"></textarea>
+            <label>Notification Text</label>
+          </div>
+        </div>
+        <button type="button" id="submit-investor-notification" class="btn waves-effect waves-light">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="red-break full"></div>
+</template>
