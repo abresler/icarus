@@ -10,17 +10,17 @@ Template.calculator.events
 	'click #capbutton': (e, t) ->
 		invest = t.find('#invest').value
 		net = t.find('#income').value * 12
-		Session.set 'capRate', parseInt(net) / parseInt(invest)
+		Session.set 'capRate', +(net) / +(invest) * 100
 
 	'click #invest-button': (e, t) ->
 		cap = t.find('#cap').value
 		net = t.find('#income').value * 12
-		Session.set 'totInvest', parseInt(net) / parseInt(cap)
+		Session.set 'totInvest', +(net) / +(cap)
 
 	'click #income-button': (e, t) ->
 		cap = t.find('#cap').value
 		invest = t.find('#invest').value
-		Session.set 'monthNet', parseInt(cap) * parseInt(invest)
+		Session.set 'monthNet', +(cap) * +(invest)
 
 Template.calculator.helpers
 	capRate: ->
