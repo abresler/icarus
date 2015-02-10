@@ -23,8 +23,6 @@ Template.singleProperty.rendered = ->
       map: map
       title: street
 
-
-
 Template._termSheet.rendered = ->
   # If there is no termsheet, we will give one to icarus with no values, but 100% ownership
   if TermSheets.find( "property._id": @data._id).count() is 0
@@ -47,8 +45,6 @@ Template._termSheet.rendered = ->
         purchasePrice: 0
         rentPrice: 0
         taxes: 0
-
-
 
 Template._clientTermSheet.helpers
   owner: ->
