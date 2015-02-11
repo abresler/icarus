@@ -165,6 +165,14 @@ Template._assetTimeline.rendered = ->
 			.attr 'transform', 'translate(' + yAxisTransform + ',0)'
 			.call yAxis.tickSize(-width + (2 * yAxisTransform), 0, 0).tickFormat("")
 
+		vertical = svg.append('line')
+			.attr 'x1', yAxisTransform
+			.attr 'y1', 0
+			.attr 'x2', yAxisTransform
+			.attr 'y2', height - 20
+			.attr 'stroke', 'red'
+			.attr 'id', 'vertical-line'
+
 		rect = svg.append 'g'
 			.attr 'class', 'background'
 			.attr 'fill', 'white'
@@ -177,14 +185,6 @@ Template._assetTimeline.rendered = ->
 		    .on "mousemove", mousemove
 		    .on "mouseover", -> legendGroup.style('display', null)
 		    .on "mouseout", -> legendGroup.style('display', 'none')
-
-		vertical = svg.append('line')
-			.attr 'x1', yAxisTransform
-			.attr 'y1', 0
-			.attr 'x2', yAxisTransform
-			.attr 'y2', height - 20
-			.attr 'stroke', 'red'
-			.attr 'id', 'vertical-line'
 
 		line = d3.svg.line()
 			.interpolate('linear')
