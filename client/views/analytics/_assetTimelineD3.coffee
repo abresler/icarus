@@ -76,7 +76,7 @@ Template._assetTimeline.rendered = ->
 
 			if x > mid
 				d3.selectAll '#_assetTimeline .legend'
-					.attr 'x', (position[0] - legend.boxWidth)
+					.attr 'x', (position[0] - (legend.boxWidth + 10))
 					.attr 'y', (position[1])
 			else 
 				d3.selectAll '#_assetTimeline .legend'
@@ -176,7 +176,7 @@ Template._assetTimeline.rendered = ->
 		rect = svg.append 'g'
 			.attr 'class', 'background'
 			.attr 'fill', 'white'
-			.attr 'opacity', 0.8
+			.attr 'opacity', 0.4
 
 		rect.append 'rect'
 			.attr 'x', yAxisTransform
@@ -227,7 +227,7 @@ Template._assetTimeline.rendered = ->
 			.attr 'width', legend.boxWidth
 			.attr 'stroke', '#D1122B'
 			.attr 'stroke-width', 1
-			.attr 'transform', 'translate(0,' + 20 + ')'
+			.attr 'transform', 'translate(5,' + 20 + ')'
 			.attr 'fill', 'none'
 
 		legendGroup.append 'rect'
@@ -235,6 +235,7 @@ Template._assetTimeline.rendered = ->
 			.attr 'id', 'date-box'
 			.attr 'height', 20
 			.attr 'width', legend.boxWidth
+			.attr 'transform', 'translate(5,0)'
 			.attr 'fill', '#D1122B'
 
 		legendGroup.append 'rect'
