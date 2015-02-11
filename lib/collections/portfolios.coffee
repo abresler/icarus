@@ -49,3 +49,22 @@ owner:
 property:
 
 ###
+
+
+
+
+
+###
+
+{
+  type: (debt, equity, etc)
+  date:
+  amount:
+  owner:
+  property:
+  
+  event: (optional)
+  notes: (optional)
+}
+
+###
