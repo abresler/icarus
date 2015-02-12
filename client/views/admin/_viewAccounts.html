@@ -18,8 +18,8 @@
           <tbody>
             {{#each allAccounts}}
               <tr>
-                <td>{{profile.first}} {{profile.last}}</td>
-                <td>{{username}}</td>
+                <td><a href="{{pathFor 'profile'}}" class="client-link">{{profile.first}} {{profile.last}}</a></td>
+                <td><a href="{{pathFor 'profile'}}" class="client-link">{{username}}</a></td>
                 <td>{{profile.email}}</td>
                 <td>{{filterPhone profile.telephone}}</td>
               </tr>

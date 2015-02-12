@@ -44,4 +44,10 @@ Router.map ->
       Properties.findOne(@params._id)
     controller: "AdminPropertyController"
 
+  @route 'profile',
+    path: 'admin/profile/:_id'
+    data: ->
+      Meteor.users.findOne(@params._id)
+    controller: "ProfileController"
+
   return

@@ -14,7 +14,7 @@ Template._addProperty.helpers
   ownersList: ->
     owners = Session.get "ownersList"
     result = []
-    _.keys(owners).forEach (key) ->
+    _.keys(owners)?.forEach (key) ->
       tempObj =
         username: Meteor.users.findOne(_id: key).username
         _id: key
