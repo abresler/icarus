@@ -1,0 +1,9 @@
+<template name="profile">
+  {{#if isAdmin}}
+    {{> _investorProfile}}
+  {{else}}
+    <h2 class="center-align">
+      Please log in
+    </h2>
+  {{/if}}
+</template>

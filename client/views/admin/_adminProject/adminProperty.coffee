@@ -78,16 +78,6 @@ Template._adminPropertyCard.events
 
       Session.set("editingEquityROI", false)
 
-  'change #change-status': (e,t) ->
-    x = confirm "Are you sure you want to change the status of this property?"
-    if x
-      Properties.update
-        _id: @_id
-      ,
-        $set:
-          "status": t.find('#change-status').value
-      Router.go 'adminPanel'
-    $('#change-status').val('')
 
 Template._adminPropertyCard.helpers
   editingDebtRaise: ->

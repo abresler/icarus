@@ -23,7 +23,7 @@
                         <input type="text" class="validate" id="debt-needed-input">
                       </td>
                     {{else}}
-                      <td id="debt-needed"><a href="">${{needed.debt}}</a></td>
+                      <td id="debt-needed"><a href="">${{formatMoney needed.debt}}</a></td>
                     {{/if}}
 
                     {{#if editingEquityRaise}}
@@ -31,7 +31,7 @@
                         <input type="text" class="validate" id="equity-needed-input">
                       </td>
                     {{else}}
-                      <td id="equity-needed"><a href="">${{needed.equity}}</a></td>
+                      <td id="equity-needed"><a href="">${{formatMoney needed.equity}}</a></td>
                     {{/if}}
 
                     {{#if editingDebtROI}}
@@ -39,7 +39,7 @@
                         <input type="text" class="validate" id="debt-roi-input">
                       </td>
                     {{else}}
-                      <td id="debt-roi"><a href="">{{needed.debtROI}}%</a></td>
+                      <td id="debt-roi"><a href="">{{formatMoney2 needed.debtROI}}%</a></td>
                     {{/if}}
 
                     {{#if editingEquityROI}}
@@ -47,26 +47,50 @@
                         <input type="text" class="validate" id="equity-roi-input">
                       </td>
                     {{else}}
-                      <td id="equity-roi"><a href="">{{needed.equityROI}}%</a></td>
+                      <td id="equity-roi"><a href="">{{formatMoney2 needed.equityROI}}%</a></td>
                     {{/if}}
                   </tr>
                 </tbody>
               </table>
-              <div class="row" style="margin: 2rem 0;">
-                <div class="col s12 m6">
-                  <select class="browser-default" id="change-status">
-                    <option value="" disabled selected>Change Status</option>
-                    <option value="pending">Pending</option>
-                    <option value="complete">Complete</option>
-                  </select>
-                </div>
-                <div class="col s12 m6">
-                  <button class="btn waves-effect waves-light">Submit</button>
-                </div>
-              </div>
+              {{> _adminPropertyCardDropdowns}}
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="_adminPropertyCardDropdowns">
+  <div class="row" style="margin: 2rem 0;">
+    <div class="input-field col s12 m6">
+      <select id="investor-change" class="browser-default">
+        <option id="investor-default" value="" disabled selected>Add an Investor</option>
+      {{#each allAccounts}}
+        <option value="{{username}}">{{username}}</option>
+      {{/each}}
+      </select>
+    </div>
+    <div class=" input-field col s12 m6">
+      <select class="browser-default" id="change-status">
+        <option value="" disabled selected>Change Status</option>
+        <option value="pending">Pending</option>
+        <option value="complete">Complete</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <ul>
+        {{#each ownersList}}
+        <li><a href=""><i class="fa fa-times"></i></a> {{this.username}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col s12 m6">
+      <div class="right-align">
+        <button class="btn waves-effect waves-light">Submit</button>
       </div>
     </div>
   </div>
