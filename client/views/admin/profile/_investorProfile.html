@@ -1,0 +1,31 @@
+<template name="_investorProfile">
+  <div class="container">
+    <h3 class="center-align lead">{{username}}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>State</th>
+          <!-- <th>Purchase Price</th> --> <!-- TODO eventually this would be nice to get from termsheet -->
+          <th>Zestimate</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each properties}}
+          <tr>
+            <td><a class="red-link" href="{{pathFor 'singleProperty'}}">{{street}}</a></td>
+            <td>{{state}}</td>
+            <!-- <td></td> -->
+            <td>${{formatMoney zestimate}}</td>
+            <td>N/A</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="_investorProperties">
+
+</template>
