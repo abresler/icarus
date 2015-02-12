@@ -95,8 +95,6 @@ Template._timeline.rendered = ->
 				min = d3.min(set, (d) -> new Date(d.date) )
 				max = d3.max(set, (d) -> new Date(d.date) )
 
-				console.log set
-				console.log i
 
 			# 	d0 = set[i - 1]
 			# 	d1 = set[i]
@@ -199,7 +197,7 @@ Template._timeline.rendered = ->
 			.attr 'id', 'vertical-line'
 
 		line = d3.svg.line()
-			.interpolate('linear')
+			.interpolate('cardinal')
 			.x (d) -> xScale new Date(d.date)
 			.y (d) -> yScale d.amount
 

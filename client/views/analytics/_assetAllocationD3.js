@@ -1,12 +1,15 @@
 Template._assetAllocation.rendered = function() {
 
+  // d3.select('#analytics-numbers').style('height', rowHeight+'px')
+  // d3.select('#analytics-notifications').style('height', rowHeight+'px')
+
   Session.set("activeTotal", 0);
   Session.set("activePercentage", 0);
 
-  createAssetAllocation = function() {
+  createAssetAllocation = function(width, height) {
 
-    var width = 300,
-    height = 300,
+    var width = width,
+    height = height,
     radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal() // We should change these colors to something more interesting than red... Especially if we are going to do a hover over
@@ -67,6 +70,7 @@ Template._assetAllocation.rendered = function() {
 
       var svg = d3.select("#analytics-asset-allocation")
         .append("svg")
+        .attr('class', 'pie')
         .attr({
           height: height,
           width: width
@@ -114,6 +118,18 @@ Template._assetAllocation.rendered = function() {
         })
   };
 
+  var createAssetLegend = function() {
+    var svg = d3.select("#analytics-asset-allocation")
+        .append("svg")
+        .attr('class', 'asset-legend')
+        .attr({
+          height: height,
+          width: width
+        })
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+  }
+
   var assetAllocationPercentage = 0;
 
   function pieSliceToggle(element){
@@ -138,7 +154,14 @@ Template._assetAllocation.rendered = function() {
     Session.set("activeTotal", activeTotal);
     Session.set("activePercentage", +(activeTotal*100/sum).toFixed(2))
   }
-  createAssetAllocation();
+
+  height = d3.select('#mid-analytics').property('clientHeight')
+  width = d3.select('#mid-analytics').property('clientWidth')
+  d3.select('#analytics-allocation').style('height', height+'px')
+
+  // CALLING THE CHARTS TO BE ON THE PAGE
+  createAssetAllocation(width, 300);
+  createAssetLegend(width, 300);
 
   Meteor.setTimeout(function(){
     var e = document.createEvent('UIEvents');
@@ -158,3 +181,7 @@ Template._assetAllocation.helpers({
   }
 
 });
+
+
+
+
