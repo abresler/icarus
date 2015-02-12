@@ -3,6 +3,11 @@
     <div class="card-content">
   	<h5 class="center-align">Assets</h5>
       <div id="_assetTimeline" style="height: 25rem;"></div>
+      <div class="collection">
+      	{{#each details}}
+	        <a href="#!" class="collection-item">{{address.street}}</a>	    
+        {{/each}}
+      </div>
     </div>
   </div>
 </template>

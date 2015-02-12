@@ -26,7 +26,12 @@ Meteor.methods
     futures = _.map zpids, (id, index) ->
       future = new Future();  
       Meteor.http.call "GET", "http://www.zillow.com/ajax/homedetail/HomeValueChartData.htm?mt=1&zpid=#{ id }&format=json", (err, data) ->
-        future.return(data)  
+        Meteor.http.call "GET", "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1e01y8ugd8r_1brbp&zpid=#{ id }", (err, homeData) ->
+          homeObj = {
+            data: data
+            details: homeData
+          }
+          future.return homeObj
       future
 
     results = _.map futures, (future, index) ->
@@ -34,5 +39,15 @@ Meteor.methods
 
     results
 
+  # getDetails: (zpids) ->
+  #   futures = _.map zpids, (id, index) ->
+  #     future = new Future();  
+  #     Meteor.http.call "GET", "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1e01y8ugd8r_1brbp&zpid=#{ id }", (err, data) ->
+  #       xml2js.parseString(data.content, (err, res) -> 
+  #         future.return(res)
+  #       )
+  #     future
 
-
+  #   results = _.map futures, (future, index) ->
+  #     result = future.wait()
+  #   results

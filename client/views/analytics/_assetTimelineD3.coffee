@@ -1,5 +1,7 @@
 Template._assetTimeline.rendered = ->
 
+	Session.set 'homes', []
+
 	height = d3.select('#_assetTimeline').property('clientHeight') - 20
 	width = d3.select('#_assetTimeline').property('clientWidth')
 
@@ -14,10 +16,15 @@ Template._assetTimeline.rendered = ->
 
 	# ids = _.pluck(temp, 'zpid')
 
-	ids = [2105388632]
+	ids = [39793448, 39800042]
+	console.log ids
 	
 	Meteor.call 'getProperties', ids, (err, res) ->
-		data = [].concat(res)
+		console.log res
+		dtemp = _.pluck(res, 'data')
+		data = [].concat(dtemp)
+		console.log data
+
 		homes = []
 
 		for d in data
@@ -258,3 +265,30 @@ Template._assetTimeline.rendered = ->
 			.attr 'fill', 'white'
 			.attr 'text-anchor', 'middle'
 			.style 'font-size', '12px'
+
+
+	# Meteor.call 'getDetails', ids, (err, res) -> 
+	# 	data = [].concat(res)
+	# 	homeDetails = []
+	# 	parse1 = _.pluck(data, 'Zestimate:zestimate')
+	# 	parse2 = _.pluck(parse1, 'response')
+
+	# 	console.log parse2
+
+		# address = _.pluck(homeDetails, 'address')
+		# zpid = _.pluck(homeDetails, 'zpid')
+
+		# # street: x["address"]["0"]["street"]["0"]
+		# # city: x["address"]["0"]["city"]["0"]
+		# # lat: x["address"]["0"]["latitude"]["0"]
+		# # long: x["address"]["0"]["longitude"]["0"]
+		# # state: x["address"]["0"]["state"]["0"]
+		# # zip: x["address"]["0"]["zipcode"]["0"]
+		# # zestimate: x["zestimate"]["0"]["amount"]["0"]["_"]
+		# # zpid: x["zpid"]["0"]
+
+		# Session.set 'homes', 
+
+Template._assetTimeline.helpers
+	details: -> 
+		Session.get 'homes'
