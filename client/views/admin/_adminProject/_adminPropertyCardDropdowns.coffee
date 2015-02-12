@@ -7,7 +7,6 @@ Template._adminPropertyCardDropdowns.helpers
 
   ownersList: ->
     owners = Session.get "ownersList"
-    console.log owners
     result = []
     _.keys(owners)?.forEach (key) ->
       tempObj =
@@ -18,15 +17,7 @@ Template._adminPropertyCardDropdowns.helpers
 
 Template._adminPropertyCardDropdowns.events
   'change #change-status': (e,t) ->
-    x = confirm "Are you sure you want to change the status of this property?"
-    if x
-      Properties.update
-        _id: @_id
-      ,
-        $set:
-          "status": t.find('#change-status').value
-      Router.go 'adminPanel'
-    $('#change-status').val('')
+
 
   'change #investor-change': (e,t) ->
     tempObject = Session.get 'ownersList'
@@ -38,3 +29,18 @@ Template._adminPropertyCardDropdowns.events
     owners = Session.get 'ownersList'
     console.log owners
     Session.set 'ownersList', _.omit(owners, @username)
+
+  'click button': (e,t) ->
+    e.preventDefault()
+    if confirm "Are you sure you want to change the status of this property?"
+      idArray = []
+      _.keys(Session.get 'ownersList').forEach (username) ->
+        idArray.push(Meteor.users.findOne(username: username)._id)
+
+      Properties.update
+        _id: @_id
+      ,
+        $set:
+          "owners": idArray
+          "status": t.find('#change-status').value
+      Router.go 'adminPanel'
