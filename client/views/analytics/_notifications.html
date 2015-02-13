@@ -1,12 +1,18 @@
 <template name="_notifications">
-  <div class="card analytics-card">
+  <div id="analytics-notifications" class="card analytics-card">
     <div class="card-content">
-      <h5 class="center-align">Notifications<span class="new badge" style="float: none; margin: 1rem; padding: 0.5rem 1rem;">{{notificationNumber}}</span></h5>
-      <ul class="collection notifications-card">
-        {{#each notifications}}
-          <li class="notifications"><a href="" class="collection-item"><span class="note-left">{{shortDate sent}}</span>{{message}}</a></li>
-        {{/each}}
-      </ul>
+      <h5 class="center-align">Notifications</h5>
+       <table class="hoverable">
+        <tbody>
+          {{#each notifications}}
+            <tr>
+              <td class="td-date">{{shortDate sent}}</td>
+              <td class="td-note">{{message}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
+

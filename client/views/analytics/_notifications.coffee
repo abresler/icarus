@@ -1,4 +1,6 @@
 Template._notifications.rendered = ->
+	rowHeight = d3.select('#analytics-allocation').property('clientHeight')
+	d3.select('#analytics-notifications').style('height', rowHeight+'px')
 	Session.setDefault 'notice', []
 	userID = Meteor.user()._id
 	userNotes = []

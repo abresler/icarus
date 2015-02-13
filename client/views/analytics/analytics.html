@@ -1,14 +1,16 @@
 <template name="analytics">
   {{# if isInvestor}}
   <div class="wood-background">
-    <div class="row" style="padding-top:2rem;">
-      <div class="col s12 l4 m6">
+    <div class="row">
+      <div class="col s12">
+        {{> _newProjects}}
+      </div>
+    </div>
+    <div class="row" id="mid-analytics">
+      <div class="col s12 l8 m8">
         {{> _assetAllocation}}
       </div>
-      <div class="col s12 l4 m6">
-        {{> _analyticsNumbers}}
-      </div>
-      <div class="col s12 l4 m6">
+      <div class="col s12 l4 m4">
         {{> _notifications}}
       </div>
     </div>
@@ -26,11 +28,6 @@
             {{> _assetTimeline}}
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        {{> _newProjects}}
       </div>
     </div>
   </div>

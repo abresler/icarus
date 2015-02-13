@@ -226,6 +226,15 @@ nav ul li:hover, nav ul li.active {
   padding: 0;
 }
 
+a.collection-item.analytics-property {
+  border-top: none;
+}
+
+div.analytics-properties {
+  height: 200px;
+  overflow-y: scroll;
+}
+
 .property-image {
   max-height: 100%;
   max-width: 100%;
@@ -486,6 +495,7 @@ ul.table-of-contents h6{
   padding-right: 2rem;
 }
 
+
 .client-link {
   color: $red;
 }
@@ -499,4 +509,16 @@ ul.table-of-contents h6{
     padding: 0;
   }
   padding: 0;
+}
+
+.td-date {
+  width: 20%;
+}
+
+.td-note {
+  width: 70%;
+}
+
+.td-archive {
+  width: 10%;
 }
