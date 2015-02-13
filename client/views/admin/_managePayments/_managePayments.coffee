@@ -1,4 +1,5 @@
 Template._managePayments.rendered = ->
+
 	bank = Bank.find().fetch()
 	Session.set 'bank', bank[0].data.data
 

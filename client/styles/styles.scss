@@ -486,10 +486,23 @@ ul.table-of-contents h6{
   padding-right: 2rem;
 }
 
+
 .client-link {
   color: $red;
 }
 
 .red-link {
   color: $red;
+}
+
+.td-date {
+  width: 20%;
+}
+
+.td-note {
+  width: 70%;
+}
+
+.td-archive {
+  width: 10%;
 }
