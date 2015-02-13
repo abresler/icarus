@@ -832,6 +832,40 @@ Meteor.startup ->
       event: ""
       notes: ""
 
+    Portfolios.insert
+      type: "asset"
+      date: "15 October 2013"
+      amount: 120000
+      owner: wof
+      property: property1
+      event: "Purchase property 1"
+      notes: ""
+
+    Portfolios.insert
+      type: "asset"
+      date: "15 November 2014"
+      amount: 140000
+      owner: wof
+      property: property1
+      event: "Sale of property 1"
+
+    Portfolios.insert
+      type: "asset"
+      date: "15 January 2014"
+      amount: 220000
+      owner: wof
+      property: property2
+      event: "Purchase property 2"
+
+    Portfolios.insert
+      type: "asset"
+      date: "15 February 2014"
+      amount: 110000
+      owner: wof
+      property: property3
+      event: "Purchase property 3"
+
+
 
 
 
