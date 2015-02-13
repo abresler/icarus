@@ -35,7 +35,7 @@ if !(typeof MochaWeb == 'undefined')
       describe 'isAdmin for client', ->
         it 'should not work for client', (done) ->
           Meteor.loginWithPassword "wofholdings", "wofpassword", (err) ->
-            temp = if Meteor.user().profile.roles.indexOf("client") > -1 then false else true
+            temp = if Meteor.user().profile.roles.indexOf("client") > -1 then false else true # TODO change to isAdmin function
             chai.expect(temp).to.equal(false)
             done()
             return
