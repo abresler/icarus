@@ -1,9 +1,13 @@
 Template._addProperty.rendered = ->
   $('select').material_select()
   Session.set "ownersList", {}
+  Session.set 'addingProperty', false
   return
 
 Template._addProperty.helpers
+  addingProperty: ->
+    Session.get 'addingProperty'
+
   allAccounts: ->
     Meteor.users.find()
 
@@ -12,7 +16,7 @@ Template._addProperty.helpers
       status: "complete"
 
   ownersList: ->
-    owners = Session.get "ownersList"
+    owners = Session.get "ownersList" # TODO now that we've changed it, we have a context issue
     result = []
     _.keys(owners)?.forEach (key) ->
       tempObj =
@@ -32,6 +36,9 @@ Template._addProperty.helpers
 
 
 Template._addProperty.events
+  'click #add-property': (e,t) ->
+    Session.set 'addingProperty', true
+
   'change select': (e,t) ->
     tempObject = Session.get 'ownersList'
     tempObject[t.find('select').value] = 0
@@ -72,33 +79,14 @@ Template._addProperty.events
               zestimate: zData["amount"]["0"]["_"]
               zpid: id
               history: history
-                  # bed: bed
-                  # bath: bath
-                  # sqft: sqft
-                  # lotSizeSqft: lotSizeSqFt
-                  # rooms: rooms
-                  # yearBuilt: yearBuilt
-                  # imagesArray: imagesArray
               status: "complete"
 
             Properties.insert insertProperty
             Session.set 'ownersList', {}
             alert "Successfully added property!"
 
-          #   Session.set 'ownersList', {}
-
-          #   alert "Successfully added property!"
-
-          #   # Meteor.call 'getPropertyImages', +t.find('#zpid').value, (err,res2) ->
-          # #   console.error "Error with Zillow Details API call." if err
-          # #   if res2["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] is "0" # this is the message code for "success"
-          # #
-          # #     y = res2["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["editedFacts"]["0"]
-          # #
-          # #   else console.log res2["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["text"]["0"] # this is the message if details api was not successful
-          # #
-
       else alert "Must add at least one owner."
     else alert "Please enter a valid ZPID."
     $('select').val('')
     $('input').val('')
+    Session.set 'addingProperty', false
