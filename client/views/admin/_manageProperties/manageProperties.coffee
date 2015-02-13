@@ -32,7 +32,7 @@ Template._addProperty.helpers
     temp.join(", ")
 
   purchasePrice: (propId) ->
-    "$" + TermSheets.findOne( "property._id": propId ).purchasePrice.formatMoney(0)
+    "$" + TermSheets.findOne( "property._id": propId )?.purchasePrice.formatMoney(0)
 
 
 Template._addProperty.events

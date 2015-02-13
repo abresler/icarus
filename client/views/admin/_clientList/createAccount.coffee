@@ -13,7 +13,6 @@ Template._viewAccounts.events
     Session.set 'addingAccount', true
 
   'click #create-new-account': (e,t) ->
-
     first = t.find('#firstName').value
     last = t.find('#lastName').value
     username = t.find('#username').value
@@ -27,9 +26,5 @@ Template._viewAccounts.events
     $('#username').val('')
     $('#email').val('')
     $('#telephone').val('')
-
-
-
-
 
     Session.set 'addingAccount', false
