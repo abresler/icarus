@@ -12,14 +12,6 @@ Meteor.startup ->
         roles: ["admin"]
 
     Accounts.createUser
-      username: "client"
-      password: "clientpassword"
-      profile:
-        first: "Client"
-        last: "Name"
-        roles: ["client"]
-
-    Accounts.createUser
       username: "Icarus"
       password: "icaruspassword"
       profile:
@@ -28,19 +20,39 @@ Meteor.startup ->
         roles: ["client"]
 
     Accounts.createUser
-      username: 'testclient'
-      password: 'testclientpassword'
+      username: 'samcorcos'
+      password: 'sampassword'
       profile:
-        first: "Test"
-        last: "Client"
+        first: "Sam"
+        last: "corcos"
         roles: ['client']
         email: "samcorcos@gmail.com"
         telephone: "4155154630"
 
+    Accounts.createUser
+      username: 'johnoreilly'
+      password: 'johnpassword'
+      profile:
+        first: "John"
+        last: "O'Reilly"
+        roles: ['client']
+        email: 'john@oreillyinvestment.com'
+        telephone: '2124245231'
+
+    Accounts.createUser
+      username: 'wofholdings'
+      password: 'wofpassword'
+      profile:
+        first: "Leon"
+        last: 'Gillies'
+        roles: ['client']
+        email: 'leon@wofholdings.com'
+        telephone: '4154839933'
+
   # Seeding the database with a property
   if Properties.find().count() is 0
     owner = Meteor.users.findOne( username: "Icarus")._id
-    owner2 = Meteor.users.findOne( username: "client")._id
+    owner2 = Meteor.users.findOne( username: "wofholdings")._id
 
     Properties.insert
       bath: "3.0"
@@ -75,7 +87,7 @@ Meteor.startup ->
   # Seeding the database with a termsheet
   if TermSheets.find().count() is 0
 
-    testclient = Meteor.users.findOne("username": "client")
+    testclient = Meteor.users.findOne("username": "wofholdings")
     icarus = Meteor.users.findOne('username': "Icarus")
     property = Properties.findOne()
 
