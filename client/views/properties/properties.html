@@ -1,12 +1,43 @@
 <template name="properties">
   <div class="map-background">
-    <div class="row">
+    <div style="height:2rem;"></div>
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Street</th>
+                <th>State</th>
+                <th>Price</th>
+                <th>Other</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each allProperties}}
+              <tr class="all-properties-row">
+                <!-- <td><a href="{{pathFor 'singleProperty'}}"><img src="{{image}}" style="max-height:10rem;max-width:10rem;" alt=""></a></td> -->
+                <td><a href="{{pathFor 'singleProperty'}}"><div style="height:5rem;width:8rem;background-color:#ccc;"></div></a></td>
+                <td style="font-size:1.6em;"><a href="{{pathFor 'singleProperty'}}" class="red-link">{{street}}</a></td>
+                <td style="font-size:1.6em;">{{state}}</td>
+                <td style="font-size:1.6em;">${{formatMoney zestimate}}</td>
+                <td style="font-size:1.6em;">N/A</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div style="height:2rem;"></div>
+    <!-- <div class="row">
       {{#each allProperties}}
       <div class="col s12 m4 l3">
         {{> _property property=this}}
       </div>
       {{/each}}
-    </div>
+    </div> -->
   </div>
   <div class="red-break"></div>
 </template>
