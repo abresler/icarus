@@ -1,5 +1,10 @@
 Meteor.startup ->
 
+  # after a Properties.insert, set these values to the mongo ID so they can be used in Portolios (and term sheet?)
+  property1 = undefined
+  property2 = undefined
+  property3 = undefined
+
   # Seeding the database with new users
   if Meteor.users.find().count() is 0
 
@@ -36,7 +41,7 @@ Meteor.startup ->
         first: "John"
         last: "O'Reilly"
         roles: ['client']
-        email: 'john@oreillyinvestment.com'
+        email: 'john@oreillyinvestments.com'
         telephone: '2124245231'
 
     Accounts.createUser
@@ -54,7 +59,7 @@ Meteor.startup ->
     owner = Meteor.users.findOne( username: "Icarus")._id
     owner2 = Meteor.users.findOne( username: "wofholdings")._id
 
-    Properties.insert
+    property1 = Properties.insert
       bath: "3.0"
       bed: "3"
       city: "Midlothian"
@@ -83,13 +88,41 @@ Meteor.startup ->
       zip: "60445"
       zpid: "4213212"
 
+    property2 = Properties.insert
+      city: "Talent"
+      lat: "42.250025"
+      long: "-133.786568"
+      owners: [
+        owner
+        owner2
+      ]
+      state: "OR"
+      status: "complete"
+      street: "230 Autumn Ridge Dr"
+      zestimate: "258932"
+      zip: "97540"
+      zpid: "48363984"
+
+    property3 = Properties.insert
+      city: "Canton"
+      lat: "44.601894"
+      long: "-75.1742"
+      owners: [
+        owner
+        owner2
+      ]
+      state: "NY"
+      status: "complete"
+      street: "10 Fairlane Dr"
+      zestimate: "113497"
+      zip: "13617"
+      zpid: "32533232"
 
   # Seeding the database with a termsheet
   if TermSheets.find().count() is 0
 
-    testclient = Meteor.users.findOne("username": "wofholdings")
+    wof = Meteor.users.findOne("username": "wofholdings")
     icarus = Meteor.users.findOne('username': "Icarus")
-    property = Properties.findOne()
 
     TermSheets.insert
       purchasePrice: 38000
@@ -102,8 +135,8 @@ Meteor.startup ->
       rentPrice: 1400
       equityPerc: 60
       capitalPercNeeded: 60
-      property: property
-      owner: testclient # assigning the owner to
+      property: property1
+      owner: wof # assigning the owner to
 
     TermSheets.insert
       purchasePrice: 38000
@@ -116,7 +149,7 @@ Meteor.startup ->
       rentPrice: 1400
       equityPerc: 40
       capitalPercNeeded: 60
-      property: property
+      property: property1
       owner: icarus # assigning the owner to
 
 
@@ -125,984 +158,689 @@ Meteor.startup ->
   # Seeding the database with the returns for three investors
   if Portfolios.find().count() is 0
 
-    # First property. Two years of payments, no sale
+    wof = Meteor.users.findOne("username": "wofholdings")
+    icarus = Meteor.users.findOne('username': "Icarus")
+
+    # First property
     Portfolios.insert
-      d: [
-        {
-          date: "1 January 2015"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 December 2013"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 September 2013"
-          amount: 132
-          event: "First debt payment for Property X"
-        }
-      ]
-      e: [
-        {
-          date: "1 January 2015"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: -120
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: -1200
-          event: "Roof Collapsed"
-        }
-        {
-          date: "1 December 2013"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 312
-          event: "First equity payment for Property X"
-        }
-      ]
-      ra: [
-        {
-          date: "1 January 2015"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 December 2013"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 September 2013"
-          amount: -30000
-          event: "Purchase of Property X"
-        }
-      ]
-      ua: [
-        {
-          date: "1 January 2015"
-          amount: 400
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 120
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: -1000
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 100
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 500
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 3000
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 1000
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: -1320
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 103
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 1244
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 1200
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 1500
-          event: ""
-        }
-        {
-          date: "1 December 2013"
-          amount: -1000
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 1250
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 1200
-          event: ""
-        }
-        {
-          date: "1 September 2013"
-          amount: -30000
-          event: "Purchase of Property X"
-        }
-      ]
-      owner: "sam"
-      property: "propertyx"
+      type: "debt"
+      date: "15 January 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
 
-
-
-    # Second property. Two years of payments, sale
     Portfolios.insert
-      d: [
-        {
-          date: "1 January 2015"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 December 2013"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 140
-          event: ""
-        }
-        {
-          date: "1 September 2013"
-          amount: 132
-          event: "First debt payment for Property Y"
-        }
-      ]
-      e: [
-        {
-          date: "1 January 2015"
-          amount: 250
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 250
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 250
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 250
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 250
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 250
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 230
-          event: "Roof Collapsed"
-        }
-        {
-          date: "1 December 2013"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 230
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 230
-          event: "First equity payment for Property Y"
-        }
-      ]
-      ra: [
-        {
-          date: "1 January 2015"
-          amount: 80000
-          event: "Sold Property Y"
-        }
-        {
-          date: "1 December 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 December 2013"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 September 2013"
-          amount: -30000
-          event: "Purchase of Property Y"
-        }
-      ]
-      ua: [
-        {
-          date: "1 January 2015"
-          amount: 400
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 120
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: -1000
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 100
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 500
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 3000
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 1000
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: -1320
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 103
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 1244
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 1200
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 1500
-          event: ""
-        }
-        {
-          date: "1 December 2013"
-          amount: -1000
-          event: ""
-        }
-        {
-          date: "1 November 2013"
-          amount: 1250
-          event: ""
-        }
-        {
-          date: "1 October 2013"
-          amount: 1200
-          event: ""
-        }
-        {
-          date: "1 September 2013"
-          amount: -30000
-          event: "Purchase of Property Y"
-        }
-      ]
-      owner: "sam"
-      property: "propertyy"
+      type: "debt"
+      date: "15 February 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
 
-
-    # Third property. One year of payments, no sale, refi, lots of issues
     Portfolios.insert
-      d: [
-        {
-          date: "1 January 2015"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: 200
-          event: ""
-        }
-      ]
-      e: [
-        {
-          date: "1 January 2015"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: -1200
-          event: "Furnace explosion"
-        }
-        {
-          date: "1 October 2014"
-          amount: -2500
-          event: "Plumbing failure"
-        }
-        {
-          date: "1 September 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 344
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: -4000
-          event: "Slip and fall lawsuit"
-        }
-        {
-          date: "1 April 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 312
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: -120
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: -1200
-          event: "Roof Collapsed"
-        }
-      ]
-      ra: [
-        {
-          date: "1 January 2015"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 25000
-          event: "Refinance"
-        }
-        {
-          date: "1 July 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 0
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: -50000
-          event: "Purchase of Property Z"
-        }
-      ]
-      ua: [
-        {
-          date: "1 January 2015"
-          amount: 400
-          event: ""
-        }
-        {
-          date: "1 December 2014"
-          amount: 120
-          event: ""
-        }
-        {
-          date: "1 November 2014"
-          amount: -1000
-          event: ""
-        }
-        {
-          date: "1 October 2014"
-          amount: 100
-          event: ""
-        }
-        {
-          date: "1 September 2014"
-          amount: 500
-          event: ""
-        }
-        {
-          date: "1 August 2014"
-          amount: 200
-          event: ""
-        }
-        {
-          date: "1 July 2014"
-          amount: 3000
-          event: ""
-        }
-        {
-          date: "1 June 2014"
-          amount: 1000
-          event: ""
-        }
-        {
-          date: "1 May 2014"
-          amount: -1320
-          event: ""
-        }
-        {
-          date: "1 April 2014"
-          amount: 103
-          event: ""
-        }
-        {
-          date: "1 March 2014"
-          amount: 1244
-          event: ""
-        }
-        {
-          date: "1 February 2014"
-          amount: 1200
-          event: ""
-        }
-        {
-          date: "1 January 2014"
-          amount: -50000
-          event: "Purchase of Property Z"
-        }
-      ]
-      owner: "sam"
-      property: "propertyz"
+      type: "debt"
+      date: "15 March 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
 
-# Properties.insert
-#   d: [
-#     {
-#       d: 'five'
-#       info: 'ten'
-#     }
-#     { in: 'bob' }
-#   ]
-#   x: []
+    Portfolios.insert
+      type: "debt"
+      date: "15 April 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 May 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 June 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 July 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 August 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 September 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 October 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 November 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 December 2014"
+      amount: 150
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+
+
+    # First property. Equity
+    Portfolios.insert
+      type: "equity"
+      date: "15 January 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 February 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 March 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 April 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 May 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 June 2014"
+      amount: -400
+      owner: wof
+      property: property1
+      event: "Roof damage from storm"
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 July 2014"
+      amount: -100
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 August 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 September 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 October 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 November 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 December 2014"
+      amount: 240
+      owner: wof
+      property: property1
+      event: ""
+      notes: ""
+
+
+
+
+
+    # Second property debt returns
+
+
+
+
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 January 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 February 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 March 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 April 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 May 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 June 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 July 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 August 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 September 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 October 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 November 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 December 2014"
+      amount: 180
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+
+
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 January 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 February 2014"
+      amount: 330
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 March 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 April 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 May 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 June 2014"
+      amount: 190
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 July 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 August 2014"
+      amount: 280
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 September 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 October 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 November 2014"
+      amount: 290
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 December 2014"
+      amount: 340
+      owner: wof
+      property: property2
+      event: ""
+      notes: ""
+
+
+
+
+      # Property 3 debt returns
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 January 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 February 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 March 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 April 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 May 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 June 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 July 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 August 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 September 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 October 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 November 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "debt"
+      date: "15 December 2014"
+      amount: 150
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 January 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 February 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 March 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 April 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 May 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 June 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: "Roof damage from storm"
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 July 2014"
+      amount: 100
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 August 2014"
+      amount: 200
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 September 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 October 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 November 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+    Portfolios.insert
+      type: "equity"
+      date: "15 December 2014"
+      amount: 240
+      owner: wof
+      property: property3
+      event: ""
+      notes: ""
+
+
+
+
+###
+
+Still to do:
+
+Equity and debt for two more properties (3 total) --done
+Property purchase events --
+Property sale events
+
+###
