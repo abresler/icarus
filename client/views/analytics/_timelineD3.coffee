@@ -37,13 +37,15 @@ Template._timeline.rendered = ->
 	yDomain = d3.extent(allData, (d) -> d.amount)
 	xDomain = d3.extent(allData, (d) -> new Date(d.date))
 
+	console.log yDomain
+
 	xScale = d3.time.scale()
 		.domain xDomain
 		.range [yAxisTransform, width - yAxisTransform]
 		
 	yScale = d3.scale.linear()
-		.domain [yDomain[1], yDomain[0]]
-		.range [xAxisTransform, height - xAxisTransform]
+		.domain [yDomain[0], yDomain[1]]
+		.range [height - xAxisTransform, xAxisTransform]
 
 	colorScale = d3.scale.category10()
 
@@ -90,7 +92,7 @@ Template._timeline.rendered = ->
 		.enter()
 		.append('rect')
 		.attr 'x', (d) -> xScale new Date d.date
-		.attr 'y', yScale 0
+		.attr 'y', 0
 		.attr 'width', barShape.width/2
 		.attr 'height', (d, i) -> yScale d.amount
 		.attr 'fill', 'steelblue'
@@ -103,7 +105,7 @@ Template._timeline.rendered = ->
 		.enter()
 		.append('rect')
 		.attr 'x', (d) -> (xScale new Date d.date) + barShape.width/2
-		.attr 'y', yScale 0
+		.attr 'y', 0
 		.attr 'width', barShape.width/2
 		.attr 'height', (d, i) -> yScale d.amount
 		.attr 'fill', '#D1122B'

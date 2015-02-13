@@ -55,9 +55,6 @@ Template._assetAllocation.rendered = ->
     .attr "class", "pieChart-location"
     .attr "transform", "translate(" + width/2 + "," + height/2 + ")"
 
-  console.log data
-  console.log pie data
-
   arcGroup = pieChart.selectAll "arc"
     .data pie(data)
     .enter()
