@@ -1,6 +1,18 @@
-Template._createAccount.events
-  'click button': (e,t) ->
-    e.preventDefault()
+Template._viewAccounts.rendered = ->
+  Session.set 'addingAccount', false
+
+Template._viewAccounts.helpers
+  allAccounts: ->
+    Meteor.users.find()
+
+  addingAccount: ->
+    Session.get 'addingAccount'
+
+Template._viewAccounts.events
+  'click #add-account': (e,t) ->
+    Session.set 'addingAccount', true
+
+  'click #create-new-account': (e,t) ->
 
     first = t.find('#firstName').value
     last = t.find('#lastName').value
@@ -8,21 +20,7 @@ Template._createAccount.events
     email = t.find('#email').value
     telephone = t.find('#telephone').value
 
-    Accounts.createUser
-      username: username
-      password: "password"
-      profile:
-        first: first
-        last: last
-        email: email
-        telephone: telephone
-        roles: ["client"]
-    ,
-      (err) ->
-        if err
-          alert err
-        else
-          alert "Success!"
+    Meteor.call 'createNewUser', first, last, username, email, telephone
 
     $('#firstName').val('')
     $('#lastName').val('')
@@ -30,6 +28,8 @@ Template._createAccount.events
     $('#email').val('')
     $('#telephone').val('')
 
-Template._viewAccounts.helpers
-  allAccounts: ->
-    Meteor.users.find()
+
+
+
+
+    Session.set 'addingAccount', false

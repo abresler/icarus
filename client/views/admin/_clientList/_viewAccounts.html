@@ -3,7 +3,7 @@
     <div class="red-break-half"></div>
     <div class="container admin-container">
       <div class="center-align valign-wrapper">
-        <h2 style="display:inline;">Client List</h2><span style="margin-top:1rem;margin-left:2rem;"><a class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-content-add"></i></a></span>
+        <h2 style="display:inline;">Client List</h2><span style="margin-top:1.5rem;margin-left:2rem;"><a class="btn-floating btn-large waves-effect waves-light red" id="add-account"><i class="mdi-content-add"></i></a></span>
       </div>
 
         <table class="hoverable">
@@ -16,6 +16,16 @@
             </tr>
           </thead>
           <tbody>
+            {{#if addingAccount}}
+              <tr>
+                <td><input type="text" placeholder="First Name" id="firstName"></td>
+                <td><input type="text" placeholder="Last Name" id="lastName"></td>
+                <td><input type="text" placeholder="Username" id="username"></td>
+                <td><input type="text" placeholder="Email" id="email"></td>
+                <td><input type="text" placeholder="Telephone" id="telephone"></td>
+                <td><a href="" class="btn waves-effect waves-light red" id="create-new-account">+</a></td>
+              </tr>
+              {{/if}}
             {{#each allAccounts}}
               <tr>
                 <td><a href="{{pathFor 'profile'}}" class="client-link">{{profile.first}} {{profile.last}}</a></td>
