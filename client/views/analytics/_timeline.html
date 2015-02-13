@@ -3,6 +3,11 @@
     <div class="card-content">
     <h5 class="center-align">Debt & Equity</h5>
       <div id="_timeline" style="height: 25rem;"></div>
+      <div class="collection center-align analytics-properties">
+      	{{#each details}}
+	        <a href="#!" class="collection-item analytics-property">{{street}}, {{state}}</a>	    
+        {{/each}}
+      </div>
     </div>
   </div>
 </template>

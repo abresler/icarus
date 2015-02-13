@@ -2,8 +2,6 @@ Template._assetAllocation.rendered = ->
   Session.set 'activeTotal', 0
   Session.set 'activePercentage', 0
 
-  sum = 0
-
   box = {s: 15}
 
   data = [
@@ -25,6 +23,9 @@ Template._assetAllocation.rendered = ->
     }
 
   ]
+
+  totals = _.pluck data, 'total'
+  sum = totals.reduce (a, b) -> a+b
 
   money = d3.format(',.2f')
 
@@ -70,27 +71,39 @@ Template._assetAllocation.rendered = ->
     .attr "total", (d) -> d.data.total
     .style "fill", (d, i) -> color i
 
-  arcGroup.append "text"
-    .attr "transform", (d) -> "translate(" + arc.centroid(d) + ")"
-    .attr "dy", "0.35em"
-    .style "text-anchor", "middle"
-    .style "fill", "white"
-    .style "opacity", "0.9"
-    .text (d) -> if d.data.total is 0 then "" else d.data.type
-
   element = d3.selectAll 'svg'
   element = element[0][0]
 
   bbox = element.getBBox()
 
   d3.selectAll 'path'
-    .on 'click', (d) ->
-      pieSliceToggle @ 
-      populateSummary()
-    .on 'mouseover', (d) -> 
-      d3.select(@).style('opacity', 0.8)
-    .on 'mouseout', (d) -> 
+    .on 'mouseover', (d, i) -> 
+      d3.select(@).style 'opacity', 0.8
+      d3.selectAll '.asset-allocation-money'
+        .each (d, j) ->
+          if i is (j+1) then d3.select(@).style 'font-size', '20px'
+      d3.selectAll '.asset-allocation-type'
+        .each (d, j) ->
+          if i is (j+1) then d3.select(@).style 'font-size', '20px'
+      d3.selectAll '.asset-allocation-rect'
+        .each (d, j) ->
+          if i is (j+1)
+            d3.select(@).attr 'width', box.s*1.2
+            d3.select(@).attr 'height', box.s*1.2
+
+    .on 'mouseout', (d, i) -> 
       d3.select(@).style('opacity', 1)
+      d3.selectAll '.asset-allocation-money'
+        .each (d, j) ->
+          if i is (j+1) then d3.select(@).style 'font-size', '15px'
+      d3.selectAll '.asset-allocation-type'
+        .each (d, j) ->
+          if i is (j+1) then d3.select(@).style 'font-size', '15px'
+      d3.selectAll '.asset-allocation-rect'
+        .each (d, j) ->
+          if i is (j+1)
+            d3.select(@).attr 'width', box.s
+            d3.select(@).attr 'height', box.s
 
   legend= d3.select('#analytics-asset-allocation')
     .append 'svg'
@@ -106,30 +119,89 @@ Template._assetAllocation.rendered = ->
 
   legendGroup.append 'text'
     .attr 'class', 'asset-allocation-money'
-    .attr 'x', width - 100
+    .attr 'x', width - (width/8)
     .attr 'y', (d, i) -> (height/4) + i*30
-    .style "text-anchor", "right"
+    .style "text-anchor", "end"
     .style "fill", (d, i) -> color i
     .style "opacity", "0.9"
     .text (d) -> '$ ' + money d.total
 
   type = legendGroup.append 'text'
     .attr 'class', 'asset-allocation-type'
-    .attr 'x', width/3
+    .attr 'x', width/4
     .attr 'y', (d, i) -> (height/4) + i*30
-    .style "text-anchor", "left"
+    .style "text-anchor", "start"
     .style "fill", (d, i) -> color i
     .style "opacity", "0.9"
     .text (d) -> d.type
 
   legendGroup.append 'rect'
     .attr 'class', 'asset-allocation-rect'
-    .attr 'x', width/4
+    .attr 'x', width/6
     .attr 'y', (d, i) -> (height/4) + i*30 - 12.5
+    .attr "rx", 3
+    .attr "ry", 3
     .attr 'width', box.s
     .attr 'height', box.s
     .style "fill", (d, i) -> color i
+    .style "opacity", "1"
+
+  dataToggleGroup = legend.selectAll 'dataToggle'
+    .data data
+    .enter()
+    .append 'g'
+    .attr 'class', 'asset-allocation-legend'
+
+  value = dataToggleGroup.append 'rect'
+    .attr 'class', 'asset-allocation-button'
+    .attr 'x', width/6
+    .attr 'y', height/10
+    .attr 'width', 50
+    .attr 'height', 25
+    .attr 'fill', '#D1122B'
+    .on 'click', ->
+      d3.selectAll '.asset-allocation-money'
+        .each (d) -> 
+          percent = Math.round(d.total/sum*100)
+          d3.select(@).text(percent + '%')
+    .on 'mouseover', (d) -> 
+      d3.select(@).attr 'fill', "#ff9896"
+    .on 'mouseout', (d) -> 
+      d3.select(@).attr 'fill', '#D1122B'
+
+  percent = dataToggleGroup.append 'rect'
+    .attr 'class', 'asset-allocation-percent'
+    .attr 'x', width/6 + 60
+    .attr 'y', height/10
+    .attr 'width', 50
+    .attr 'height', 25
+    .attr 'fill', '#D1122B'
+    .on 'click', ->
+      d3.selectAll '.asset-allocation-money'
+        .each (d) -> 
+          d3.select(@).text('$ '+ money d.total)
+    .on 'mouseover', (d) -> 
+      d3.select(@).attr 'fill', "#ff9896"
+    .on 'mouseout', (d) -> 
+      d3.select(@).attr 'fill', '#D1122B'
+
+  dataToggleGroup.append 'text'
+    .attr 'class', 'asset-allocation-percent'
+    .attr 'x', width/6 + 25
+    .attr 'y', height/10 + 20
+    .style "text-anchor", "middle"
+    .style "fill", "white"
     .style "opacity", "0.9"
+    .text "%"
+
+  dataToggleGroup.append 'text'
+    .attr 'class', 'asset-allocation-value'
+    .attr 'x', width/6 + 60 + 25
+    .attr 'y', height/10 + 20
+    .style "text-anchor", "middle"
+    .style "fill", "white"
+    .style "opacity", "0.9"
+    .text "$"
 
   pieSliceToggle = (ele) ->
     thisPath = d3.select ele
@@ -144,7 +216,6 @@ Template._assetAllocation.rendered = ->
     activeTotal = 0
     $('path[active="true"]').each (i, val) ->
       activeTotal += +$(val).attr('total')
-
     Session.set "activeTotal", activeTotal
     Session.set "activePercentage", +(activeTotal*100/sum).toFixed(2)
 

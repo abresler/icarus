@@ -39,8 +39,3 @@ Meteor.methods
       history.return(dataHistory)
 
     results = [property.wait(), history.wait()]
-
-    results
-
-
-    

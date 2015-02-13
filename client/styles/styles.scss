@@ -226,6 +226,15 @@ nav ul li:hover, nav ul li.active {
   padding: 0;
 }
 
+a.collection-item.analytics-property {
+  border-top: none;
+}
+
+div.analytics-properties {
+  height: 200px;
+  overflow-y: scroll;
+}
+
 .property-image {
   max-height: 100%;
   max-width: 100%;
@@ -506,3 +515,5 @@ ul.table-of-contents h6{
 .td-archive {
   width: 10%;
 }
+
+
