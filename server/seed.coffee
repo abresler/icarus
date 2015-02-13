@@ -106,7 +106,7 @@ Meteor.startup ->
     property3 = Properties.insert
       city: "Canton"
       lat: "44.601894"
-      long: "-75.1742"
+      long: "-75.174200"
       owners: [
         owner
         owner2
