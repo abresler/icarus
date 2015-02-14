@@ -11,10 +11,6 @@ blaze@2.0.4
 blaze-tools@1.0.2
 boilerplate-generator@1.0.2
 callback-hook@1.0.2
-<<<<<<< HEAD
-ccorcos:transitioner@2.0.1
-=======
->>>>>>> admin
 check@1.0.4
 coffeescript@1.0.5
 d0minikk:materialize-meteor@1.95.1
