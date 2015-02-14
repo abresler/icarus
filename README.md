@@ -1,6 +1,8 @@
 Icarus
 ================
 
+Demo: [icarus.meteor.com](http://icarus.meteor.com)
+
 Property management app with client-facing analytics dashboard built for Icarus Investment Group, based in Chicago, IL. This app was commissioned due to frustration with existing property management software, such as Buildium®, propertybase®, and appfolio™. 
 
 These companies provide what is essentially accounting software. The reports and analytics provided to investors resemble a multi-page spreadsheet—because they are, in fact, nothing more than a multi-page spreadsheet. In most circumstances, if a client wants to see how his investment is doing, he either calls the company or waits for the quarterly report to come in the mail.
@@ -29,6 +31,46 @@ For testing, we are using `Velocity`, which runs on `Mocha` and `Chai`.
 
 ##Features
 
+###Guest
+
+The website for a guest user consists of:
+
+1. Homepage
+2. Contact
+3. About
+4. Calculator
+
+The homepage contains a number of SVGs that were created using `Adobe Illustrator` and `Sketch`. These include the logo in the top left of the navbar, the three promo images, and the logo at the bottom of the page. The map is rendered using `D3.js` and real data reflecting the locations in which Icarus owns property. 
+
+image goes here
+
+The calculator allows anyone to calculate the Capitalization Rate (CAP Rate) of a property in which they are considering an investment. The calculation for CAP rate is not complicated: `Net Annual Operating Income / Purchase Price = CAP Rate`
+
+image goes here
+
+###Admin
+
+When a user signs in as an admin, he gains access to the admin panel. The top of the admin panel contains a number of button shortcuts that link to specific sections of the admin panel. This is accomplished using a `jQuery` plugin called `scrollspy`, which comes with the `Materialize` library. The icons are all from `Fontawesome`. 
+
+image goes here
+
+The navigation that stays fixed to the left of the page is called a `pushpin` and also comes with the Materialize library. 
+
+image goes here
+
+An admin can add a client by clicking on the button next to the "Client List". We utilized `Session` variables to show a new row that allows the admin to add a new user. 
+
+image goes here
+
+The admin can also add properties through the "Manage Properties" section in much the same way he adds new clients. This utilizes the `Zillow` API, so the admin only needs to know the "zpid" (Zillow Property ID) of the property and Zillow does all the heavy lifting of finding the latitude and longitude, address, state, etc. 
+
+The "Potential Projects" section is one of the primary value-adds for Icarus. This section allows the company to add properties to a list of new projects that investors can see and potentially invest in if they are interested. This process used to be accomplished through extensive email and phone conversations. More information about how this is useful will be provided in the client section below.
+
+The admin page also allows the admin to send "Notifications", both directly to a specific investor and to all investors in a property (or multiple properties). This is another time-saver for the company which would ordinarily send an individual email or phone call to the investor if new information became known. 
+
+###Client
+
+The client page is the primary value-add for the company. 
 
 ##Contributors
 
