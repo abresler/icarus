@@ -8,7 +8,7 @@ $grey: #797979;
 @import "calc";
 
 body, html {
-  font-family: $font-stack;
+  font-family: $red;
 /*   height: 100%;
 width: 100%; */
 }
@@ -225,6 +225,11 @@ nav ul li:hover, nav ul li.active {
   margin: 1rem;
   padding: 0;
 }
+
+.analytics-pie-chart {
+  padding: 0 50px;
+}
+
 
 a.collection-item.analytics-property {
   border-top: none;
