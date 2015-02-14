@@ -58,7 +58,6 @@ Template._addProperty.events
       if Object.keys(Session.get('ownersList')).length > 0 # Error handles for a property with no owners
 
         Meteor.call 'getProperties', zpid, (err,res) ->
-          console.log res
           if err then alert "Error with Zillow API call."
           else
             tempOwners = Session.get 'ownersList'

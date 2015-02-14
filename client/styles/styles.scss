@@ -8,9 +8,7 @@ $grey: #797979;
 @import "calc";
 
 body, html {
-  font-family: $red;
-/*   height: 100%;
-width: 100%; */
+  font-family: $font-stack;
 }
 
 h1, h2, h3, h4, p {
@@ -55,7 +53,7 @@ nav ul li:hover, nav ul li.active {
   background-color: lighten($red, 10%);
 }
 
-@each $classname in another-ny, blue-city, brick, houses, map, more-houses, new-york, ny-filtered, tropics, wood {
+@each $classname in another-ny, blue-city, brick, houses, map, more-houses, new-york, ny-filtered, tropics, wood, alley {
   .#{$classname}-background {
     background: url(/background/#{$classname}.jpg) no-repeat center center;
     -webkit-background-size: cover;
