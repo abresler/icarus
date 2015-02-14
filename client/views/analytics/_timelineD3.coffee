@@ -98,8 +98,6 @@ Template._timeline.rendered = ->
 					d3.sum(d, (g) -> +g.amount)
 				.entries allData
 
-	console.log allMonthlyTotals
-
 	yDomain = d3.extent(allMonthlyTotals, (d) -> d.values)
 	xDomain = d3.extent(allData, (d) -> new Date(d.date))
 

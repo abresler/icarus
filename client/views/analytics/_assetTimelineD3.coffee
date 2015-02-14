@@ -49,6 +49,9 @@ Template._assetTimeline.rendered = ->
 
 	colorScale = d3.scale.category10()
 
+	d3.selectAll('#line-square').each (d, i) ->
+    d3.select(@).style 'color', colorScale i
+
 	axis = svg.append 'g'
 			.attr 'class', 'axis'
 

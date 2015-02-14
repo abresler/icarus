@@ -1,9 +1,4 @@
 Template._assetAllocation.rendered = ->
-  Session.set 'activeTotal', 0
-  Session.set 'activePercentage', 0
-
-  box = {s: 15}
-
   data = [
     {
       type: "Loan"
@@ -24,10 +19,21 @@ Template._assetAllocation.rendered = ->
 
   ]
 
-  Session.set 'pieData', data
-
   totals = _.pluck data, 'total'
-  sum = totals.reduce (a, b) -> a+b
+  sum = totals.reduce (a, b) -> a+b  
+  addPercent = []
+
+  data.forEach (d, i) ->
+    percent = {
+      type: d.type
+      total: d.total
+      percent: Math.round(d.total/sum*100)
+    }
+    addPercent.push(percent)
+    
+  Session.set 'pieData', addPercent
+  Session.setDefault 'isValue', true
+  Session.setDefault 'isPercent', false
 
   money = d3.format(',.2f')
 
@@ -82,7 +88,6 @@ Template._assetAllocation.rendered = ->
       currentSelector = d3.select(@)
       currentStatus = currentSelector.attr 'active'
       textData = currentSelector.datum()
-      console.log textData.data.type
       pieChart.select('.slice-type').text(textData.data.type.toUpperCase())
       pieChart.select('.slice-value').text('$ ' + money textData.value)
       if currentStatus is 'false'
@@ -106,7 +111,7 @@ Template._assetAllocation.rendered = ->
         .ease 'linear'
         .attr 'active', 'true'
     .on 'mouseover', (d, i) -> 
-      d3.select(@).style 'opacity', 0.8
+      d3.select(@).style 'opacity', 0.7
     .on 'mouseout', (d, i) -> 
       d3.select(@).style('opacity', 1)
 
@@ -127,9 +132,29 @@ Template._assetAllocation.rendered = ->
     .attr 'font-size', '20px'
     .attr 'fill', '#D1122B'
 
+  d3.selectAll('#pie-square').each (d, i) ->
+    d3.select(@).style 'color', color i
+
+Template._assetAllocation.events
+  'click #pie-percent': (e, t) ->
+    Session.set 'isPercent', true
+    Session.set 'isValue', false
+
+  'click #pie-value': (e, t) ->
+    Session.set 'isPercent', false
+    Session.set 'isValue', true
+
 Template._assetAllocation.helpers
   pieData: ->
     Session.get 'pieData'
+
+  toggleValue: ->
+    Session.get 'isValue'
+
+  togglePercent: ->
+    Session.get 'isPercent'
+
+
 
 
 

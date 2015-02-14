@@ -4,9 +4,12 @@
   	<h5 class="center-align">Assets</h5>
       <div id="_assetTimeline" style="height: 25rem;"></div>
       <div class="collection center-align analytics-properties">
-          <h5><a href="#!" class="collection-item analytics-property">Properties</a></h5>
+          <h5><a href="#!" class="collection-item analytics-property red-text text-darken-2">Properties</a></h5>
       	{{#each details}}
-	        <a href="#!" class="collection-item analytics-property">{{street}}, {{state}}</a>	    
+	        <a href="#!" class="collection-item analytics-property black-text">
+            <span id="line-square" class="mdi-av-stop"></span>
+            <span>{{street}}, {{state}}</span>
+          </a>	     
         {{/each}}
       </div>
     </div>
