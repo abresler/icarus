@@ -102,103 +102,103 @@ Template._assetAllocation.rendered = ->
             d3.select(@).attr 'width', box.s
             d3.select(@).attr 'height', box.s
 
-  legend= d3.select('#analytics-asset-allocation')
-    .append 'svg'
-    .attr 'class', 'pieChart-numbers'
-    .attr 'height', height
-    .attr 'width', width
+  # legend= d3.select('#analytics-asset-allocation')
+  #   .append 'svg'
+  #   .attr 'class', 'pieChart-numbers'
+  #   .attr 'height', height
+  #   .attr 'width', width
 
-  legendGroup = legend.selectAll 'arcData'
-    .data data
-    .enter()
-    .append 'g'
-    .attr 'class', 'asset-allocation-legend'
+  # legendGroup = legend.selectAll 'arcData'
+  #   .data data
+  #   .enter()
+  #   .append 'g'
+  #   .attr 'class', 'asset-allocation-legend'
 
-  legendGroup.append 'text'
-    .attr 'class', 'asset-allocation-money'
-    .attr 'x', width - (width/8)
-    .attr 'y', (d, i) -> (height/4) + i*30
-    .style "text-anchor", "end"
-    .style "fill", (d, i) -> color i
-    .style "opacity", "0.9"
-    .text (d) -> '$ ' + money d.total
+  # legendGroup.append 'text'
+  #   .attr 'class', 'asset-allocation-money'
+  #   .attr 'x', width - (width/8)
+  #   .attr 'y', (d, i) -> (height/4) + i*30
+  #   .style "text-anchor", "end"
+  #   .style "fill", (d, i) -> color i
+  #   .style "opacity", "0.9"
+  #   .text (d) -> '$ ' + money d.total
 
-  type = legendGroup.append 'text'
-    .attr 'class', 'asset-allocation-type'
-    .attr 'x', width/4
-    .attr 'y', (d, i) -> (height/4) + i*30
-    .style "text-anchor", "start"
-    .style "fill", (d, i) -> color i
-    .style "opacity", "0.9"
-    .text (d) -> d.type
+  # type = legendGroup.append 'text'
+  #   .attr 'class', 'asset-allocation-type'
+  #   .attr 'x', width/4
+  #   .attr 'y', (d, i) -> (height/4) + i*30
+  #   .style "text-anchor", "start"
+  #   .style "fill", (d, i) -> color i
+  #   .style "opacity", "0.9"
+  #   .text (d) -> d.type
 
-  legendGroup.append 'rect'
-    .attr 'class', 'asset-allocation-rect'
-    .attr 'x', width/6
-    .attr 'y', (d, i) -> (height/4) + i*30 - 12.5
-    .attr "rx", 3
-    .attr "ry", 3
-    .attr 'width', box.s
-    .attr 'height', box.s
-    .style "fill", (d, i) -> color i
-    .style "opacity", "1"
+  # legendGroup.append 'rect'
+  #   .attr 'class', 'asset-allocation-rect'
+  #   .attr 'x', width/6
+  #   .attr 'y', (d, i) -> (height/4) + i*30 - 12.5
+  #   .attr "rx", 3
+  #   .attr "ry", 3
+  #   .attr 'width', box.s
+  #   .attr 'height', box.s
+  #   .style "fill", (d, i) -> color i
+  #   .style "opacity", "1"
 
-  dataToggleGroup = legend.selectAll 'dataToggle'
-    .data data
-    .enter()
-    .append 'g'
-    .attr 'class', 'asset-allocation-legend'
+  # dataToggleGroup = legend.selectAll 'dataToggle'
+  #   .data data
+  #   .enter()
+  #   .append 'g'
+  #   .attr 'class', 'asset-allocation-legend'
 
-  value = dataToggleGroup.append 'rect'
-    .attr 'class', 'asset-allocation-button'
-    .attr 'x', width/6
-    .attr 'y', height/10
-    .attr 'width', 50
-    .attr 'height', 25
-    .attr 'fill', '#D1122B'
-    .on 'click', ->
-      d3.selectAll '.asset-allocation-money'
-        .each (d) -> 
-          percent = Math.round(d.total/sum*100)
-          d3.select(@).text(percent + '%')
-    .on 'mouseover', (d) -> 
-      d3.select(@).attr 'fill', "#ff9896"
-    .on 'mouseout', (d) -> 
-      d3.select(@).attr 'fill', '#D1122B'
+  # value = dataToggleGroup.append 'rect'
+  #   .attr 'class', 'asset-allocation-button'
+  #   .attr 'x', width/6
+  #   .attr 'y', height/10
+  #   .attr 'width', 50
+  #   .attr 'height', 25
+  #   .attr 'fill', '#D1122B'
+  #   .on 'click', ->
+  #     d3.selectAll '.asset-allocation-money'
+  #       .each (d) -> 
+  #         percent = Math.round(d.total/sum*100)
+  #         d3.select(@).text(percent + '%')
+  #   .on 'mouseover', (d) -> 
+  #     d3.select(@).attr 'fill', "#ff9896"
+  #   .on 'mouseout', (d) -> 
+  #     d3.select(@).attr 'fill', '#D1122B'
 
-  percent = dataToggleGroup.append 'rect'
-    .attr 'class', 'asset-allocation-percent'
-    .attr 'x', width/6 + 60
-    .attr 'y', height/10
-    .attr 'width', 50
-    .attr 'height', 25
-    .attr 'fill', '#D1122B'
-    .on 'click', ->
-      d3.selectAll '.asset-allocation-money'
-        .each (d) -> 
-          d3.select(@).text('$ '+ money d.total)
-    .on 'mouseover', (d) -> 
-      d3.select(@).attr 'fill', "#ff9896"
-    .on 'mouseout', (d) -> 
-      d3.select(@).attr 'fill', '#D1122B'
+  # percent = dataToggleGroup.append 'rect'
+  #   .attr 'class', 'asset-allocation-percent'
+  #   .attr 'x', width/6 + 60
+  #   .attr 'y', height/10
+  #   .attr 'width', 50
+  #   .attr 'height', 25
+  #   .attr 'fill', '#D1122B'
+  #   .on 'click', ->
+  #     d3.selectAll '.asset-allocation-money'
+  #       .each (d) -> 
+  #         d3.select(@).text('$ '+ money d.total)
+  #   .on 'mouseover', (d) -> 
+  #     d3.select(@).attr 'fill', "#ff9896"
+  #   .on 'mouseout', (d) -> 
+  #     d3.select(@).attr 'fill', '#D1122B'
 
-  dataToggleGroup.append 'text'
-    .attr 'class', 'asset-allocation-percent'
-    .attr 'x', width/6 + 25
-    .attr 'y', height/10 + 20
-    .style "text-anchor", "middle"
-    .style "fill", "white"
-    .style "opacity", "0.9"
-    .text "%"
+  # dataToggleGroup.append 'text'
+  #   .attr 'class', 'asset-allocation-percent'
+  #   .attr 'x', width/6 + 25
+  #   .attr 'y', height/10 + 20
+  #   .style "text-anchor", "middle"
+  #   .style "fill", "white"
+  #   .style "opacity", "0.9"
+  #   .text "%"
 
-  dataToggleGroup.append 'text'
-    .attr 'class', 'asset-allocation-value'
-    .attr 'x', width/6 + 60 + 25
-    .attr 'y', height/10 + 20
-    .style "text-anchor", "middle"
-    .style "fill", "white"
-    .style "opacity", "0.9"
-    .text "$"
+  # dataToggleGroup.append 'text'
+  #   .attr 'class', 'asset-allocation-value'
+  #   .attr 'x', width/6 + 60 + 25
+  #   .attr 'y', height/10 + 20
+  #   .style "text-anchor", "middle"
+  #   .style "fill", "white"
+  #   .style "opacity", "0.9"
+  #   .text "$"
 
   pieSliceToggle = (ele) ->
     thisPath = d3.select ele
