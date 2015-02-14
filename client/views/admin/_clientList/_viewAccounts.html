@@ -1,0 +1,41 @@
+<template name="_viewAccounts">
+  <div class="flex-white scrollspy" id="client-list">
+    <div class="red-break-half"></div>
+    <div class="container admin-container">
+      <div class="center-align valign-wrapper">
+        <h2 style="display:inline;">Client List</h2><span style="margin:0;margin-bottom:-1rem;margin-left:2rem;"><a class="btn-floating btn-large waves-effect waves-light red" id="add-account"><i class="mdi-content-add"></i></a></span>
+      </div>
+
+        <table class="hoverable">
+          <thead>
+            <tr>
+              <th>Contact Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#if addingAccount}}
+              <tr>
+                <td><input type="text" placeholder="First Name" id="firstName"></td>
+                <td><input type="text" placeholder="Last Name" id="lastName"></td>
+                <td><input type="text" placeholder="Username" id="username"></td>
+                <td><input type="text" placeholder="Email" id="email"></td>
+                <td><input type="text" placeholder="Telephone" id="telephone"></td>
+                <td><a href="" class="btn waves-effect waves-light red" id="create-new-account">+</a></td>
+              </tr>
+              {{/if}}
+            {{#each allAccounts}}
+              <tr>
+                <td><a href="{{pathFor 'profile'}}" class="client-link">{{profile.first}} {{profile.last}}</a></td>
+                <td><a href="{{pathFor 'profile'}}" class="client-link">{{username}}</a></td>
+                <td>{{profile.email}}</td>
+                <td>{{filterPhone profile.telephone}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </div>
+  </div>
+</template>
