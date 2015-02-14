@@ -14,7 +14,6 @@ Template._assetTimeline.rendered = ->
 		return dateA - dateB
 
 	properties = Properties.find({owners: Meteor.user()._id }).fetch()
-	console.log properties
 
 	Session.set 'homes', properties
 
