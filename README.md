@@ -70,10 +70,34 @@ The admin page also allows the admin to send "Notifications", both directly to a
 
 ###Client
 
-The client page is the primary value-add for the company. 
+The client page is the primary value-add for the company. Previously, clients could only receive data in quartly reports that are so dry as to make them practically unreadable. We have attempted to solve that problem by creating a client analytics dashboard that provides the investor with visualizations for relevant data.
+
+When a user signs in as a client, he gains access to a "Properties" list, which contains all the properties that this particular client is involved with, and an "Analytics" dashboard that provides detailed information on investor returns and other relevant information. 
+
+picture of properties list
+
+The analytics page is divided into "widgets" that contain modular data. For example, one of the most useful widgets is the "New Projects" widget, which displays all properties that Icarus is considering, as well as price and expected return data for the investor. 
+
+image here
+
+The next widget is the "Asset Allocation" widget, which shows the investor how much money he has invested in projects with Icarus and what type of assets she has invested in. 
+
+image of asset allocation widget
+
+The client can also receive notifications in the "Notifications" widget, giving the investor notice when a property is bought or sold, when renters have moved in, or any other relevant event. 
+
+The "Debt & Equity" chart is a stacked bar chart that represents investor returns over time. This is split between debt and equity, which both return different amounts and have different risk profiles. 
+
+image here
+
+The last widget is the "Assets" widget, which shows historic pricing data of the properties that the investor is involved with. This chart also shows events, such as the date of purchase, sale, or refinance of the property.
+
+image of asset goes here
 
 ##Contributors
 
+Christian Bulacan - [github](https://github.com/cbulacan9)|[linkedin](https://www.linkedin.com/in/christianbulacan)
+Sam Corcos - [github](https://github.com/samcorcos)
 
 ##Roadmap
 
