@@ -46,21 +46,21 @@ image goes here
 
 The calculator allows anyone to calculate the Capitalization Rate (CAP Rate) of a property in which they are considering an investment. The calculation for CAP rate is not complicated: `Net Annual Operating Income / Purchase Price = CAP Rate`
 
-image goes here
+**image goes here**
 
 ###Admin
 
 When a user signs in as an admin, he gains access to the admin panel. The top of the admin panel contains a number of button shortcuts that link to specific sections of the admin panel. This is accomplished using a `jQuery` plugin called `scrollspy`, which comes with the `Materialize` library. The icons are all from `Fontawesome`. 
 
-image goes here
+**image goes here**
 
 The navigation that stays fixed to the left of the page is called a `pushpin` and also comes with the Materialize library. 
 
-image goes here
+**image goes here**
 
 An admin can add a client by clicking on the button next to the "Client List". We utilized `Session` variables to show a new row that allows the admin to add a new user. 
 
-image goes here
+**image goes here**
 
 The admin can also add properties through the "Manage Properties" section in much the same way he adds new clients. This utilizes the `Zillow` API, so the admin only needs to know the "zpid" (Zillow Property ID) of the property and Zillow does all the heavy lifting of finding the latitude and longitude, address, state, etc. 
 
@@ -74,25 +74,25 @@ The client page is the primary value-add for the company. Previously, clients co
 
 When a user signs in as a client, he gains access to a "Properties" list, which contains all the properties that this particular client is involved with, and an "Analytics" dashboard that provides detailed information on investor returns and other relevant information. 
 
-picture of properties list
+**picture of properties list**
 
 The analytics page is divided into "widgets" that contain modular data. For example, one of the most useful widgets is the "New Projects" widget, which displays all properties that Icarus is considering, as well as price and expected return data for the investor. 
 
-image here
+**image here**
 
 The next widget is the "Asset Allocation" widget, which shows the investor how much money he has invested in projects with Icarus and what type of assets she has invested in. 
 
-image of asset allocation widget
+**image of asset allocation widget**
 
 The client can also receive notifications in the "Notifications" widget, giving the investor notice when a property is bought or sold, when renters have moved in, or any other relevant event. 
 
 The "Debt & Equity" chart is a stacked bar chart that represents investor returns over time. This is split between debt and equity, which both return different amounts and have different risk profiles. 
 
-image here
+**image here**
 
 The last widget is the "Assets" widget, which shows historic pricing data of the properties that the investor is involved with. This chart also shows events, such as the date of purchase, sale, or refinance of the property.
 
-image of asset goes here
+**image of asset goes here**
 
 ##Contributors
 
