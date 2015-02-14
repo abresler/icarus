@@ -1,18 +1,20 @@
 <template name="_assetAllocation">
   <div id="analytics-allocation" class="card analytics-card">
     <div class="card-content">
-      <h5 class="center-align">Asset Allocation</h5>
-      <!-- <div class="row allocation-numbers">
-        <div class="col s6">
-          <p style="text-decoration:underline;text-align:center;">Percentage</p>
-          <p style="text-align:center;">{{percentage}}%</p>
-        </div>
-        <div class="col s6">
-          <p style="text-decoration:underline;text-align:center;">Total</p>
-          <p style="text-align:center;">${{total}}</p>
-        </div>
-      </div> -->
-      <div class="analytics-chart" id="analytics-asset-allocation"></div>
+      <div class="analytics-pie-chart col l6 m6 s6" id="analytics-asset-allocation"></div>
+      <div class="analytics-pie-label col l6 m6 s6 collection">
+          <h5><a href="#!" class="collection-item center-align analytics-property">Asset Allocation</a></h5>
+          <div class="col l6 m6 s6 collection left-align">
+            {{#each pieData}}
+              <a href="#!" class="collection-item analytics-property"><div class="row date-DE">{{type}}</div></a>
+            {{/each}}
+          </div>
+          <div class="col l6 m6 s6 collection right-align">
+            {{#each pieData}}
+              <a href="#!" class="collection-item analytics-property"><div class="row date-DE">$ {{money total}}</div></a>
+            {{/each}}
+          </div>
+      </div>
     </div>
   </div>
 </template>
