@@ -16,6 +16,7 @@ Template._assetTimeline.rendered = ->
 	properties = Properties.find({owners: Meteor.user()._id }).fetch()
 
 	Session.set 'homes', properties
+	console.log properties
 
 	propertyData = _.pluck(properties, 'history')
 

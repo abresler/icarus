@@ -1,15 +1,18 @@
 <template name="_timeline">
   <div class="card analytics-card">
     <div class="card-content">
-    <h5 class="center-align">Debt & Equity</h5>
-      <div id="_timeline" style="height: 25rem;"></div>
-      <div class="row center-align">
+    <h5>Debt & Equity</h5>
+      <div id="_timeline" class="analytics-timeline" style="height: 25rem;"></div>
+      <div class="row left-align">
+        <a class="waves-effect waves-light btn blue darken-3 debt-equity-button">Debt</a>
+        <a class="waves-effect waves-light btn orange accent-3 debt-equity-button">Equity</a>
         {{#with dataDE}}
-            <h5><span class="analytics-property blue-text text-darken-3">{{monthlyDate long_date}} - {{capitalize type}} Summary</span></h5>
+         <span class="analytics-property blue-text text-darken-3 pull-right">{{monthlyDate long_date}}</span>
         {{/with}}
+            <!-- <h5><span class="analytics-property blue-text text-darken-3">{{capitalize type}} Summary {{monthlyDate long_date}}</span></h5> -->
       </div>
         
-      <div class="center-align analytics-properties">
+      <div class="collection center-align analytics-properties">
         <table class="hoverable centered">
           <thead>
               <tr>

@@ -82,7 +82,7 @@ Template._addProperty.events
 
             Properties.insert insertProperty
             Session.set 'ownersList', {}
-            alert "Successfully added property!"
+            toast("Successfully added property!", 4000)
 
       else alert "Must add at least one owner."
     else alert "Please enter a valid ZPID."

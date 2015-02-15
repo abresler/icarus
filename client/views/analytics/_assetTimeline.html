@@ -2,15 +2,16 @@
   <div class="card analytics-card">
     <div class="card-content">
   	<h5 class="center-align">Assets</h5>
-      <div id="_assetTimeline" style="height: 25rem;"></div>
+      <div id="_assetTimeline" class="analytics-timeline" style="height: 25rem;"></div>
       <div class="row center-align">
         <h5><span class="analytics-property blue-text text-darken-3">Properties</span></h5>
       </div> 
-      <div class="collection center-align analytics-properties">
+      <div class="collection left-align analytics-properties">
       	{{#each details}}
-	        <a href="#!" class="collection-item analytics-property black-text">
+	        <a href="/properties/{{_id}}" class="collection-item analytics-property black-text">
             <span id="line-square" class="mdi-av-stop"></span>
-            <span>{{street}}, {{state}}</span>
+            <span class="">{{street}}, {{state}}</span>
+            <span class="pull-right">Purchase Price:</span>
           </a>	     
         {{/each}}
       </div>
