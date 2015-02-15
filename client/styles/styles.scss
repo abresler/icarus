@@ -219,6 +219,14 @@ nav ul li:hover, nav ul li.active {
   }
 }
 
+div.picker__date-display {
+  background-color: $red;
+}
+
+div.picker__weekday-display {
+  background-color: #b71c1c;
+}
+
 .analytics-card {
   margin: 1rem;
   padding: 0;
@@ -348,6 +356,27 @@ a.collection-item {
   td {
     color: $red;
   }
+}
+
+.admin-date-col {
+  width: 10%;
+}
+
+.admin-text-col {
+  width: 32.5%;
+}
+
+.admin-num-col {
+  width: 15%;
+}
+
+.payments-input {
+  text-align: center;
+}
+
+div.manage-payments-scroll {
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .contact-page-logo {
