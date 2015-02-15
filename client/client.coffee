@@ -100,3 +100,17 @@ Template.registerHelper "shortDate", (date) ->
   short = d3.time.format("%b %_d")
   shortDate = short(temp)
   return shortDate
+
+Template.registerHelper "monthlyDate", (date) ->
+  temp = new Date(date)
+  month = d3.time.format("%B %Y")
+  monthlyDate = month(temp)
+  return monthlyDate
+
+Template.registerHelper "capitalize", (string) ->
+  lower = string.slice(1, string.length)
+  upper = string[0].toUpperCase()
+  capital = upper + lower
+  return capital
+  
+

@@ -78,9 +78,6 @@ Template._assetAllocation.rendered = ->
     .attr "total", (d) -> d.data.total
     .style "fill", (d, i) -> color i
 
-  element = d3.selectAll 'svg'
-  element = element[0][0]
-
   d3.selectAll 'path'
     .on 'click', pieToggle
     .on 'mouseover', (d, i) -> 
@@ -139,7 +136,11 @@ pieToggle = ->
   pieChart = d3.select('.pie-chart')
   arcGroup = d3.select('.pie-chart-location') 
   pieChart.select('.slice-type').text(textData.data.type.toUpperCase())
-  pieChart.select('.slice-value').text('$ ' + money textData.value)
+  pieChart.select('.slice-value').text ->
+    if Session.get 'isValue'
+      return Math.round(textData.value/sum*100) + '%'
+    if Session.get 'isPercent'
+      return '$ ' + money textData.value
   if currentStatus is 'false'
     arcGroup.selectAll('path').each (d) ->
       selector = d3.select(@)
