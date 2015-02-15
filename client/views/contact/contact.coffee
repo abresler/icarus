@@ -3,7 +3,3 @@ Template.contact.rendered = ->
     $('.card-hide').addClass 'card-show'
     return
   , 250
-
-Template.contact.events {}
-
-Template.contact.helpers {}

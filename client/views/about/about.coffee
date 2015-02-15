@@ -20,7 +20,3 @@ Template.about.rendered = ->
     $('.card4').addClass 'card-show'
     return
   , 1000
-
-Template.about.events {}
-
-Template.about.helpers {}
