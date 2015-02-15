@@ -1,4 +1,5 @@
 Template._timeline.rendered = ->
+	Session.setDefault 'data', []
 
 	height = d3.select('#_timeline').property('clientHeight') - 20
 	width = d3.select('#_timeline').property('clientWidth')
@@ -31,10 +32,7 @@ Template._timeline.rendered = ->
 				.rollup (d) -> d
 				.entries sortDebt
 
-	monthlyDebtTotals = d3.nest()
-				.key (d) -> dateFormat new Date d.date
-				.rollup (d) -> d3.sum(d, (g) -> +g.amount )
-				.entries sortDebt
+	monthlyDebtDetails = _.pluck monthlyDebt, 'values'
 
 	allEquity = _.flatten equityLines
 	sortEquity = Array.prototype.slice.call allEquity
@@ -45,10 +43,7 @@ Template._timeline.rendered = ->
 				.rollup (d) -> d
 				.entries sortEquity
 
-	monthlyEquityTotals = d3.nest()
-				.key (d) -> dateFormat new Date d.date
-				.rollup (d) -> d3.sum(d, (g) -> +g.amount )
-				.entries sortEquity
+	monthlyEquityDetails = _.pluck monthlyEquity, 'values'
 
 	allData = sortDebt.concat(sortEquity)
 
@@ -59,6 +54,7 @@ Template._timeline.rendered = ->
 
 	shortDate = d3.time.format("%b %Y")
 
+	debtIndex = 0
 	debtTotals = d3.nest()
 				.key (d) -> dateFormat new Date d.date
 				.rollup (d) ->
@@ -68,10 +64,14 @@ Template._timeline.rendered = ->
 						amount: sum
 						type: 'debt'
 						date: date
+						long_date: new Date date
+						details: monthlyDebtDetails[debtIndex]
 					}
+					debtIndex++
 					return object
 				.entries allDebt
 
+	equityIndex = 0
 	equityTotals = d3.nest()
 				.key (d) -> dateFormat new Date d.date
 				.rollup (d) ->
@@ -81,7 +81,10 @@ Template._timeline.rendered = ->
 						amount: sum
 						type: 'equity'
 						date: date
+						long_date: new Date date
+						details: monthlyEquityDetails[equityIndex]
 					}
+					equityIndex++
 					return object
 				.entries allEquity
 
@@ -169,6 +172,7 @@ Template._timeline.rendered = ->
 		.enter()
 		.append 'rect'
 		.attr 'class', 'monthly-transaction'
+		.attr 'selected', false
 		.attr 'height', (d) -> yScale(0) - yScale(d.amount)
 		.attr 'y', (d, i) ->
 			if i isnt 0
@@ -180,58 +184,35 @@ Template._timeline.rendered = ->
 				yScale(0) - (yScale(0)- yScale(d.amount)) #y0
 		.attr 'width', xScale.rangeBand()
 		.attr 'fill', (d) -> colorScale d.type
-		.on 'click', (d) ->
-			d3.select(@).attr 'opacity', 0.8
-			Session.set 'data', d
+		.on 'click', setSelected
+		# .on 'click', (d) ->
+		# 	d3.select(@).attr 'class', 'selected'
+		# 	Session.set 'data', d
 		.on 'mouseover', (d) ->
 			d3.select(@).attr 'opacity', 0.8
 		.on 'mouseout', (d) ->
 			d3.select(@).attr 'opacity', 1
 
-	# legend = svg.selectAll '.legend-box'
-	# 	.data monthlyTotals
-	# 	.enter()
-	# 	.append 'rect'
-	# 	.attr 'class', 'legend-box-DE'
-	# 	.attr 'x', 0
-	# 	.attr 'y', (d, i) ->
-	# 		if i isnt 0
-	# 			parent = d3.select(this).node().parentNode
-	# 			sibling = parent.childNodes
-	# 			current = d3.select(sibling[i-1]).attr('y')
-	# 			return (current - (yScale(0) - yScale(d.amount)))
-	# 		else
-	# 			yScale(0) - (yScale(0)- yScale(d.amount))
-	# 	.attr 'height', 20
-	# 	.attr 'width', 120
-	# 	.attr 'fill', 'black'
-
-	# transaction = month.selectAll('rect')
-	# 	.data (d) -> d.values
-	# 	.enter()
-	# 	.append 'rect'
-	# 	.attr 'class', 'monthly-transaction'
-	# 	.attr 'height', (d) -> yScale(0) - yScale(d.amount)
-	# 	.attr 'y', (d, i) ->
-	# 		if i isnt 0
-	# 			parent = d3.select(this).node().parentNode
-	# 			sibling = parent.childNodes
-	# 			current = d3.select(sibling[i-1]).attr('y')
-	# 			return (current - (yScale(0) - yScale(d.amount)))
-	# 		else
-	# 			yScale(0) - (yScale(0)- yScale(d.amount)) #y0
-	# 	.attr 'width', xScale.rangeBand()
-	# 	.attr 'fill', (d) -> colorScale d.type
-	# 	.on 'mouseover', (d) ->
-	# 		d3.select(@).attr 'opacity', 0.8
-	# 		position = d3.mouse(this)
-	# 		console.log position
-	# 	.on 'mouseout', (d) ->
-	# 		d3.select(@).attr 'opacity', 1
-
 Template._timeline.helpers
 	dataDE: ->
 		Session.get 'data'
+
+
+# setSelected is a function that will be able to retrieve the details of the monthly transactions + set current bar opaque -- will reset opacity of previous selection
+
+setSelected = ->
+	d3.select('.equity-debt').selectAll('rect').each ->
+		d3.select(@).classed 'debt-equity-selected', false
+	d3.select(@).classed 'debt-equity-selected', true
+	data = d3.select(@).datum()
+	console.log data
+	Session.set 'data', data
+
+	
+
+
+
+
 
 
 

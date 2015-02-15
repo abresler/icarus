@@ -224,24 +224,52 @@ nav ul li:hover, nav ul li.active {
   padding: 0;
 }
 
+.analytics-timeline {
+  margin-bottom: 2rem;
+}
+
 .analytics-pie-chart {
   padding: 0 50px;
 }
 
+.asset-toggle-row {
+  margin-top: 2rem;
+}
+
 a.pie-toggle {
+  width: 3rem;
   color: #FFF;
   margin: 0;
   padding: 0 1rem;
 }
 
+.pie-type-DE {
+  padding: 0 3rem;
+}
+
+a.debt-equity-button {
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  margin: 0;
+  color: white;
+}
 
 a.collection-item.analytics-property {
   border-top: none;
 }
 
+span.analytics-property {
+  font-size: 1.64rem;
+}
+
 div.analytics-properties {
   height: 200px;
   overflow-y: scroll;
+}
+
+.debt-equity-selected {
+  opacity: 0.5;
 }
 
 .property-image {

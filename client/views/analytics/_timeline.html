@@ -2,22 +2,38 @@
   <div class="card analytics-card">
     <div class="card-content">
     <h5 class="center-align">Debt & Equity</h5>
-      <div id="_timeline" style="height: 25rem;"></div>
+      <div id="_timeline" class="analytics-timeline" style="height: 25rem;"></div>
+      <div class="row left-align">
+        <a class="waves-effect waves-light btn blue darken-3 debt-equity-button">Debt</a>
+        <a class="waves-effect waves-light btn orange accent-3 debt-equity-button">Equity</a>
+        {{#with dataDE}}
+         <span class="analytics-property blue-text text-darken-3 pull-right">{{monthlyDate long_date}}</span>
+        {{/with}}
+            <!-- <h5><span class="analytics-property blue-text text-darken-3">{{capitalize type}} Summary {{monthlyDate long_date}}</span></h5> -->
+      </div>
+        
       <div class="collection center-align analytics-properties">
-          <h5><a href="#!" class="collection-item analytics-property red-text text-darken-2">{{dataDE.date}} -- {{dataDE.type}}</a></h5>
-          <div class="row">
-            <div class="col l6 m6 s6 collection left-align">
-              <a href="#!" class="collection-item analytics-property black-text"><div class="row date-DE">Date</div></a>
-              <a href="#!" class="collection-item analytics-property black-text"><div class="row type-DE">Type</div></a>
-              <a href="#!" class="collection-item analytics-property black-text"><div class="row amount-DE">Total</div></a>
-            </div>
-            <div class="col l6 m6 s6 collection left-align">
-              <a href="#!" class="collection-item analytics-property black-text"><div class="row date-DE">{{dataDE.date}}</div></a>
-              <a href="#!" class="collection-item analytics-property black-text"><div class="row type-DE">{{dataDE.type}}</div></a>
-              <a href="#!" class="collection-item analytics-property black-text"><div class="row amount-DE">$ {{money dataDE.amount}}</div></a>
-            </div>
-        </div>
+        <table class="hoverable centered">
+          <thead>
+              <tr>
+                <th>Property</th>
+                <th>Date</th>
+                <th>Amount</th>
+              </tr>
+          </thead>
+          <tbody>
+            {{#with dataDE}}
+              {{#each details}}
+                <tr>
+                  <td>{{property}}</td>
+                  <td>{{shortDate date}}</td>
+                  <td>$ {{money amount}}</td>
+                </tr>
+                {{/each}}
+            {{/with}}
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
