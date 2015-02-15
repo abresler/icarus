@@ -5,19 +5,6 @@ Template.home.rendered = ->
     return
   , 250
 
-Template.home.events {}
-
-Template.home.helpers {}
-
-# Transitioner.transition
-#   fromRoute: "home"
-#   toRoute: "about"
-#   velocityAnimation:
-#     in: 'transition.fadeIn'
-#     out: 'transition.fadeOut'
-
-
-
 Template._promo.rendered = ->
   Session.set 'investedCapital', 812422
 
