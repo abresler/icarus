@@ -3,35 +3,27 @@
     <div class="card-content">
       <div class="analytics-pie-chart col l6 m6 s6" id="analytics-asset-allocation"></div>
       <div class="analytics-pie-label col l6 m6 s6">
-          <h5 class="center-align">Asset Allocation</h5>
-            <div class="row">
-              <a id="pie-percent" class="pie-toggle waves-effect waves-light btn">%</a>
-              <a id="pie-value" class="pie-toggle waves-effect waves-light btn">$</a>
-            </div>
-            <div class="col l6 m6 s6 collection left-align">
-              {{#each pieData}}
-                <a href="#!" class="collection-item analytics-property">
-                  <div class="row type-DE">
-                    <span id="pie-square" class="mdi-av-stop"></span>
-                    <span class="black-text">{{type}}</span>
-                  </div>
-                </a>
-              {{/each}}
-            </div>
-            <div class="col l6 m6 s6 collection right-align">
-              {{#each pieData}}
-                <a href="#!" class="collection-item analytics-property">
-                  <div class="row value-DE">
-                    {{#if toggleValue}}
-                      <span class="black-text">$ {{money total}}</span>
-                    {{/if}}
-                    {{#if togglePercent}}
-                      <span class="black-text">{{percent}}%</span>
-                    {{/if}}
-                  </div>
-                </a>
-              {{/each}}
-            </div>
+        <h5 class="center-align">Asset Allocation</h5>
+        <div class="row">
+          <a id="pie-percent" class="pie-toggle waves-effect waves-light btn">%</a>
+          <a id="pie-value" class="pie-toggle waves-effect waves-light btn">$</a>
+        </div>
+        <div class="collection left-align">
+          {{#each pieData}}
+            <a href="#!" class="collection-item analytics-property">
+              <div class="row pie-type-DE">
+                <span id="pie-square" class="mdi-av-stop"></span>
+                <span class="black-text">{{type}}</span>
+                {{#if toggleValue}}
+                  <span class="black-text pull-right">$ {{money total}}</span>
+                {{/if}}
+                {{#if togglePercent}}
+                  <span class="black-text pull-right">{{percent}}%</span>
+                {{/if}}
+              </div>
+            </a>
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>
