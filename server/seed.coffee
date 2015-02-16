@@ -54,10 +54,12 @@ Meteor.startup ->
         email: 'leon@wofholdings.com'
         telephone: '4154839933'
 
+
   # Seeding the database with a property
   if Properties.find().count() is 0
     owner = Meteor.users.findOne( username: "Icarus")._id
     owner2 = Meteor.users.findOne( username: "wofholdings")._id
+
     history1 = Meteor.http.call "GET", "http://www.zillow.com/ajax/homedetail/HomeValueChartData.htm?mt=1&zpid=4213212&format=json"
     history2 = Meteor.http.call "GET", "http://www.zillow.com/ajax/homedetail/HomeValueChartData.htm?mt=1&zpid=48363984&format=json"
     history3 = Meteor.http.call "GET", "http://www.zillow.com/ajax/homedetail/HomeValueChartData.htm?mt=1&zpid=32533232&format=json"
@@ -123,9 +125,6 @@ Meteor.startup ->
       history: history3["data"]["0"]["points"]
       zip: "13617"
       zpid: "32533232"
-
-    # Updating database with history
-
 
   # Seeding the database with a termsheet
   if TermSheets.find().count() is 0
@@ -773,7 +772,6 @@ Meteor.startup ->
 
 Still to do:
 
-Equity and debt for two more properties (3 total) --done
 Property purchase events --
 Property sale events
 

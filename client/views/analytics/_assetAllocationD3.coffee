@@ -3,7 +3,7 @@ data = [
       type: "Loan"
       total: 40000
     }
-    { 
+    {
       type: "Equity"
       total: 13000
     }
@@ -14,7 +14,7 @@ data = [
 ]
 
 totals = _.pluck data, 'total'
-sum = totals.reduce (a, b) -> a+b  
+sum = totals.reduce (a, b) -> a+b
 addPercent = []
 
 data.forEach (d, i) ->
@@ -24,7 +24,7 @@ data.forEach (d, i) ->
     percent: Math.round(d.total/sum*100)
   }
   addPercent.push(percent)
-  
+
 money = d3.format(',.0f')
 
 height = 250
@@ -42,7 +42,14 @@ transitionArc = d3.svg.arc()
   .innerRadius(radius*0.5)
 
 Template._assetAllocation.rendered = ->
+  Meteor.setTimeout ->
+    e = document.createEvent('UIEvents')
+    e.initUIEvent('click', true, true)
+    d3.select('.pie-slice').node().dispatchEvent(e)
+  , 250
+
   colorCoordination()
+
   Session.set 'pieData', addPercent
   Session.setDefault 'isValue', true
   Session.setDefault 'isPercent', false
@@ -75,15 +82,15 @@ Template._assetAllocation.rendered = ->
 
   d3.selectAll 'path'
     .on 'click', pieToggle
-    .on 'mouseover', (d, i) -> 
+    .on 'mouseover', (d, i) ->
       d3.select(@).style 'opacity', 0.7
-    .on 'mouseout', (d, i) -> 
+    .on 'mouseout', (d, i) ->
       d3.select(@).style('opacity', 1)
 
   arcGroup.append 'text'
     .attr 'class', 'slice-type'
     .attr 'x', 0
-    .attr 'y', 0  
+    .attr 'y', 0
     .attr 'text-anchor', 'middle'
     .attr 'font-family', 'Roboto, sans-serif'
     .attr 'fill', '#D1122B'
@@ -129,7 +136,7 @@ pieToggle = ->
   currentStatus = currentSelector.attr 'active'
   textData = currentSelector.datum()
   pieChart = d3.select('.pie-chart')
-  arcGroup = d3.select('.pie-chart-location') 
+  arcGroup = d3.select('.pie-chart-location')
   pieChart.select('.slice-type').text(textData.data.type.toUpperCase())
   pieChart.select('.slice-value').text ->
     if Session.get 'isValue'
@@ -160,6 +167,3 @@ pieToggle = ->
 colorCoordination = ->
   d3.selectAll('#pie-square').each (d, i) ->
     d3.select(@).style 'color', color i
-
-
-

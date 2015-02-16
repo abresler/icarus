@@ -1,4 +1,17 @@
 Template._timeline.rendered = ->
+	Meteor.setTimeout ->
+		e = document.createEvent('UIEvents')
+		e.initUIEvent('click', true, true)
+		d3.select('.monthly-transaction').node().dispatchEvent(e)
+	, 250
+
+	# Meteor.setTimeout(function(){
+  #   var e = document.createEvent('UIEvents');
+  #   e.initUIEvent('click', true, true);
+  #   d3.select(".pie-slice").node().dispatchEvent(e);
+  # }, 1000)
+
+
 	Session.setDefault 'data', []
 
 	height = d3.select('#_timeline').property('clientHeight') - 20
@@ -16,7 +29,7 @@ Template._timeline.rendered = ->
 	debtLines = _.where(data, {type: 'debt'})
 	equityLines = _.where(data, {type: 'equity'})
 
-	dateAsc = (a, b) -> 
+	dateAsc = (a, b) ->
 		dateA = new Date a.date
 		dateB = new Date b.date
 		return dateA - dateB
@@ -111,7 +124,7 @@ Template._timeline.rendered = ->
 	xScale = d3.scale.ordinal()
 		.domain _.pluck monthlyTotals, 'key'
 		.rangeRoundBands [yAxisTransform, width - yAxisTransform], 0.1
-		
+
 	yScale = d3.scale.linear()
 		.domain [yDomain[1], 0]
 		.rangeRound [xAxisTransform, height - xAxisTransform]
@@ -122,7 +135,7 @@ Template._timeline.rendered = ->
 	svg = d3.select '#_timeline'
 		.append('svg')
 		.attr 'class', 'equity-debt'
-		.attr 
+		.attr
 			height: height,
 			width: width
 
@@ -148,7 +161,7 @@ Template._timeline.rendered = ->
 	axis.append 'g'
 		.attr 'class', 'x-axis'
 		.attr 'transform', 'translate(0,' + (height-xAxisTransform) + ')'
-		.attr 
+		.attr
 			stroke: '#D1122B'
 		.call xAxis
 
@@ -197,6 +210,9 @@ Template._timeline.helpers
 	dataDE: ->
 		Session.get 'data'
 
+	propName: (id) ->
+		Properties.findOne(id).street
+
 
 # setSelected is a function that will be able to retrieve the details of the monthly transactions + set current bar opaque -- will reset opacity of previous selection
 
@@ -207,27 +223,3 @@ setSelected = ->
 	data = d3.select(@).datum()
 	console.log data
 	Session.set 'data', data
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-	
