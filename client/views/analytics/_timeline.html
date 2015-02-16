@@ -3,11 +3,11 @@
     <div class="card-content">
     <h5 class="center-align">Debt & Equity</h5>
       <div id="_timeline" class="analytics-timeline" style="height: 25rem;"></div>
-      <div class="row left-align">
-        <a class="waves-effect waves-light btn blue darken-3 debt-equity-button">Debt</a>
-        <a class="waves-effect waves-light btn orange accent-3 debt-equity-button">Equity</a>
+      <div class="row center-align">
+        <a class="waves-effect waves-light btn blue darken-3 debt-equity-button pull-left">Debt</a>
+        <a class="waves-effect waves-light btn orange accent-3 debt-equity-button pull-left">Equity</a>
         {{#with dataDE}}
-         <span class="analytics-property blue-text text-darken-3 pull-right">{{monthlyDate long_date}}</span>
+         <span class="analytics-property blue-text text-darken-3">{{monthlyDate long_date}}</span>
         {{/with}}
             <!-- <h5><span class="analytics-property blue-text text-darken-3">{{capitalize type}} Summary {{monthlyDate long_date}}</span></h5> -->
       </div>
