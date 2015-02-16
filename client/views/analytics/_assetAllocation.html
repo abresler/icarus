@@ -1,14 +1,61 @@
 <template name="_assetAllocation">
   <div id="analytics-allocation" class="card analytics-card">
     <div class="card-content">
-      <div class="analytics-pie-chart col l7 m7 s12" id="analytics-asset-allocation"></div>
-      <div class="analytics-pie-label col l5 m5 s12">
-        <h5 class="center-align">Asset Allocation</h5>
+      <div class="analytics-pie-label">
         <div class="row asset-toggle-row">
-          <a id="pie-percent" class="pie-toggle waves-effect waves-light btn red accent-2">%</a>
-          <a id="pie-value" class="pie-toggle waves-effect waves-light btn red accent-2">$</a>
+          <h5 class="center-align">Asset Allocation <a id="pie-percent" style="font-size: 1rem" class="pie-toggle waves-effect waves-light btn red accent-2 pull-right">%</a><a id="pie-value" style="font-size: 1rem" class="pie-toggle waves-effect waves-light btn red accent-2 pull-right">$</a></h5>
         </div>
-        <div class="collection left-align col s12">
+        <div class="collection" style="margin-top: 0.5rem">
+          <table class="hoverable centered">
+            <tr>
+              {{#each pieData}}
+                <td style="padding: 0">
+                  <a href="#!" class="collection-item analytics-property">
+                    <span id="pie-square" class="mdi-av-stop"></span>{{type}}
+                  </a>
+                </td>
+              {{/each}}
+            </tr>
+            <tr>
+              {{#each pieData}}
+              <td style="padding: 0" class="center-align">
+                {{#if toggleValue}}
+                  <span class="black-text">$ {{money total}}</span>
+                {{/if}}
+                {{#if togglePercent}}
+                  <span class="black-text">{{percent}}%</span>
+                {{/if}}
+              </td>
+              {{/each}}
+            </tr>
+          </table>
+        </div>
+        <div class="analytics-pie-chart center-align" id="analytics-asset-allocation"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<!-- <table class="hoverable">
+  <tr>
+    {{#each pieData}}
+    <td>
+      {{type}}
+    </td>
+    {{/each}}
+  </tr>
+  <tr>
+    {{#each pieData}}
+    <td>
+      {{total}}
+    </td>
+    {{/each}}
+  </tr>
+</table> -->
+
+<!-- 
+<div class="collection">
           {{#each pieData}}
             <a href="#!" class="collection-item analytics-property">
               <div class="row pie-type-DE">
@@ -23,8 +70,4 @@
               </div>
             </a>
           {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+        </div> -->

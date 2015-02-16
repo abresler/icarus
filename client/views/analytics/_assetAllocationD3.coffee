@@ -11,10 +11,6 @@ data = [
       type: "Deferred" #Leasing Cost
       total: 3000
     }
-    {
-      type: "Prepaid" # Tax and Insurance
-      total: 0
-    }
 ]
 
 totals = _.pluck data, 'total'
@@ -29,10 +25,10 @@ data.forEach (d, i) ->
   }
   addPercent.push(percent)
   
-money = d3.format(',.2f')
+money = d3.format(',.0f')
 
-height = 400
-width = 400
+height = 250
+width = 250
 radius = Math.min(width, height)/2
 
 color = d3.scale.category10()
@@ -88,7 +84,7 @@ Template._assetAllocation.rendered = ->
   arcGroup.append 'text'
     .attr 'class', 'slice-type'
     .attr 'x', 0
-    .attr 'y', 0
+    .attr 'y', 0  
     .attr 'text-anchor', 'middle'
     .attr 'font-family', 'Roboto, sans-serif'
     .attr 'fill', '#D1122B'
