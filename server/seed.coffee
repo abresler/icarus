@@ -389,26 +389,6 @@ Meteor.startup ->
 
 
 
-
-
-    Portfolios.insert
-      type: "debt"
-      date: "15 January 2014"
-      amount: 180
-      owner: wof
-      property: property2
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "debt"
-      date: "15 February 2014"
-      amount: 180
-      owner: wof
-      property: property2
-      event: ""
-      notes: ""
-
     Portfolios.insert
       type: "debt"
       date: "15 March 2014"
@@ -499,26 +479,6 @@ Meteor.startup ->
       event: ""
       notes: ""
 
-
-
-
-    Portfolios.insert
-      type: "equity"
-      date: "15 January 2014"
-      amount: 340
-      owner: wof
-      property: property2
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "equity"
-      date: "15 February 2014"
-      amount: 330
-      owner: wof
-      property: property2
-      event: ""
-      notes: ""
 
     Portfolios.insert
       type: "equity"
@@ -615,41 +575,7 @@ Meteor.startup ->
 
       # Property 3 debt returns
 
-    Portfolios.insert
-      type: "debt"
-      date: "15 January 2014"
-      amount: 150
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
 
-    Portfolios.insert
-      type: "debt"
-      date: "15 February 2014"
-      amount: 150
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "debt"
-      date: "15 March 2014"
-      amount: 150
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "debt"
-      date: "15 April 2014"
-      amount: 150
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
 
     Portfolios.insert
       type: "debt"
@@ -724,41 +650,6 @@ Meteor.startup ->
       notes: ""
 
 
-    Portfolios.insert
-      type: "equity"
-      date: "15 January 2014"
-      amount: 240
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "equity"
-      date: "15 February 2014"
-      amount: 240
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "equity"
-      date: "15 March 2014"
-      amount: 240
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
-
-    Portfolios.insert
-      type: "equity"
-      date: "15 April 2014"
-      amount: 240
-      owner: wof
-      property: property3
-      event: ""
-      notes: ""
 
     Portfolios.insert
       type: "equity"
