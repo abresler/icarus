@@ -50,8 +50,9 @@ Template._assetTimeline.rendered = ->
 
 	colorScale = d3.scale.category10()
 
-	d3.selectAll('#line-square').each (d, i) ->
-    d3.select(@).style 'color', colorScale i
+	colorSquares = ->
+		d3.selectAll('#line-square').each (d, i) ->
+    		d3.select(@).style 'color', colorScale i
 
 	axis = svg.append 'g'
 			.attr 'class', 'axis'
@@ -275,6 +276,8 @@ Template._assetTimeline.rendered = ->
 		.attr 'fill', 'white'
 		.attr 'text-anchor', 'middle'
 		.style 'font-size', '12px'
+
+	colorSquares()
 
 Template._assetTimeline.helpers
 	details: -> 

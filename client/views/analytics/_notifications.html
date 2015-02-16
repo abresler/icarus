@@ -1,13 +1,22 @@
 <template name="_notifications">
   <div id="analytics-notifications" class="card analytics-card">
     <div class="card-content">
-      <h5 class="center-align">Notifications</h5>
+      <h5 class="center-align">
+        <i class="mdi-content-archive small pull-left"></i>
+          Notifications
+        <i class="mdi-action-delete small pull-right"></i>
+      </h5>
+      <div class="row">
+      </div>
        <table class="hoverable">
         <tbody>
           {{#each notifications}}
             <tr>
-              <td class="td-date">{{shortDate sent}}</td>
-              <td class="td-note">{{message}}</td>
+                <td class="notification-date">
+                  <input type="checkbox" id="{{_id}}" class="checkbox-field">
+                  <label for="{{_id}}">{{shortDate sent}}</label>
+                </td>
+                <td class="notification-note">{{message}} <input type="checkbox"></td>
             </tr>
           {{/each}}
         </tbody>

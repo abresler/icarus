@@ -9,6 +9,8 @@ Template._notifications.rendered = ->
 	allNotes.forEach (d, i) ->
 		if _.contains(d.investors, userID) then userNotes.push(d)
 
+	console.log allNotes
+
 	Session.set 'notice', userNotes
 
 Template._notifications.helpers
