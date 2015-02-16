@@ -1,7 +1,7 @@
 Template._notifications.rendered = ->
 	rowHeight = d3.select('#analytics-allocation').property('clientHeight')
 	d3.select('#analytics-notifications').style('height', rowHeight+'px')
-	Session.setDefault 'notice', []
+	Session.setDefault 'notes', []
 	userID = Meteor.user()._id
 	userNotes = []
 	allNotes = Notifications.find().fetch()
@@ -9,16 +9,56 @@ Template._notifications.rendered = ->
 	allNotes.forEach (d, i) ->
 		if _.contains(d.investors, userID) then userNotes.push(d)
 
-	console.log allNotes
+	Session.set 'notes', userNotes
+	Session.set 'noteChecked', []
 
-	Session.set 'notice', userNotes
+Template._notifications.events
+	'click .checkbox-field': (e, t) ->
+		noteId = d3.select(this).node()._id
+		checked = Session.get 'noteChecked'
+		checked.push(noteId)
+		Session.set 'noteChecked', checked
+
+	'click #archive-notification': (e, t) ->
+		checked = Session.get 'noteChecked'
+		userNotes = Session.get 'notes'
+		selected = []
+
+		checked.forEach (c, i) ->
+			temp = _.findWhere(userNotes, {_id: c})
+			selected.push temp
+
+		checked.forEach (c, i) ->
+			temp = _.reject(userNotes, (d) ->
+				d._id is c 
+			)
+			userNotes = temp
+		Session.set 'notes', userNotes #SET AS CURRENTLY ACTIVE NOTIFICATIONS
+		Session.set 'noteChecked', selected #SEND TO ARCHIVE
+
+	'click #delete-notification': (e, t) ->
+		checked = Session.get 'noteChecked'
+		userNotes = Session.get 'notes'
+		selected = []
+
+		checked.forEach (c, i) ->
+			temp = _.findWhere(userNotes, {_id: c})
+			selected.push temp
+
+		checked.forEach (c, i) ->
+			temp = _.reject(userNotes, (d) ->
+				d._id is c 
+			)
+			userNotes = temp
+		Session.set 'notes', userNotes #SET AS CURRENTLY ACTIVE NOTIFICATIONS
+		Session.set 'noteChecked', selected #REMOVE NOTE
 
 Template._notifications.helpers
 	notifications: ->
-		Session.get 'notice'
+		Session.get 'notes'
 
 	notificationNumber: ->
-		n = Session.get 'notice'
+		n = Session.get 'notes'
 		n.length
 
 
