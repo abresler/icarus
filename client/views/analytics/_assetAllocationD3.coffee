@@ -134,14 +134,17 @@ Template._assetAllocation.helpers
 pieToggle = ->
   currentSelector = d3.select(@)
   currentStatus = currentSelector.attr 'active'
+  value = Session.get 'isValue'
+  percent = Session.get 'isPercent'
   textData = currentSelector.datum()
   pieChart = d3.select('.pie-chart')
   arcGroup = d3.select('.pie-chart-location')
   pieChart.select('.slice-type').text(textData.data.type.toUpperCase())
   pieChart.select('.slice-value').text ->
-    if Session.get 'isValue'
+    if value
       return Math.round(textData.value/sum*100) + '%'
-    if Session.get 'isPercent'
+    # if Session.get 'isPercent'
+    else if percent
       return '$ ' + money textData.value
   if currentStatus is 'false'
     arcGroup.selectAll('path').each (d) ->

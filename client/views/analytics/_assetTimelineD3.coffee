@@ -72,7 +72,7 @@ Template._assetTimeline.rendered = ->
 		position = d3.mouse(this)
 		x = xScale.invert(position[0])
 		date = d3.time.format('%b %d, %Y')
-		money = d3.format(',.2f')
+		money = d3.format(',.0f')
 		range = d3.extent all, (d) -> new Date(d.x)
 		mid = new Date(range[1] - ((range[1] - range[0])/2))
 
