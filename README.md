@@ -42,25 +42,25 @@ The website for a guest user consists of:
 
 The homepage contains a number of SVGs that were created using `Adobe Illustrator` and `Sketch`. These include the logo in the top left of the navbar, the three promo images, and the logo at the bottom of the page. The map is rendered using `D3.js` and real data reflecting the locations in which Icarus owns property. 
 
-image goes here
+**map**
 
 The calculator allows anyone to calculate the Capitalization Rate (CAP Rate) of a property in which they are considering an investment. The calculation for CAP rate is not complicated: `Net Annual Operating Income / Purchase Price = CAP Rate`
 
-**image goes here**
+**calc**
 
 ###Admin
 
 When a user signs in as an admin, he gains access to the admin panel. The top of the admin panel contains a number of button shortcuts that link to specific sections of the admin panel. This is accomplished using a `jQuery` plugin called `scrollspy`, which comes with the `Materialize` library. The icons are all from `Fontawesome`. 
 
-**image goes here**
+**panel**
 
 The navigation that stays fixed to the left of the page is called a `pushpin` and also comes with the Materialize library. 
 
-**image goes here**
+**pushpin**
 
 An admin can add a client by clicking on the button next to the "Client List". We utilized `Session` variables to show a new row that allows the admin to add a new user. 
 
-**image goes here**
+**client**
 
 The admin can also add properties through the "Manage Properties" section in much the same way he adds new clients. This utilizes the `Zillow` API, so the admin only needs to know the "zpid" (Zillow Property ID) of the property and Zillow does all the heavy lifting of finding the latitude and longitude, address, state, etc. 
 
