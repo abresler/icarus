@@ -112,5 +112,3 @@ Template.registerHelper "capitalize", (string) ->
   upper = string[0].toUpperCase()
   capital = upper + lower
   return capital
-  
-

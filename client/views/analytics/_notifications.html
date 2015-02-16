@@ -2,16 +2,19 @@
   <div id="analytics-notifications" class="card analytics-card">
     <div class="card-content">
       <h5 class="center-align">
-        <a href="#!"><i id="delete-notification" class="mdi-action-delete small pull-left"></i></a>
+        <!-- <a href="#!"><i id="archive-notification" class="mdi-content-archive small pull-left"></i></a> -->
           Notifications <span class="new badge red darken-3">{{notificationNumber}}</span>
+        <a href="#!"><i id="delete-notification" class="mdi-action-delete small pull-left"></i></a>
       </h5>
        <table id="notification-table" class="hoverable">
         <tbody>
           {{#each notifications}}
             <tr>
                 <td class="notification-date">
+
                   <input type="checkbox" id="{{_id}}" class="checkbox-field">
-                  <label for="{{_id}}">{{shortDate sent}}</label>
+                  <!-- <label for="{{_id}}">{{shortDate sent}}</label> -->
+                  <label for="{{_id}}"></label>
                 </td>
                 <td class="notification-note">{{message}}</td>
             </tr>
@@ -21,4 +24,3 @@
     </div>
   </div>
 </template>
-
