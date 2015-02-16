@@ -18,6 +18,7 @@
   waitOn: ->
     [
       Meteor.subscribe "portfolios"
+      Meteor.subscribe 'properties'
     ]
 
 

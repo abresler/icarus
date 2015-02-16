@@ -54,69 +54,70 @@ Meteor.startup ->
         email: 'leon@wofholdings.com'
         telephone: '4154839933'
 
+
   # Seeding the database with a property
-  # if Properties.find().count() is 0
-  #   owner = Meteor.users.findOne( username: "Icarus")._id
-  #   owner2 = Meteor.users.findOne( username: "wofholdings")._id
+  if Properties.find().count() is 0
+    owner = Meteor.users.findOne( username: "Icarus")._id
+    owner2 = Meteor.users.findOne( username: "wofholdings")._id
 
-  #   property1 = Properties.insert
-  #     bath: "3.0"
-  #     bed: "3"
-  #     city: "Midlothian"
-  #     imagesArray: [
-  #       "http://photos2.zillowstatic.com/p_d/IS-1n85aotvpsxgd.jpg"
-  #       "http://photos2.zillowstatic.com/p_d/IS-1n85aiwsdn04d.jpg"
-  #       "http://photos3.zillowstatic.com/p_d/IS-aujpiwl6wod9.jpg"
-  #       "http://photos2.zillowstatic.com/p_d/IS-1n85b6l5qapgd.jpg"
-  #       "http://photos1.zillowstatic.com/p_d/IS-aujv1qxbjqsd.jpg"
-  #     ]
-  #     lat: "41.632556"
-  #     long: "-87.726905"
-  #     lotSizeSqft: "6783"
-  #     owners: [
-  #       owner
-  #       owner2
-  #     ]
-  #     purchaseDate: "2015-01-01T00:00:00-05:00"
-  #     rooms: "Recreation room, Family room, Laundry room, Master bath"
-  #     sqft: "1215"
-  #     state: "IL"
-  #     status: "complete"
-  #     street: "14300 Kolin Ave"
-  #     yearBuilt: "1971"
-  #     zestimate: "144031"
-  #     zip: "60445"
-  #     zpid: "4213212"
+    property1 = Properties.insert
+      bath: "3.0"
+      bed: "3"
+      city: "Midlothian"
+      imagesArray: [
+        "http://photos2.zillowstatic.com/p_d/IS-1n85aotvpsxgd.jpg"
+        "http://photos2.zillowstatic.com/p_d/IS-1n85aiwsdn04d.jpg"
+        "http://photos3.zillowstatic.com/p_d/IS-aujpiwl6wod9.jpg"
+        "http://photos2.zillowstatic.com/p_d/IS-1n85b6l5qapgd.jpg"
+        "http://photos1.zillowstatic.com/p_d/IS-aujv1qxbjqsd.jpg"
+      ]
+      lat: "41.632556"
+      long: "-87.726905"
+      lotSizeSqft: "6783"
+      owners: [
+        owner
+        owner2
+      ]
+      purchaseDate: "2015-01-01T00:00:00-05:00"
+      rooms: "Recreation room, Family room, Laundry room, Master bath"
+      sqft: "1215"
+      state: "IL"
+      status: "complete"
+      street: "14300 Kolin Ave"
+      yearBuilt: "1971"
+      zestimate: "144031"
+      zip: "60445"
+      zpid: "4213212"
 
-  #   property2 = Properties.insert
-  #     city: "Talent"
-  #     lat: "42.250025"
-  #     long: "-133.786568"
-  #     owners: [
-  #       owner
-  #       owner2
-  #     ]
-  #     state: "OR"
-  #     status: "complete"
-  #     street: "230 Autumn Ridge Dr"
-  #     zestimate: "258932"
-  #     zip: "97540"
-  #     zpid: "48363984"
+    property2 = Properties.insert
+      city: "Talent"
+      lat: "42.250025"
+      long: "-133.786568"
+      owners: [
+        owner
+        owner2
+      ]
+      state: "OR"
+      status: "complete"
+      street: "230 Autumn Ridge Dr"
+      zestimate: "258932"
+      zip: "97540"
+      zpid: "48363984"
 
-  #   property3 = Properties.insert
-  #     city: "Canton"
-  #     lat: "44.601894"
-  #     long: "-75.174200"
-  #     owners: [
-  #       owner
-  #       owner2
-  #     ]
-  #     state: "NY"
-  #     status: "complete"
-  #     street: "10 Fairlane Dr"
-  #     zestimate: "113497"
-  #     zip: "13617"
-  #     zpid: "32533232"
+    property3 = Properties.insert
+      city: "Canton"
+      lat: "44.601894"
+      long: "-75.174200"
+      owners: [
+        owner
+        owner2
+      ]
+      state: "NY"
+      status: "complete"
+      street: "10 Fairlane Dr"
+      zestimate: "113497"
+      zip: "13617"
+      zpid: "32533232"
 
   # Seeding the database with a termsheet
   if TermSheets.find().count() is 0

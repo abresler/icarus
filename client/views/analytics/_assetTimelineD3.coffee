@@ -8,7 +8,7 @@ Template._assetTimeline.rendered = ->
 	xAxisTransform = 20
 	yAxisTransform = 60
 
-	dateAsc = (a, b) -> 
+	dateAsc = (a, b) ->
 		dateA = a.x
 		dateB = b.x
 		return dateA - dateB
@@ -16,7 +16,6 @@ Template._assetTimeline.rendered = ->
 	properties = Properties.find({owners: Meteor.user()._id }).fetch()
 
 	Session.set 'homes', properties
-	console.log properties
 
 	propertyData = _.pluck(properties, 'history')
 
@@ -27,14 +26,14 @@ Template._assetTimeline.rendered = ->
 	lineData = []
 
 	propertyData.forEach (d, i) ->
-		array = Array.prototype.slice.call d
+		array = Array.prototype.slice.call d 				# TODO This is causing a non-breaking error
 		sort = array.sort dateAsc
 		lineData.push(sort)
 
 	svg = d3.select '#_assetTimeline'
 			.append('svg')
 			.attr 'class', 'assets'
-			.attr 
+			.attr
 				height: height,
 				width: width
 
@@ -43,7 +42,7 @@ Template._assetTimeline.rendered = ->
 	xScale = d3.time.scale()
 	.domain d3.extent all, (d) -> new Date(d.x)
 	.range [yAxisTransform, width - yAxisTransform]
-	
+
 	yScale = d3.scale.linear()
 	.domain [d3.max(all, (d) -> d.y) + 20e3, d3.min(all, (d) -> d.y) - 20e3]
 	.range [xAxisTransform, height - xAxisTransform]
@@ -67,7 +66,7 @@ Template._assetTimeline.rendered = ->
 			.ticks(8)
 			.tickFormat (d) -> (d3.formatPrefix(d).scale(d) + d3.formatPrefix(d).symbol)
 			.orient 'left'
-			
+
 	mousemove = ->
 		bisect = d3.bisector((d) -> new Date d.x).left
 		position = d3.mouse(this)
@@ -85,15 +84,15 @@ Template._assetTimeline.rendered = ->
 			d3.selectAll '#_assetTimeline .legend'
 				.attr 'x', (position[0] - legend.boxWidth - 20)
 				.attr 'y', (position[1])
-		else 
+		else
 			d3.selectAll '#_assetTimeline .legend'
 				.attr 'x', (position[0])
 				.attr 'y', (position[1])
 
-		d3.selectAll('#_assetTimeline #tracer').each (d) -> 
+		d3.selectAll('#_assetTimeline #tracer').each (d) ->
 			set = d3.select(this).datum()
 			i = bisect(set, x)
-			if i > 0 
+			if i > 0
 				min = new Date(d3.min(set, (d) -> d.x))
 				max = new Date(d3.max(set, (d) -> d.x))
 
@@ -125,19 +124,19 @@ Template._assetTimeline.rendered = ->
 				if x < mid
 					d3.select(this)
 						.attr 'x', (position[0] + (legend.boxWidth - (box.s*2)))
-				else 
+				else
 					d3.select(this)
 						.attr 'x', (position[0] - (box.s*6))
-				
+
 				d3.select(this)
 					.text('$ ' + money(ix.y))
-			else 
+			else
 				d3.select(this).attr 'y', (position[1] + ((index * 20) + box.s + legend.y))
 
 				if x < mid
 					d3.select(this)
 						.attr 'x', (position[0] + (legend.boxWidth - (box.s*2)))
-				else 
+				else
 					d3.select(this)
 						.attr 'x', (position[0] - (legend.boxWidth - (box.s*2)))
 
@@ -150,7 +149,7 @@ Template._assetTimeline.rendered = ->
 				.attr 'y', (position[1] + 12.5)
 				.text date(x)
 
-			if x < mid 
+			if x < mid
 				d3.select(this).attr 'x', (position[0] + (legend.boxWidth/2))
 			else
 				d3.select(this).attr 'x', (position[0] - (legend.boxWidth/2 + 20))
@@ -158,7 +157,7 @@ Template._assetTimeline.rendered = ->
 	axis.append 'g'
 		.attr 'class', 'x-axis'
 		.attr 'transform', 'translate(0,' + (height-xAxisTransform) + ')'
-		.attr 
+		.attr
 			stroke: '#D1122B'
 		.call xAxis
 
@@ -216,7 +215,7 @@ Template._assetTimeline.rendered = ->
 		.enter()
 		.append('g')
 		.attr('class', 'property')
-	
+
 	propertiesGroup.append('path')
 		.attr 'class', 'line'
 		.attr 'd', (d) -> line(d)
@@ -280,5 +279,5 @@ Template._assetTimeline.rendered = ->
 	colorSquares()
 
 Template._assetTimeline.helpers
-	details: -> 
+	details: ->
 		Session.get 'homes'

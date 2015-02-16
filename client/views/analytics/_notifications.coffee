@@ -30,7 +30,7 @@ Template._notifications.events
 
 		checked.forEach (c, i) ->
 			temp = _.reject(userNotes, (d) ->
-				d._id is c 
+				d._id is c
 			)
 			userNotes = temp
 		Session.set 'notes', userNotes #SET AS CURRENTLY ACTIVE NOTIFICATIONS
@@ -47,7 +47,7 @@ Template._notifications.events
 
 		checked.forEach (c, i) ->
 			temp = _.reject(userNotes, (d) ->
-				d._id is c 
+				d._id is c
 			)
 			userNotes = temp
 		Session.set 'notes', userNotes #SET AS CURRENTLY ACTIVE NOTIFICATIONS
@@ -59,7 +59,4 @@ Template._notifications.helpers
 
 	notificationNumber: ->
 		n = Session.get 'notes'
-		n.length
-
-
-
+		if n?.length then n.length else 0
