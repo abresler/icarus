@@ -84,12 +84,12 @@ Template.registerHelper "filterPhone", (x) ->
     phoneNumber = "(#{areaCode}) #{firstNum}-#{secondNum}"
 
 Template.registerHelper "money", (x) ->
-  money = d3.format(',.2f')
+  money = d3.format(',.0f')
   return money x
 
 Template.registerHelper "transactionConvert", (x) ->
   x = x * -1
-  money = d3.format(',.2f')
+  money = d3.format(',.0f')
   return money x
 
 Template.registerHelper "_", ->
@@ -112,5 +112,3 @@ Template.registerHelper "capitalize", (string) ->
   upper = string[0].toUpperCase()
   capital = upper + lower
   return capital
-  
-

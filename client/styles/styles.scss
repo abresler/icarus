@@ -339,7 +339,8 @@ a.collection-item {
 }
 
 .new-projects-table {
-  max-height: 15rem;
+  min-height: 10rem;
+  max-height: 23rem;
   overflow: scroll;
   background-color: rgba(255,255,255,0.4);
 }
@@ -573,10 +574,12 @@ ul.table-of-contents h6{
 
 .notification-date {
   width: 20%;
+  padding-right: 0;
 }
 
 .notification-note {
   width: 70%;
+  padding-left: 0;
 }
 
 .notification-edit {

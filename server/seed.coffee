@@ -68,13 +68,14 @@ Meteor.startup ->
       bath: "3.0"
       bed: "3"
       city: "Midlothian"
-      imagesArray: [
-        "http://photos2.zillowstatic.com/p_d/IS-1n85aotvpsxgd.jpg"
-        "http://photos2.zillowstatic.com/p_d/IS-1n85aiwsdn04d.jpg"
-        "http://photos3.zillowstatic.com/p_d/IS-aujpiwl6wod9.jpg"
-        "http://photos2.zillowstatic.com/p_d/IS-1n85b6l5qapgd.jpg"
-        "http://photos1.zillowstatic.com/p_d/IS-aujv1qxbjqsd.jpg"
-      ]
+      # imagesArray: [
+      #   "http://photos2.zillowstatic.com/p_d/IS-1n85aotvpsxgd.jpg"
+      #   "http://photos2.zillowstatic.com/p_d/IS-1n85aiwsdn04d.jpg"
+      #   "http://photos3.zillowstatic.com/p_d/IS-aujpiwl6wod9.jpg"
+      #   "http://photos2.zillowstatic.com/p_d/IS-1n85b6l5qapgd.jpg"
+      #   "http://photos1.zillowstatic.com/p_d/IS-aujv1qxbjqsd.jpg"
+      # ]
+      image: "/properties/prop1.jpg"
       lat: "41.632556"
       long: "-87.726905"
       lotSizeSqft: "6783"
@@ -98,6 +99,7 @@ Meteor.startup ->
       city: "Talent"
       lat: "42.250025"
       long: "-133.786568"
+      image: "/properties/prop2.jpg"
       owners: [
         owner
         owner2
@@ -114,6 +116,7 @@ Meteor.startup ->
       city: "Canton"
       lat: "44.601894"
       long: "-75.174200"
+      image: "/properties/prop3.jpg"
       owners: [
         owner
         owner2
