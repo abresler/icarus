@@ -69,7 +69,6 @@ Template._assetAllocation.rendered = ->
     .attr "d", arc
     .attr "class", "asset-path"
     .attr "class", "pie-slice"
-    .attr "class", "waves-effect"
     .attr 'active', false
     .attr "total", (d) -> d.data.total
     .style "fill", (d, i) -> color i
