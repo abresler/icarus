@@ -4,11 +4,20 @@ if !(typeof MochaWeb == 'undefined')
 
     describe 'Termsheet logic', ->
 
+      describe 'Divide by Equity', ->
+        it 'should return the amount divided by equity', ->
+          x = 1000
+          equityPerc = 60
+          result = divideByEquity x, equityPerc
+          chai.expect(result).to.equal(600)
+          return
+        return
+
       describe 'Total Investment', ->
         it 'should return the total investment', ->
           purchasePrice = 100
           closingRepair = 120
-          result = totalInvestment(purchasePrice, closingRepair)
+          result = totalInvestment purchasePrice, closingRepair
           chai.expect(result).to.equal(220)
           return
         return
@@ -19,7 +28,7 @@ if !(typeof MochaWeb == 'undefined')
           closingRepair = 120
           downPaymentPerc = 100
           equityPerc = 50
-          result = downPaymentAmount(purchasePrice, closingRepair, downPaymentPerc, equityPerc)
+          result = downPaymentAmount purchasePrice, closingRepair, downPaymentPerc, equityPerc
           chai.expect(result).to.equal(110)
           return
         return
@@ -27,7 +36,7 @@ if !(typeof MochaWeb == 'undefined')
       describe 'Monthly Tax Average', ->
         it 'should return the monthly tax average', ->
           taxes = 1200
-          result = monthlyTaxAverage(taxes)
+          result = monthlyTaxAverage taxes
           chai.expect(result).to.equal(100)
           return
         return
@@ -35,7 +44,7 @@ if !(typeof MochaWeb == 'undefined')
       describe 'Reserve', ->
         it 'should return a reserve amount of 5%', ->
           rentPrice = 100
-          result = reserve(rentPrice)
+          result = reserve rentPrice
           chai.expect(result).to.equal(5)
           return
         return
@@ -46,7 +55,7 @@ if !(typeof MochaWeb == 'undefined')
           hoa = 100
           insurance = 200
           rentPrice = 500
-          result = monthlyOperatingExpenses(taxes, hoa, insurance, rentPrice)
+          result = monthlyOperatingExpenses taxes, hoa, insurance, rentPrice
           chai.expect(result).to.equal(335)
           return
         return
